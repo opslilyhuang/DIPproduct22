@@ -48,6 +48,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+/* ===== 图标系统说明 =====
+每个主题的图标经过精心设计，参考各公司官网设计语言：
+
+1. Palantir 经典: 线条简洁，直角/微圆角，技术感强
+2. Palantir 蓝调: 专业蓝色调，企业级设计
+3. Kimi: 圆润线条，渐变色彩，清新科技感
+4. Minimax: 优雅紫色，精致线条，现代感
+5. Gemini: Material Design风格，圆角，多彩
+6. GPT: 简洁专业，绿色调，科技感
+7. Apple: 极简精致，精细线条，大量留白
+8. 智谱AI: 科技蓝色，简洁线条，中文友好
+*/
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #fafafa;
@@ -655,43 +667,194 @@ body {
 }
 
 /* 主题切换修复 - 覆盖Tailwind固定颜色类 */
-[class*="theme-"] .bg-blue-600 { background-color: var(--color-primary) !important; }
-[class*="theme-"] .bg-indigo-600 { background-color: var(--color-secondary) !important; }
+
+
+/* 完整主题覆盖系统 - 确保所有Tailwind颜色类响应主题切换 */
+
+/* ===== 背景颜色覆盖 ===== */
+[class*="theme-"] .bg-blue-50 { background-color: var(--color-background) !important; }
 [class*="theme-"] .bg-blue-500 { background-color: var(--color-accent) !important; }
-[class*="theme-"] .bg-purple-600 { background-color: var(--color-secondary) !important; }
-
-[class*="theme-"] .text-blue-600 { color: var(--color-primary) !important; }
-[class*="theme-"] .text-indigo-600 { color: var(--color-secondary) !important; }
-[class*="theme-"] .text-purple-600 { color: var(--color-secondary) !important; }
-
-/* 主要文本和背景覆盖 */
-[class*="theme-"] .text-slate-900 { color: var(--color-text-primary) !important; }
-[class*="theme-"] .text-slate-800 { color: var(--color-text-primary) !important; }
-[class*="theme-"] .text-slate-700 { color: var(--color-text-secondary) !important; }
-[class*="theme-"] .text-slate-600 { color: var(--color-text-secondary) !important; }
-[class*="theme-"] .text-slate-500 { color: var(--color-text-secondary) !important; }
-[class*="theme-"] .text-slate-400 { color: var(--color-text-secondary) !important; }
-
-[class*="theme-"] .bg-slate-50 { background-color: var(--color-background) !important; }
+[class*="theme-"] .bg-blue-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-green-500\/80 { background-color: color-mix(in srgb, var(--color-success) 80%, transparent) !important; }
+[class*="theme-"] .bg-indigo-50 { background-color: var(--color-background) !important; }
+[class*="theme-"] .bg-indigo-500 { background-color: var(--color-secondary) !important; }
+[class*="theme-"] .bg-indigo-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-red-500\/80 { background-color: color-mix(in srgb, var(--color-error) 80%, transparent) !important; }
 [class*="theme-"] .bg-slate-100 { background-color: var(--color-background) !important; }
+[class*="theme-"] .bg-slate-200 { background-color: var(--color-border) !important; }
+[class*="theme-"] .bg-slate-50 { background-color: var(--color-background) !important; }
+[class*="theme-"] .bg-slate-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-slate-800\/50 { background-color: color-mix(in srgb, var(--color-text-primary) 50%, transparent) !important; }
+[class*="theme-"] .bg-slate-900 { background-color: var(--color-text-primary) !important; }
+[class*="theme-"] .bg-slate-900\/10 { background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important; }
+[class*="theme-"] .bg-teal-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-yellow-500\/80 { background-color: color-mix(in srgb, var(--color-warning) 80%, transparent) !important; }
 [class*="theme-"] .bg-white { background-color: var(--color-surface) !important; }
 
-[class*="theme-"] .border-slate-200 { border-color: var(--color-border) !important; }
-[class*="theme-"] .border-slate-100 { border-color: var(--color-border) !important; }
-[class*="theme-"] .border-blue-200 { border-color: var(--color-border) !important; }
+/* ===== 文本颜色覆盖 ===== */
+[class*="theme-"] .text-blue-100\/80 { color: color-mix(in srgb, var(--color-primary) 20%, white 80%) !important; }
+[class*="theme-"] .text-blue-300 { color: color-mix(in srgb, var(--color-primary) 70%, white 30%) !important; }
+[class*="theme-"] .text-blue-400 { color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .text-blue-600 { color: var(--color-primary) !important; }
+[class*="theme-"] .text-green-400 { color: var(--color-success) !important; }
+[class*="theme-"] .text-indigo-300 { color: color-mix(in srgb, var(--color-secondary) 70%, white 30%) !important; }
+[class*="theme-"] .text-indigo-600 { color: var(--color-secondary) !important; }
+[class*="theme-"] .text-orange-400 { color: var(--color-warning) !important; }
+[class*="theme-"] .text-purple-400 { color: color-mix(in srgb, var(--color-secondary) 85%, white 15%) !important; }
+[class*="theme-"] .text-slate-300 { color: color-mix(in srgb, var(--color-text-secondary) 70%, white 30%) !important; }
+[class*="theme-"] .text-slate-400 { color: color-mix(in srgb, var(--color-text-secondary) 85%, white 15%) !important; }
+[class*="theme-"] .text-slate-500 { color: var(--color-text-secondary) !important; }
+[class*="theme-"] .text-slate-600 { color: color-mix(in srgb, var(--color-text-secondary) 15%, black 85%) !important; }
+[class*="theme-"] .text-slate-700 { color: color-mix(in srgb, var(--color-text-secondary) 30%, black 70%) !important; }
+[class*="theme-"] .text-slate-800 { color: var(--color-text-primary) !important; }
+[class*="theme-"] .text-slate-900 { color: var(--color-text-primary) !important; }
+[class*="theme-"] .text-teal-600 { color: var(--color-accent) !important; }
+[class*="theme-"] .text-yellow-200 { color: color-mix(in srgb, var(--color-warning) 30%, white 70%) !important; }
 
-/* 渐变覆盖 */
+/* ===== 边框颜色覆盖 ===== */
+[class*="theme-"] .border-blue-100 { border-color: color-mix(in srgb, var(--color-primary) 20%, white 80%) !important; }
+[class*="theme-"] .border-blue-200 { border-color: color-mix(in srgb, var(--color-primary) 40%, white 60%) !important; }
+[class*="theme-"] .border-blue-600 { border-color: var(--color-primary) !important; }
+[class*="theme-"] .border-indigo-100 { border-color: color-mix(in srgb, var(--color-secondary) 20%, white 80%) !important; }
+[class*="theme-"] .border-slate-100 { border-color: color-mix(in srgb, var(--color-border) 20%, white 80%) !important; }
+[class*="theme-"] .border-slate-200 { border-color: var(--color-border) !important; }
+[class*="theme-"] .border-slate-700 { border-color: color-mix(in srgb, var(--color-text-secondary) 70%, black 30%) !important; }
+[class*="theme-"] .border-slate-700\/50 { border-color: color-mix(in srgb, var(--color-text-secondary) 35%, black 15%, transparent 50%) !important; }
+[class*="theme-"] .border-slate-800 { border-color: var(--color-text-primary) !important; }
+[class*="theme-"] .border-teal-100 { border-color: color-mix(in srgb, var(--color-accent) 20%, white 80%) !important; }
+
+/* ===== 渐变颜色覆盖 ===== */
+[class*="theme-"] .from-blue-100\/40 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-primary) 10%, white 90%) 40%, transparent) !important; }
+[class*="theme-"] .from-blue-50 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-primary) 5%, white 95%), transparent) !important; }
+[class*="theme-"] .from-blue-500 { background-image: linear-gradient(to bottom right, var(--color-accent), transparent) !important; }
+[class*="theme-"] .from-blue-500\/10 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-accent) 10%, transparent 90%), transparent) !important; }
+[class*="theme-"] .from-blue-600 { background-image: linear-gradient(to bottom right, var(--color-primary), transparent) !important; }
+[class*="theme-"] .from-cyan-500 { background-image: linear-gradient(to bottom right, var(--color-accent), transparent) !important; }
+[class*="theme-"] .from-cyan-50\/40 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-accent) 5%, white 95%) 40%, transparent) !important; }
+[class*="theme-"] .from-indigo-500 { background-image: linear-gradient(to bottom right, var(--color-secondary), transparent) !important; }
+[class*="theme-"] .from-indigo-600 { background-image: linear-gradient(to bottom right, var(--color-secondary), transparent) !important; }
+[class*="theme-"] .from-indigo-900 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-secondary) 90%, black 10%), transparent) !important; }
+[class*="theme-"] .from-slate-100 { background-image: linear-gradient(to bottom right, var(--color-background), transparent) !important; }
+[class*="theme-"] .from-slate-700 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-text-secondary) 70%, black 30%), transparent) !important; }
+
 [class*="theme-"] .bg-gradient-to-br.from-blue-600.to-indigo-600 {
     background-image: var(--color-gradient) !important;
 }
 
-/* 悬停状态覆盖 */
-[class*="theme-"] .hover\:text-blue-600:hover { color: var(--color-primary) !important; }
-[class*="theme-"] .hover\:bg-blue-600:hover { background-color: var(--color-primary) !important; }
+/* ===== 悬停状态覆盖 ===== */
+[class*="theme-"] .group-hover\:bg-blue-600\/80:hover { background-color: color-mix(in srgb, var(--color-primary) 80%, transparent) !important; }
+[class*="theme-"] .group-hover\:border-blue-400:hover { border-color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .group-hover\:text-blue-600:hover { color: var(--color-primary) !important; }
+[class*="theme-"] .group-hover\:text-indigo-600:hover { color: var(--color-secondary) !important; }
+[class*="theme-"] .group-hover\:text-slate-700:hover { color: color-mix(in srgb, var(--color-text-secondary) 30%, black 70%) !important; }
 
-/* 调试样式 - 主题切换时添加边框 */
-.theme-debug * { transition: all 0.3s ease !important; }
-</style>
+[class*="theme-"] .hover\:bg-slate-50:hover { background-color: var(--color-background) !important; }
+[class*="theme-"] .hover\:bg-slate-800:hover { background-color: var(--color-text-primary) !important; }
+[class*="theme-"] .hover\:border-blue-400:hover { border-color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .hover\:border-slate-200:hover { border-color: var(--color-border) !important; }
+[class*="theme-"] .hover\:text-blue-400:hover { color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .hover\:text-blue-600:hover { color: var(--color-primary) !important; }
+[class*="theme-"] .hover\:text-blue-800:hover { color: color-mix(in srgb, var(--color-primary) 90%, black 10%) !important; }
+[class*="theme-"] .hover\:text-indigo-800:hover { color: color-mix(in srgb, var(--color-secondary) 90%, black 10%) !important; }
+[class*="theme-"] .hover\:text-slate-900:hover { color: var(--color-text-primary) !important; }
+
+[class*="theme-"] .selection\:text-blue-900::selection { color: color-mix(in srgb, var(--color-primary) 90%, black 10%) !important; }
+
+/* ===== 主题特定覆盖 ===== */
+
+/* Palantir风格 - 更黑白灰，少蓝色 */
+.theme-palantir {
+    --color-primary: #1e293b; /* 深石板灰代替蓝色 */
+    --color-secondary: #334155; /* 石板灰 */
+    --color-accent: #475569; /* 石板灰 */
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-border: #e2e8f0;
+    --color-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+/* Palantir2风格 - 更接近真实Palantir官网（用户要求的第8种风格） */
+.theme-palantir2 {
+    --color-primary: #000000; /* 黑色 */
+    --color-secondary: #1a1a1a; /* 深灰 */
+    --color-accent: #333333; /* 中灰 */
+    --color-background: #f8f9fa; /* 浅灰白 */
+    --color-surface: #ffffff;
+    --color-text-primary: #000000;
+    --color-text-secondary: #666666;
+    --color-border: #e0e0e0;
+    --color-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+    --color-success: #00a86b;
+    --color-warning: #ff9500;
+    --color-error: #ff3b30;
+}
+
+/* 确保Palantir2使用适当的图标样式 */
+.theme-palantir2 [data-lucide] {
+    stroke-width: 1.5px !important;
+}
+
+/* Kimi风格调整 */
+.theme-kimi [data-lucide] {
+    stroke-width: 1.2px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+/* Minimax风格图标 */
+.theme-minimax [data-lucide] {
+    stroke-width: 1.3px !important;
+    stroke: var(--color-primary) !important;
+}
+
+/* Gemini风格图标 - Material Design风格 */
+.theme-gemini [data-lucide] {
+    stroke-width: 1.4px !important;
+    fill: none !important;
+}
+
+/* GPT风格图标 */
+.theme-gpt [data-lucide] {
+    stroke-width: 1.5px !important;
+    stroke: var(--color-primary) !important;
+}
+
+/* Apple风格图标 - 极简精致 */
+.theme-apple [data-lucide] {
+    stroke-width: 1.1px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+/* 智谱风格图标 */
+.theme-zhipu [data-lucide] {
+    stroke-width: 1.6px !important;
+    stroke: var(--color-primary) !important;
+}
+
+/* ===== 通用图标优化 ===== */
+[class*="theme-"] [data-lucide] {
+    transition: all 0.2s ease !important;
+}
+
+[class*="theme-"] .icon-container [data-lucide] {
+    stroke: currentColor !important;
+}
+
+/* ===== 响应式调整 ===== */
+@media (max-width: 768px) {
+    [class*="theme-"] [data-lucide] {
+        stroke-width: 1.8px !important;
+    }
+}
+
+/* ===== 调试辅助 ===== */
+.theme-debug * {
+    outline: 1px solid rgba(255, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}</style>
 
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900 relative">
@@ -1463,9 +1626,14 @@ engine = RuleEngine()
 // 主题配置数据
 const themes = {
     palantir: {
-        name: 'Palantir Light',
-        desc: '企业级专业设计',
+        name: 'Palantir 蓝调',
+        desc: '企业级专业设计（蓝调版）',
         colors: ['#1e3a8a', '#3b82f6', '#64748b']
+    },
+    palantir2: {
+        name: 'Palantir 经典',
+        desc: '黑白灰专业设计（接近官网）',
+        colors: ['#000000', '#333333', '#666666']
     },
     kimi: {
         name: 'Kimi 清新科技',
@@ -1497,7 +1665,7 @@ const themes = {
         desc: '科技蓝色调设计',
         colors: ['#2563eb', '#1d4ed8', '#3b82f6']
     }
-};
+};;
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
@@ -1510,7 +1678,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createThemeSelector();
     
     // 设置默认主题
-    applyTheme('palantir');
+    applyTheme('palantir2'); // 使用更接近官网的Palantir经典风格
     
     // 监听主题切换
     document.querySelectorAll('.theme-card').forEach(card => {
