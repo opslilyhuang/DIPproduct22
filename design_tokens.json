@@ -1,0 +1,319 @@
+{
+  "themes": {
+    "palantir": {
+      "name": "Palantir Light",
+      "description": "企业级专业设计 - 严肃、专业、数据驱动",
+      "colors": {
+        "primary": "#1e3a8a",
+        "secondary": "#1e40af",
+        "accent": "#3b82f6",
+        "background": "#f8fafc",
+        "surface": "#ffffff",
+        "textPrimary": "#1e293b",
+        "textSecondary": "#64748b",
+        "border": "#e2e8f0",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444"
+      },
+      "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.5"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+      },
+      "borderRadius": {
+        "small": "4px",
+        "medium": "8px",
+        "large": "12px",
+        "xlarge": "16px"
+      },
+      "shadows": {
+        "small": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "medium": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+        "large": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+        "xlarge": "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)",
+        "secondary": "linear-gradient(135deg, #1e40af 0%, #6366f1 100%)"
+      }
+    },
+    "kimi": {
+      "name": "Kimi 清新科技",
+      "description": "清新科技感设计 - 年轻、亲和、未来感",
+      "colors": {
+        "primary": "#06b6d4",
+        "secondary": "#0ea5e9",
+        "accent": "#22d3ee",
+        "background": "#f0f9ff",
+        "surface": "#ffffff",
+        "textPrimary": "#0f172a",
+        "textSecondary": "#475569",
+        "border": "#cbd5e1",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444"
+      },
+      "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.6"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 6, 12, 18, 24, 30, 36, 48, 60, 72, 96, 120, 144]
+      },
+      "borderRadius": {
+        "small": "8px",
+        "medium": "16px",
+        "large": "24px",
+        "xlarge": "32px"
+      },
+      "shadows": {
+        "small": "0 2px 4px rgba(6, 182, 212, 0.1)",
+        "medium": "0 10px 15px -3px rgba(6, 182, 212, 0.1)",
+        "large": "0 20px 25px -5px rgba(6, 182, 212, 0.15)",
+        "xlarge": "0 30px 40px -10px rgba(6, 182, 212, 0.2)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%)",
+        "secondary": "linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%)"
+      }
+    },
+    "minimax": {
+      "name": "Minimax 优雅紫",
+      "description": "简约优雅紫色调 - 精致、现代、创意",
+      "colors": {
+        "primary": "#7c3aed",
+        "secondary": "#8b5cf6",
+        "accent": "#a78bfa",
+        "background": "#faf5ff",
+        "surface": "#ffffff",
+        "textPrimary": "#1e1b4b",
+        "textSecondary": "#6d28d9",
+        "border": "#e9d5ff",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444"
+      },
+      "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.6"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128]
+      },
+      "borderRadius": {
+        "small": "6px",
+        "medium": "12px",
+        "large": "18px",
+        "xlarge": "24px"
+      },
+      "shadows": {
+        "small": "0 2px 4px rgba(124, 58, 237, 0.1)",
+        "medium": "0 10px 15px -3px rgba(124, 58, 237, 0.1)",
+        "large": "0 20px 25px -5px rgba(124, 58, 237, 0.15)",
+        "xlarge": "0 30px 40px -10px rgba(124, 58, 237, 0.2)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)",
+        "secondary": "linear-gradient(135deg, #8b5cf6 0%, #c4b5fd 100%)"
+      }
+    },
+    "gemini": {
+      "name": "Gemini 多彩活力",
+      "description": "Google多彩设计 - 活力、现代、Material Design",
+      "colors": {
+        "primary": "#4285f4",
+        "secondary": "#34a853",
+        "accent": "#fbbc05",
+        "background": "#f8f9fa",
+        "surface": "#ffffff",
+        "textPrimary": "#202124",
+        "textSecondary": "#5f6368",
+        "border": "#dadce0",
+        "success": "#34a853",
+        "warning": "#fbbc05",
+        "error": "#ea4335"
+      },
+      "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.5"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128]
+      },
+      "borderRadius": {
+        "small": "8px",
+        "medium": "12px",
+        "large": "16px",
+        "xlarge": "20px"
+      },
+      "shadows": {
+        "small": "0 1px 2px 0 rgba(66, 133, 244, 0.1)",
+        "medium": "0 4px 12px rgba(66, 133, 244, 0.1)",
+        "large": "0 12px 24px rgba(66, 133, 244, 0.15)",
+        "xlarge": "0 24px 48px rgba(66, 133, 244, 0.2)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 100%)",
+        "secondary": "linear-gradient(135deg, #4285f4 0%, #34a853 100%)"
+      }
+    },
+    "gpt": {
+      "name": "GPT 专业绿",
+      "description": "OpenAI专业绿色 - 简洁、专业、科技感",
+      "colors": {
+        "primary": "#10a37f",
+        "secondary": "#1a7f64",
+        "accent": "#34d399",
+        "background": "#f9fafb",
+        "surface": "#ffffff",
+        "textPrimary": "#111827",
+        "textSecondary": "#4b5563",
+        "border": "#d1d5db",
+        "success": "#10a37f",
+        "warning": "#f59e0b",
+        "error": "#ef4444"
+      },
+      "typography": {
+        "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.5"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+      },
+      "borderRadius": {
+        "small": "4px",
+        "medium": "8px",
+        "large": "12px",
+        "xlarge": "16px"
+      },
+      "shadows": {
+        "small": "0 1px 2px 0 rgba(16, 163, 127, 0.1)",
+        "medium": "0 4px 6px -1px rgba(16, 163, 127, 0.1)",
+        "large": "0 10px 15px -3px rgba(16, 163, 127, 0.1)",
+        "xlarge": "0 20px 25px -5px rgba(16, 163, 127, 0.1)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #10a37f 0%, #34d399 100%)",
+        "secondary": "linear-gradient(135deg, #1a7f64 0%, #10a37f 100%)"
+      }
+    },
+    "apple": {
+      "name": "Apple 极简",
+      "description": "苹果极简设计 - 精致、高级、大量留白",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#1d1d1f",
+        "accent": "#007aff",
+        "background": "#f5f5f7",
+        "surface": "#ffffff",
+        "textPrimary": "#1d1d1f",
+        "textSecondary": "#86868b",
+        "border": "#d2d2d7",
+        "success": "#30d158",
+        "warning": "#ff9f0a",
+        "error": "#ff453a"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "fontSizeBase": "17px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.47"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 8, 16, 24, 32, 40, 48, 64, 80, 96, 128, 160, 192]
+      },
+      "borderRadius": {
+        "small": "10px",
+        "medium": "20px",
+        "large": "30px",
+        "xlarge": "40px"
+      },
+      "shadows": {
+        "small": "0 2px 8px rgba(0, 0, 0, 0.05)",
+        "medium": "0 12px 24px rgba(0, 0, 0, 0.05)",
+        "large": "0 24px 48px rgba(0, 0, 0, 0.1)",
+        "xlarge": "0 48px 96px rgba(0, 0, 0, 0.1)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #000000 0%, #1d1d1f 100%)",
+        "secondary": "linear-gradient(135deg, #1d1d1f 0%, #000000 100%)"
+      }
+    },
+    "zhipu": {
+      "name": "智谱AI 科技蓝",
+      "description": "科技蓝色调设计 - 专业、可靠、现代",
+      "colors": {
+        "primary": "#2563eb",
+        "secondary": "#1d4ed8",
+        "accent": "#60a5fa",
+        "background": "#eff6ff",
+        "surface": "#ffffff",
+        "textPrimary": "#1e3a8a",
+        "textSecondary": "#3b82f6",
+        "border": "#bfdbfe",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444"
+      },
+      "typography": {
+        "fontFamily": "'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+        "fontSizeBase": "16px",
+        "fontWeightNormal": "400",
+        "fontWeightMedium": "500",
+        "fontWeightBold": "700",
+        "lineHeight": "1.6"
+      },
+      "spacing": {
+        "unit": "8px",
+        "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+      },
+      "borderRadius": {
+        "small": "6px",
+        "medium": "12px",
+        "large": "18px",
+        "xlarge": "24px"
+      },
+      "shadows": {
+        "small": "0 2px 4px rgba(37, 99, 235, 0.1)",
+        "medium": "0 8px 16px rgba(37, 99, 235, 0.1)",
+        "large": "0 16px 32px rgba(37, 99, 235, 0.15)",
+        "xlarge": "0 32px 64px rgba(37, 99, 235, 0.2)"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+        "secondary": "linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)"
+      }
+    }
+  }
+}

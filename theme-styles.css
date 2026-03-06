@@ -1,0 +1,242 @@
+/* 主题样式系统 - 基于CSS变量的组件样式 */
+
+/* ===== 基础样式 ===== */
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== 按钮样式 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-medium);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-gradient);
+  color: white;
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-background);
+}
+
+/* ===== 卡片样式 ===== */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* ===== 导航样式 ===== */
+.navbar {
+  background-color: var(--color-surface);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-link {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* ===== 标签/徽章样式 ===== */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-small);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* ===== 表单元素样式 ===== */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* ===== 特定主题调整 ===== */
+
+/* Palantir主题 - 企业级专业 */
+.theme-palantir .btn {
+  border-radius: var(--radius-small);
+  font-weight: 700;
+}
+
+.theme-palantir .card {
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-small);
+}
+
+.theme-palantir .card:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+/* Kimi主题 - 清新科技 */
+.theme-kimi .btn {
+  border-radius: var(--radius-xlarge);
+}
+
+.theme-kimi .btn-primary {
+  background: var(--color-gradient);
+}
+
+.theme-kimi .card {
+  border-radius: var(--radius-xlarge);
+  border: none;
+  box-shadow: var(--shadow-large);
+}
+
+/* Minimax主题 - 优雅紫色 */
+.theme-minimax .btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+.theme-minimax .card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+}
+
+/* Gemini主题 - 多彩活力 */
+.theme-gemini .btn-primary {
+  background: var(--color-gradient);
+}
+
+.theme-gemini .badge-primary {
+  background: var(--color-gradient);
+}
+
+/* GPT主题 - 专业绿色 */
+.theme-gpt .btn {
+  border-radius: var(--radius-medium);
+}
+
+.theme-gpt .card {
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Apple主题 - 极简精致 */
+.theme-apple .btn {
+  border-radius: var(--radius-xlarge);
+  font-weight: 500;
+}
+
+.theme-apple .card {
+  border-radius: var(--radius-xlarge);
+  border: none;
+  box-shadow: var(--shadow-medium);
+}
+
+.theme-apple .input {
+  border-radius: var(--radius-large);
+}
+
+/* 智谱主题 - 科技蓝色 */
+.theme-zhipu .btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.theme-zhipu .card {
+  border-radius: var(--radius-large);
+  border: 1px solid var(--color-border);
+}
+
+/* ===== 动画效果 ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.theme-kimi .card {
+  animation: fadeIn 0.5s ease;
+}
+
+.theme-minimax .btn-primary:hover {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ===== 响应式调整 ===== */
+@media (max-width: 768px) {
+  .card {
+    border-radius: var(--radius-medium);
+  }
+  
+  .theme-kimi .card {
+    border-radius: var(--radius-large);
+  }
+  
+  .theme-apple .card {
+    border-radius: var(--radius-large);
+  }
+}
