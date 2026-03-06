@@ -854,8 +854,323 @@ body {
 .theme-debug * {
     outline: 1px solid rgba(255, 0, 0, 0.1) !important;
     transition: all 0.3s ease !important;
+}
+
+/* ===== 图标设计系统 ===== */
+/* 图标设计系统 - 根据各公司官网设计语言定制 */
+
+/* ===== 通用图标基础 ===== */
+[data-lucide] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform-origin: center !important;
+}
+
+.icon-container [data-lucide] {
+    stroke: currentColor !important;
+}
+
+/* ===== Palantir经典 (黑白灰) ===== */
+.theme-palantir2 [data-lucide] {
+    stroke-width: 1.8px !important;
+    stroke-linecap: square !important;
+    stroke-linejoin: miter !important;
+    stroke: var(--color-text-primary) !important;
+}
+
+/* Palantir特定图标调整 */
+.theme-palantir2 [data-lucide="database"],
+.theme-palantir2 [data-lucide="cpu"],
+.theme-palantir2 [data-lucide="network"] {
+    stroke-width: 2px !important;
+}
+
+.theme-palantir2 [data-lucide="shield"],
+.theme-palantir2 [data-lucide="shield-check"] {
+    stroke-width: 1.6px !important;
+}
+
+/* Palantir图标悬停效果 */
+.theme-palantir2 .icon-container:hover [data-lucide] {
+    stroke: var(--color-primary) !important;
+    transform: scale(1.05) !important;
+}
+
+/* ===== Palantir蓝调 ===== */
+.theme-palantir [data-lucide] {
+    stroke-width: 1.7px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-primary) !important;
+}
+
+.theme-palantir .icon-container [data-lucide] {
+    stroke: var(--color-primary) !important;
+}
+
+/* ===== Kimi清新科技 ===== */
+.theme-kimi [data-lucide] {
+    stroke-width: 1.2px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-primary) !important;
+}
+
+/* Kimi图标悬停动画 */
+.theme-kimi .icon-container:hover [data-lucide] {
+    stroke: var(--color-accent) !important;
+    transform: translateY(-2px) scale(1.1) !important;
+    filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.2)) !important;
+}
+
+/* ===== Minimax优雅紫 ===== */
+.theme-minimax [data-lucide] {
+    stroke-width: 1.3px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-primary) !important;
+}
+
+.theme-minimax .icon-container:hover [data-lucide] {
+    stroke: var(--color-accent) !important;
+    transform: rotate(5deg) scale(1.05) !important;
+}
+
+/* ===== Gemini多彩活力 ===== */
+.theme-gemini [data-lucide] {
+    stroke-width: 1.4px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-text-primary) !important;
+}
+
+/* Gemini图标颜色根据类型变化 */
+.theme-gemini [data-lucide="database"],
+.theme-gemini [data-lucide="layers"] {
+    stroke: var(--color-primary) !important; /* 蓝色 */
+}
+
+.theme-gemini [data-lucide="check"],
+.theme-gemini [data-lucide="shield-check"] {
+    stroke: var(--color-success) !important; /* 绿色 */
+}
+
+.theme-gemini [data-lucide="cpu"],
+.theme-gemini [data-lucide="zap"] {
+    stroke: var(--color-warning) !important; /* 黄色 */
+}
+
+.theme-gemini .icon-container:hover [data-lucide] {
+    transform: scale(1.15) !important;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15)) !important;
+}
+
+/* ===== GPT专业绿 ===== */
+.theme-gpt [data-lucide] {
+    stroke-width: 1.5px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-primary) !important;
+}
+
+.theme-gpt .icon-container [data-lucide] {
+    stroke: var(--color-primary) !important;
+}
+
+.theme-gpt .icon-container:hover [data-lucide] {
+    stroke: var(--color-accent) !important;
+    transform: scale(1.08) !important;
+}
+
+/* ===== Apple极简 ===== */
+.theme-apple [data-lucide] {
+    stroke-width: 1.1px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-text-primary) !important;
+}
+
+/* Apple图标极致精致 */
+.theme-apple .icon-container [data-lucide] {
+    stroke: var(--color-text-primary) !important;
+}
+
+.theme-apple .icon-container:hover [data-lucide] {
+    stroke: var(--color-accent) !important;
+    transform: scale(1.03) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+}
+
+/* ===== 智谱AI科技蓝 ===== */
+.theme-zhipu [data-lucide] {
+    stroke-width: 1.6px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke: var(--color-primary) !important;
+}
+
+.theme-zhipu .icon-container [data-lucide] {
+    stroke: var(--color-primary) !important;
+}
+
+.theme-zhipu .icon-container:hover [data-lucide] {
+    stroke: var(--color-accent) !important;
+    transform: scale(1.07) !important;
+    filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.2)) !important;
+}
+
+/* ===== 特定图标增强 ===== */
+
+/* 数据相关图标 */
+[data-lucide="database"],
+[data-lucide="layers"],
+[data-lucide="pie-chart"] {
+    /* 数据图标稍粗 */
+    stroke-width: calc(var(--icon-stroke-width, 1.5px) * 1.1) !important;
+}
+
+/* 科技/网络图标 */
+[data-lucide="cpu"],
+[data-lucide="network"],
+[data-lucide="cloud"] {
+    /* 科技图标 */
+}
+
+/* 安全图标 */
+[data-lucide="shield"],
+[data-lucide="shield-check"] {
+    /* 安全图标 */
+}
+
+/* 交互图标 */
+[data-lucide="play"],
+[data-lucide="play-circle"],
+[data-lucide="pause"] {
+    /* 播放图标 */
+}
+
+/* ===== 图标容器样式 ===== */
+.icon-container {
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Palantir经典图标容器 */
+.theme-palantir2 .icon-container {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Kimi图标容器 */
+.theme-kimi .icon-container {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+    color: white !important;
+}
+
+/* Minimax图标容器 */
+.theme-minimax .icon-container {
+    background: var(--color-surface) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1) !important;
+}
+
+/* ===== 响应式图标调整 ===== */
+@media (max-width: 768px) {
+    [data-lucide] {
+        stroke-width: calc(var(--icon-stroke-width, 1.5px) * 1.2) !important;
+    }
+    
+    .icon-container {
+        padding: 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    [data-lucide] {
+        stroke-width: calc(var(--icon-stroke-width, 1.5px) * 1.3) !important;
+    }
+}
+
+/* ===== 图标动画 ===== */
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes icon-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes icon-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 特定图标的特殊动画 */
+.theme-kimi .icon-container:hover [data-lucide="sparkles"] {
+    animation: icon-float 2s ease-in-out infinite !important;
+}
+
+.theme-minimax .icon-container:hover [data-lucide="zap"] {
+    animation: icon-pulse 1.5s ease-in-out infinite !important;
+}
+
+.theme-gemini .icon-container:hover [data-lucide="cpu"] {
+    animation: icon-spin 4s linear infinite !important;
 }</style>
 
+
+<!-- 
+图标设计系统说明：
+==================
+每个主题的图标经过精心设计，参考各公司官网设计语言：
+
+1. Palantir经典 (palantir2)
+   - 线条粗细: 1.8px
+   - 线条端点: 方形 (square)
+   - 线条连接: 斜接 (miter)
+   - 风格: 技术感强，黑白灰调
+
+2. Palantir蓝调 (palantir)
+   - 线条粗细: 1.7px
+   - 线条端点: 圆形 (round)
+   - 风格: 企业级专业，蓝色调
+
+3. Kimi清新科技
+   - 线条粗细: 1.2px
+   - 线条端点: 圆形
+   - 风格: 圆润友好，渐变色彩
+   - 悬停效果: 浮动动画
+
+4. Minimax优雅紫
+   - 线条粗细: 1.3px
+   - 风格: 优雅精致，紫色调
+   - 悬停效果: 轻微旋转
+
+5. Gemini多彩活力
+   - 线条粗细: 1.4px
+   - 风格: Material Design，多彩
+   - 图标颜色: 根据类型变化（蓝/绿/黄）
+
+6. GPT专业绿
+   - 线条粗细: 1.5px
+   - 风格: 简洁专业，绿色调
+
+7. Apple极简
+   - 线条粗细: 1.1px
+   - 风格: 极致精致，大量留白
+   - 悬停效果: 微妙阴影
+
+8. 智谱AI科技蓝
+   - 线条粗细: 1.6px
+   - 风格: 科技感强，蓝色调
+   - 悬停效果: 发光效果
+
+所有图标都有平滑的过渡动画和悬停反馈。
+-->
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900 relative">
 
