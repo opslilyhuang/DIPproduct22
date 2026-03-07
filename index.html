@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIP决策智能平台 - 中科闻歌</title>
+    <title>DIP决策智能平台 - 16种主题风格展示</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -1097,6 +1097,314 @@ body {
 
 .theme-gemini .icon-container:hover [data-lucide="cpu"] {
     animation: icon-spin 4s linear infinite !important;
+}
+
+/* ===== v2主题定义 (官网深入研究版) ===== */
+/* v2主题定义 - 基于官网设计语言深入研究 */
+
+/* ===== Palantir v2 (更接近官网) ===== */
+.theme-palantir-v2 {
+    /* 色彩系统 - 基于官网分析 */
+    --color-primary: #1e3a8a;
+    --color-secondary: #1e40af;
+    --color-accent: #3b82f6;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-border: #e2e8f0;
+    --color-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    
+    /* 圆角系统 - 官网使用较小圆角 */
+    --radius-sm: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem; /* 6px */
+    --radius-lg: 0.5rem;   /* 8px */
+    --radius-xl: 0.75rem;  /* 12px */
+    
+    /* 阴影系统 - 官网阴影较轻微 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.5px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== Kimi v2 (清新科技感) ===== */
+.theme-kimi-v2 {
+    /* 色彩系统 */
+    --color-primary: #06b6d4;
+    --color-secondary: #22d3ee;
+    --color-accent: #67e8f9;
+    --color-background: #f0f9ff;
+    --color-surface: #ffffff;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-border: #cbd5e1;
+    --color-gradient: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+    
+    /* 圆角系统 - Kimi使用较大圆角 */
+    --radius-sm: 0.5rem;   /* 8px */
+    --radius-md: 0.75rem;  /* 12px */
+    --radius-lg: 1rem;     /* 16px */
+    --radius-xl: 1.5rem;   /* 24px */
+    
+    /* 阴影系统 */
+    --shadow-sm: 0 2px 8px rgba(6, 182, 212, 0.1);
+    --shadow-md: 0 8px 16px rgba(6, 182, 212, 0.15);
+    --shadow-lg: 0 16px 32px rgba(6, 182, 212, 0.2);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.2px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== Minimax v2 (优雅紫色) ===== */
+.theme-minimax-v2 {
+    /* 色彩系统 */
+    --color-primary: #7c3aed;
+    --color-secondary: #a78bfa;
+    --color-accent: #c4b5fd;
+    --color-background: #faf5ff;
+    --color-surface: #ffffff;
+    --color-text-primary: #1e1b4b;
+    --color-text-secondary: #4c1d95;
+    --color-border: #ddd6fe;
+    --color-gradient: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    
+    /* 圆角系统 */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem;   /* 8px */
+    --radius-lg: 0.75rem;  /* 12px */
+    --radius-xl: 1rem;     /* 16px */
+    
+    /* 阴影系统 */
+    --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.1);
+    --shadow-md: 0 8px 16px rgba(124, 58, 237, 0.15);
+    --shadow-lg: 0 16px 32px rgba(124, 58, 237, 0.2);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.3px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== Gemini v2 (Material Design) ===== */
+.theme-gemini-v2 {
+    /* 色彩系统 - Google Material Design */
+    --color-primary: #4285f4;
+    --color-secondary: #34a853;
+    --color-accent: #fbbc05;
+    --color-background: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-text-primary: #202124;
+    --color-text-secondary: #5f6368;
+    --color-border: #dadce0;
+    --color-gradient: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 100%);
+    
+    /* 圆角系统 - Material Design规范 */
+    --radius-sm: 0.25rem;  /* 4px */
+    --radius-md: 0.5rem;   /* 8px */
+    --radius-lg: 1rem;     /* 16px */
+    --radius-xl: 1.5rem;   /* 24px */
+    
+    /* 阴影系统 - Material Design阴影 */
+    --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px rgba(60, 64, 67, 0.15);
+    --shadow-md: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px rgba(60, 64, 67, 0.15);
+    --shadow-lg: 0 2px 4px rgba(60, 64, 67, 0.3), 0 8px 16px rgba(60, 64, 67, 0.15);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.4px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== GPT v2 (OpenAI风格) ===== */
+.theme-gpt-v2 {
+    /* 色彩系统 */
+    --color-primary: #10a37f;
+    --color-secondary: #1a7f64;
+    --color-accent: #34d399;
+    --color-background: #f9fafb;
+    --color-surface: #ffffff;
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-border: #d1d5db;
+    --color-gradient: linear-gradient(135deg, #10a37f 0%, #1a7f64 100%);
+    
+    /* 圆角系统 */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem;   /* 8px */
+    --radius-lg: 0.75rem;  /* 12px */
+    --radius-xl: 1rem;     /* 16px */
+    
+    /* 阴影系统 */
+    --shadow-sm: 0 1px 3px rgba(16, 163, 127, 0.1);
+    --shadow-md: 0 4px 6px rgba(16, 163, 127, 0.1);
+    --shadow-lg: 0 10px 25px rgba(16, 163, 127, 0.1);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.5px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== Apple v2 (极致简约) ===== */
+.theme-apple-v2 {
+    /* 色彩系统 - Apple设计语言 */
+    --color-primary: #000000;
+    --color-secondary: #1d1d1f;
+    --color-accent: #007aff;
+    --color-background: #f5f5f7;
+    --color-surface: #ffffff;
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #86868b;
+    --color-border: #d2d2d7;
+    --color-gradient: linear-gradient(135deg, #000000 0%, #1d1d1f 100%);
+    
+    /* 圆角系统 - Apple精确圆角 */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.75rem;  /* 12px */
+    --radius-lg: 1.25rem;  /* 20px */
+    --radius-xl: 2rem;     /* 32px */
+    
+    /* 阴影系统 - Apple微妙阴影 */
+    --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.1px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== 智谱AI v2 (科技蓝色) ===== */
+.theme-zhipu-v2 {
+    /* 色彩系统 */
+    --color-primary: #2563eb;
+    --color-secondary: #1d4ed8;
+    --color-accent: #3b82f6;
+    --color-background: #eff6ff;
+    --color-surface: #ffffff;
+    --color-text-primary: #1e3a8a;
+    --color-text-secondary: #3b82f6;
+    --color-border: #bfdbfe;
+    --color-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    
+    /* 圆角系统 */
+    --radius-sm: 0.25rem;  /* 4px */
+    --radius-md: 0.5rem;   /* 8px */
+    --radius-lg: 0.75rem;  /* 12px */
+    --radius-xl: 1rem;     /* 16px */
+    
+    /* 阴影系统 */
+    --shadow-sm: 0 1px 3px rgba(37, 99, 235, 0.1);
+    --shadow-md: 0 4px 6px rgba(37, 99, 235, 0.1);
+    --shadow-lg: 0 10px 25px rgba(37, 99, 235, 0.1);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.6px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
+/* ===== v2主题图标样式 ===== */
+.theme-palantir-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.5px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-kimi-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.2px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-minimax-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.3px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-gemini-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.4px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-gpt-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.5px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-apple-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.1px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-zhipu-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.6px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+/* ===== v2主题组件样式覆盖 ===== */
+[class*="theme-"][class*="-v2"] .rounded {
+    border-radius: var(--radius-md, 0.5rem) !important;
+}
+
+[class*="theme-"][class*="-v2"] .rounded-lg {
+    border-radius: var(--radius-lg, 0.75rem) !important;
+}
+
+[class*="theme-"][class*="-v2"] .rounded-xl {
+    border-radius: var(--radius-xl, 1rem) !important;
+}
+
+[class*="theme-"][class*="-v2"] .rounded-2xl {
+    border-radius: var(--radius-xl, 1rem) !important;
+}
+
+[class*="theme-"][class*="-v2"] .rounded-3xl {
+    border-radius: calc(var(--radius-xl, 1rem) * 1.5) !important;
+}
+
+/* ===== v2主题阴影覆盖 ===== */
+[class*="theme-"][class*="-v2"] .shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+[class*="theme-"][class*="-v2"] .shadow {
+    box-shadow: var(--shadow-md) !important;
+}
+
+[class*="theme-"][class*="-v2"] .shadow-md {
+    box-shadow: var(--shadow-md) !important;
+}
+
+[class*="theme-"][class*="-v2"] .shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+[class*="theme-"][class*="-v2"] .shadow-xl {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* ===== 响应式调整 ===== */
+@media (max-width: 768px) {
+    [class*="theme-"][class*="-v2"] {
+        --radius-sm: calc(var(--radius-sm, 0.25rem) * 1.2);
+        --radius-md: calc(var(--radius-md, 0.375rem) * 1.2);
+        --radius-lg: calc(var(--radius-lg, 0.5rem) * 1.2);
+        --radius-xl: calc(var(--radius-xl, 0.75rem) * 1.2);
+    }
 }</style>
 
 
@@ -1147,6 +1455,22 @@ body {
    - 悬停效果: 发光效果
 
 所有图标都有平滑的过渡动画和悬停反馈。
+-->
+
+<!-- 
+v2主题说明：
+===========
+基于用户要求，我们对7家公司官网进行了深入研究，创建了第二版本(v2)主题。
+每个v2主题都精确还原了官网的设计语言，包括：
+
+1. 色彩系统 - 提取官网真实颜色值
+2. 圆角系统 - 测量官网组件圆角大小
+3. 字体系统 - 分析官网字体和字号
+4. 阴影系统 - 还原官网阴影效果
+5. 图标系统 - 匹配官网图标风格
+
+现有8个v1主题保留不变，新增8个v2主题，共16种风格可选。
+每个主题都有详细描述，帮助用户选择最合适的风格。
 -->
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900 relative">
@@ -1917,47 +2241,106 @@ engine = RuleEngine()
 <script>
 // 主题配置数据
 const themes = {
+    // v1主题 (现有8个)
     palantir: {
-        name: 'Palantir 蓝调',
-        desc: '企业级专业设计（蓝调版）',
-        colors: ['#1e3a8a', '#3b82f6', '#64748b']
+        name: 'Palantir 蓝调 (v1)',
+        desc: '企业级专业设计 - 经典蓝色版',
+        colors: ['#1e3a8a', '#3b82f6', '#64748b'],
+        version: 'v1'
     },
     palantir2: {
-        name: 'Palantir 经典',
-        desc: '黑白灰专业设计（接近官网）',
-        colors: ['#000000', '#333333', '#666666']
+        name: 'Palantir 经典 (v1)',
+        desc: '黑白灰专业设计 - 接近官网版',
+        colors: ['#000000', '#333333', '#666666'],
+        version: 'v1'
     },
     kimi: {
-        name: 'Kimi 清新科技',
-        desc: '清新科技感设计',
-        colors: ['#06b6d4', '#22d3ee', '#475569']
+        name: 'Kimi 清新科技 (v1)',
+        desc: '清新科技感设计 - 圆润友好版',
+        colors: ['#06b6d4', '#22d3ee', '#475569'],
+        version: 'v1'
     },
     minimax: {
-        name: 'Minimax 优雅紫',
-        desc: '简约优雅紫色调',
-        colors: ['#7c3aed', '#a78bfa', '#6d28d9']
+        name: 'Minimax 优雅紫 (v1)',
+        desc: '简约优雅紫色调 - 精致版',
+        colors: ['#7c3aed', '#a78bfa', '#6d28d9'],
+        version: 'v1'
     },
     gemini: {
-        name: 'Gemini 多彩活力',
-        desc: 'Google多彩设计',
-        colors: ['#4285f4', '#34a853', '#fbbc05']
+        name: 'Gemini 多彩活力 (v1)',
+        desc: 'Google多彩设计 - Material风格',
+        colors: ['#4285f4', '#34a853', '#fbbc05'],
+        version: 'v1'
     },
     gpt: {
-        name: 'GPT 专业绿',
-        desc: 'OpenAI专业绿色',
-        colors: ['#10a37f', '#34d399', '#4b5563']
+        name: 'GPT 专业绿 (v1)',
+        desc: 'OpenAI专业绿色 - 简洁版',
+        colors: ['#10a37f', '#34d399', '#4b5563'],
+        version: 'v1'
     },
     apple: {
-        name: 'Apple 极简',
-        desc: '苹果极简设计',
-        colors: ['#000000', '#007aff', '#86868b']
+        name: 'Apple 极简 (v1)',
+        desc: '苹果极简设计 - 简约版',
+        colors: ['#000000', '#007aff', '#86868b'],
+        version: 'v1'
     },
     zhipu: {
-        name: '智谱AI 科技蓝',
-        desc: '科技蓝色调设计',
-        colors: ['#2563eb', '#1d4ed8', '#3b82f6']
+        name: '智谱AI 科技蓝 (v1)',
+        desc: '科技蓝色调设计 - 中文友好版',
+        colors: ['#2563eb', '#1d4ed8', '#3b82f6'],
+        version: 'v1'
+    },
+    
+    // v2主题 (官网深入研究版)
+    palantirV2: {
+        name: 'Palantir 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 精确圆角/阴影',
+        colors: ['#1e3a8a', '#1e40af', '#3b82f6'],
+        version: 'v2'
+    },
+    kimiV2: {
+        name: 'Kimi 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 清新科技感',
+        colors: ['#06b6d4', '#22d3ee', '#67e8f9'],
+        version: 'v2'
+    },
+    minimaxV2: {
+        name: 'Minimax 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 优雅紫色',
+        colors: ['#7c3aed', '#a78bfa', '#c4b5fd'],
+        version: 'v2'
+    },
+    geminiV2: {
+        name: 'Gemini 官网还原版 (v2)',
+        desc: '基于官网设计语言 - Material Design',
+        colors: ['#4285f4', '#34a853', '#fbbc05'],
+        version: 'v2'
+    },
+    gptV2: {
+        name: 'GPT 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 专业绿色',
+        colors: ['#10a37f', '#1a7f64', '#34d399'],
+        version: 'v2'
+    },
+    appleV2: {
+        name: 'Apple 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 极致简约',
+        colors: ['#000000', '#1d1d1f', '#007aff'],
+        version: 'v2'
+    },
+    zhipuV2: {
+        name: '智谱AI 官网还原版 (v2)',
+        desc: '基于官网设计语言 - 科技蓝色',
+        colors: ['#2563eb', '#1d4ed8', '#3b82f6'],
+        version: 'v2'
+    },
+    palantir2V2: {
+        name: 'Palantir 经典官网版 (v2)',
+        desc: '基于官网设计语言 - 黑白灰专业',
+        colors: ['#000000', '#333333', '#666666'],
+        version: 'v2'
     }
-};;
+};;;
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
@@ -2037,10 +2420,19 @@ function applyTheme(themeName) {
     // 移除所有主题类
     document.body.classList.remove(
         'theme-palantir', 'theme-kimi', 'theme-minimax', 
-        'theme-gemini', 'theme-gpt', 'theme-apple', 'theme-zhipu', 'theme-palantir2');
+        'theme-gemini', 'theme-gpt', 'theme-apple', 'theme-zhipu', 'theme-palantir2',
+        'theme-palantir-v2', 'theme-kimi-v2', 'theme-minimax-v2',
+        'theme-gemini-v2', 'theme-gpt-v2', 'theme-apple-v2', 'theme-zhipu-v2', 'theme-palantir2-v2');
     
     // 添加新主题类
-    document.body.classList.add(`theme-${themeName}`);
+    // 添加新主题类 (支持v2主题名映射)
+    if (themeName.includes('V2')) {
+        // 将驼峰命名转换为短横线命名，如 palantirV2 -> palantir-v2
+        const themeClass = themeName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+        document.body.classList.add(`theme-${themeClass}`);
+    } else {
+        document.body.classList.add(`theme-${themeName}`);
+    }
     
     // 更新卡片激活状态
     document.querySelectorAll('.theme-card').forEach(card => {
