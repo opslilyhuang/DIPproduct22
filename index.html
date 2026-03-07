@@ -284,6 +284,9 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-palantir #cases .bg-slate-100 { background: rgba(29,78,216,0.06) !important; color: var(--color-primary) !important; border: 1px solid rgba(29,78,216,0.15) !important; border-radius: 0.25rem !important; font-weight: 600 !important; font-size: 0.6875rem !important; letter-spacing: 0.04em !important; text-transform: uppercase !important; }
 .theme-palantir #cases h3.theme-text-primary { color: #0f172a !important; font-weight: 700 !important; transition: color 0.2s !important; }
 .theme-palantir #cases .group:hover h3.theme-text-primary { color: var(--color-primary) !important; }
+.theme-palantir .nav-dots .dot { background-color: #e2e8f0 !important; transition: all 0.2s ease !important; }
+.theme-palantir .nav-dots .dot.active { background-color: var(--color-primary) !important; transform: scale(1.2) !important; }
+.theme-palantir .glass-panel { background: rgba(255,255,255,0.97) !important; border-bottom: 1px solid #e2e8f0 !important; }
 
 /* ===== 2. Kimi 清新 ===== */
 .theme-kimi h1 { font-weight: 800 !important; }
@@ -321,6 +324,15 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-minimax #features .bg-slate-100 { background-color: #f9fafb !important; background-image: none !important; border-bottom: 1px solid #f0f0f0 !important; }
 .theme-minimax #features .bg-slate-100 .theme-text-primary { color: #111111 !important; }
 .theme-minimax #features .bg-slate-100 .opacity-10 { display: none !important; }
+.theme-minimax #dominance .group { border-left: 3px solid #0050A0 !important; border-radius: 0.75rem !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; }
+.theme-minimax #dominance .group:hover { border-left-color: #003d7a !important; box-shadow: 0 8px 24px -4px rgba(0,80,160,0.12) !important; }
+.theme-minimax #dominance .w-16.h-16 { color: #0050A0 !important; }
+.theme-minimax #cases .group { border-radius: 0.75rem !important; transition: border-color 0.2s, box-shadow 0.2s !important; }
+.theme-minimax #cases .group:hover { border-color: #0050A0 !important; box-shadow: 0 8px 24px -4px rgba(0,80,160,0.08) !important; }
+.theme-minimax #cases .bg-slate-100 { background: rgba(0,80,160,0.06) !important; color: #0050A0 !important; border: 1px solid rgba(0,80,160,0.15) !important; font-weight: 600 !important; }
+.theme-minimax #cases .group:hover h3.theme-text-primary { color: #0050A0 !important; }
+.theme-minimax .nav-dots .dot { background-color: #e5e7eb !important; }
+.theme-minimax .glass-panel { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid #e5e7eb !important; }
 
 /* ===== 4. Apple 极致空间 (带有品牌色微交互) ===== */
 .theme-apple h1 { font-weight: 700 !important; letter-spacing: -0.04em !important; font-size: clamp(3rem, 6vw, 5.5rem) !important; }
@@ -371,7 +383,9 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-apple #cases .group { padding: 2.5rem !important; }
 .theme-apple #cases .bg-slate-100 { background: #f5f5f7 !important; color: #1d1d1f !important; font-weight: 600 !important; border: none !important; padding: 0.4rem 1rem !important; border-radius: 9999px !important; }
 .theme-apple #cases h3.theme-text-primary { color: #1d1d1f !important; font-weight: 600 !important; transition: color 0.3s ease !important; }
-.theme-apple #cases .group:hover h3.theme-text-primary { color: #0050A0 !important; } 
+.theme-apple #cases .group:hover h3.theme-text-primary { color: #0050A0 !important; }
+.theme-apple .glass-panel { background: rgba(245,245,247,0.98) !important; border-bottom: 1px solid #e8e8ed !important; }
+.theme-apple #hero-section .absolute.inset-0.z-0 > div.rounded-full { opacity: 0.5 !important; }
 
 /* ===== 5. Palantir 经典 (修复悬浮按钮丢失bug) ===== */
 .theme-palantir2 [data-lucide] { stroke-width: var(--icon-stroke-width, 1.2px) !important; stroke-linecap: var(--icon-linecap, square) !important; stroke-linejoin: var(--icon-linejoin, miter) !important; stroke: var(--icon-color, #666666) !important; }
@@ -396,6 +410,32 @@ body.theme-palantir2 { background-color: #fafafa !important; background-image: l
 .theme-palantir2 #hero-section { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
 .theme-palantir2 #hero-section .bg-white\/40 { background: transparent !important; }
 .theme-palantir2 #hero-section .absolute.inset-0.z-0 > svg { opacity: 0 !important; }
+/* 经典：首屏弱化模糊圆，更文档感 */
+.theme-palantir2 #hero-section .absolute.inset-0.z-0 > div.rounded-full { opacity: 0 !important; }
+/* 经典：TOC 文档式 - 左侧细线、小字号、直角 */
+.theme-palantir2 #toc-nav { border-left: 2px solid #e5e7eb !important; padding-left: 0.75rem !important; margin-left: 2px !important; }
+.theme-palantir2 .toc-link { border-left: 2px solid transparent !important; padding: 0.4rem 0 0.4rem 0.6rem !important; margin-left: -2px !important; margin-bottom: 0.25rem !important; border-radius: 0 !important; background: transparent !important; color: #666666 !important; font-size: 0.8125rem !important; font-weight: 500 !important; transition: all 0.2s ease !important; }
+.theme-palantir2 .toc-link:hover { color: #000000 !important; }
+.theme-palantir2 .toc-link.active-toc { color: #000000 !important; font-weight: 600 !important; border-left-color: #000000 !important; background: transparent !important; }
+.theme-palantir2 .toc-link.active-toc .text-slate-500 { color: #666666 !important; }
+.theme-palantir2 aside .text-xs.font-mono.uppercase { font-size: 0.6875rem !important; letter-spacing: 0.08em !important; color: #999999 !important; }
+/* 经典：工作流激活态明确黑/灰 */
+.theme-palantir2 .workflow-btn { border: 1px solid #e5e7eb !important; border-radius: 0.25rem !important; box-shadow: none !important; background: #ffffff !important; transition: all 0.2s ease !important; }
+.theme-palantir2 .workflow-btn.active { background: #f1f5f9 !important; border-color: #000000 !important; }
+.theme-palantir2 .workflow-btn.active .icon-container { background: #000000 !important; border-color: #000000 !important; color: #ffffff !important; }
+.theme-palantir2 .workflow-btn.active .title-text { color: #000000 !important; }
+.theme-palantir2 .nav-dots .dot { background-color: #d1d5db !important; }
+.theme-palantir2 .nav-dots .dot.active { background-color: #000000 !important; transform: scale(1.2) !important; }
+/* 经典：核心架构卡片表头与页面背景统一 */
+.theme-palantir2 #features .grid > .group .bg-slate-100 { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; border-bottom: 1px solid #e5e7eb !important; }
+.theme-palantir2 #features .grid > .group .bg-slate-100 .theme-text-primary { color: #000000 !important; }
+.theme-palantir2 #features .grid > .group .bg-slate-100 i { color: #374151 !important; }
+/* 经典：实践案例标签更克制 */
+.theme-palantir2 #cases .group .bg-slate-100 { background: transparent !important; color: #666666 !important; border: 1px solid #e5e7eb !important; font-weight: 500 !important; font-size: 0.6875rem !important; }
+/* 经典：主次按钮小圆角统一 */
+.theme-palantir2 button.rounded-full { border-radius: 0.25rem !important; }
+.theme-palantir2 nav .bg-slate-900 { background: #000000 !important; }
+.theme-palantir2 .glass-panel { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid #e5e7eb !important; }
 
 /* 应用主题变量 */
 body { background-color: var(--color-background); color: var(--color-text-primary); font-family: var(--font-family); transition: all 0.3s ease; }
@@ -1184,7 +1224,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
 
 <script>
 const themes = {
-    palantir2: { name: 'Palantir 经典', desc: '黑白灰专业设计', colors: ['#000000', '#333333', '#666666'], version: 'v1' },
+    palantir2: { name: 'Palantir 经典', desc: '黑白灰·文档感', colors: ['#000000', '#374151', '#e5e7eb'], version: 'v2' },
     palantir: { name: 'Palantir 蓝调', desc: '企业级蓝调', colors: ['#106ba3', '#1e8cd1', '#e2e8f0'], version: 'v1' },
     minimax: { name: 'Minimax', desc: '高对比大排版', colors: ['#111111', '#eb3e3e', '#ffffff'], version: 'v1' },
     apple: { name: 'Apple 极简', desc: '极致空间克制感', colors: ['#1d1d1f', '#f5f5f7', '#007aff'], version: 'v1' }
