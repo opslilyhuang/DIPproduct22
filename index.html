@@ -1016,6 +1016,9 @@ body {
 /* palantir2主题下的导航栏标题 */
 .theme-palantir2 nav .text-slate-600 {
     color: var(--color-text-primary, #000000) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
 }
 
 /* palantir2主题下的核心架构卡片 */
@@ -1057,6 +1060,31 @@ body {
     line-clamp: unset !important;
     overflow: visible !important;
     display: block !important;
+}
+
+/* palantir2主题深度实践部分重新设计 - 移除图标 */
+.theme-palantir2 #cases .aspect-[4/3] {
+    display: none !important;
+}
+
+.theme-palantir2 #cases .group {
+    padding-top: 2rem !important;
+    border-top: 3px solid var(--color-text-primary, #000000) !important;
+    border-radius: 0 !important;
+}
+
+.theme-palantir2 #cases .px-2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.theme-palantir2 #cases .mb-6 {
+    margin-bottom: 0 !important;
+}
+
+/* 调整卡片间距 */
+.theme-palantir2 #cases .gap-6 {
+    gap: 2rem !important;
 }
 
 /* Kimi风格调整 */
@@ -1163,6 +1191,39 @@ body {
 
 .theme-palantir .icon-container [data-lucide] {
     stroke: var(--color-primary) !important;
+}
+
+/* palantir经典主题下的导航栏标题 */
+.theme-palantir nav .text-slate-600 {
+    color: var(--color-text-primary, #1e293b) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+}
+
+/* palantir经典主题深度实践部分重新设计 - 移除图标 */
+.theme-palantir #cases .aspect-[4/3] {
+    display: none !important;
+}
+
+.theme-palantir #cases .group {
+    padding-top: 2rem !important;
+    border-top: 3px solid var(--color-text-primary, #1e293b) !important;
+    border-radius: 0 !important;
+}
+
+.theme-palantir #cases .px-2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.theme-palantir #cases .mb-6 {
+    margin-bottom: 0 !important;
+}
+
+/* 调整卡片间距 */
+.theme-palantir #cases .gap-6 {
+    gap: 2rem !important;
 }
 
 /* ===== Kimi清新科技 ===== */
@@ -1438,33 +1499,16 @@ body {
 
 /* ===== Minimax v2 (优雅紫色) ===== */
 .theme-minimax-v2 {
-    /* 色彩系统 */
-    --color-primary: #7c3aed;
-    --color-secondary: #a78bfa;
-    --color-accent: #c4b5fd;
-    --color-background: #faf5ff;
-    --color-surface: #ffffff;
-    --color-text-primary: #1e1b4b;
-    --color-text-secondary: #4c1d95;
-    --color-border: #ddd6fe;
-    --color-gradient: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-    
-    /* 圆角系统 */
-    --radius-sm: 0.375rem; /* 6px */
-    --radius-md: 0.5rem;   /* 8px */
-    --radius-lg: 0.75rem;  /* 12px */
-    --radius-xl: 1rem;     /* 16px */
-    
-    /* 阴影系统 */
-    --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.1);
-    --shadow-md: 0 8px 16px rgba(124, 58, 237, 0.15);
-    --shadow-lg: 0 16px 32px rgba(124, 58, 237, 0.2);
-    
-    /* 图标系统 */
-    --icon-stroke-width: 1.3px;
-    --icon-linecap: round;
-    --icon-linejoin: round;
-}
+    /* 色彩系统 - 仿minimaxi.com官网 */
+    --color-primary: #181E25;
+    --color-secondary: #86909C;
+    --color-accent: #D01316;
+    --color-background: #ffffff;
+    --color-surface: #f8f9fa;
+    --color-text-primary: #181E25;
+    --color-text-secondary: #86909C;
+    --color-border: #e5e7eb;
+    --color-gradient: linear-gradient(135deg, #181E25 0
 
 /* ===== Gemini v2 (Material Design) ===== */
 .theme-gemini-v2 {
@@ -1979,7 +2023,7 @@ v2主题说明：
                 <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-md shadow-blue-500/20">W</div>
                 <span class="font-bold text-slate-800 text-lg">中科闻歌</span>
                 <span class="text-slate-300 mx-1 hidden sm:inline">|</span>
-                <span class="text-slate-600 font-semibold hidden sm:inline">DIP决策智能平台</span>
+                <span class="text-slate-600 font-semibold inline">DIP决策智能平台</span>
             </div>
             
             <!-- Desktop Menu -->
