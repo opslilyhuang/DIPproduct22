@@ -1013,6 +1013,52 @@ body {
     box-shadow: var(--shadow-sm, 0 1px 1px rgba(0, 0, 0, 0.04)) !important;
 }
 
+/* palantir2主题下的导航栏标题 */
+.theme-palantir2 nav .text-slate-600 {
+    color: var(--color-text-primary, #000000) !important;
+}
+
+/* palantir2主题下的核心架构卡片 */
+.theme-palantir2 #features .bg-gradient-to-br {
+    background-image: none !important;
+    background-color: var(--color-surface, #f8f9fa) !important;
+}
+
+.theme-palantir2 #features .text-white {
+    color: var(--color-text-primary, #000000) !important;
+}
+
+/* palantir2主题下的对象探索决策部分 */
+.theme-palantir2 #enterprise .bg-gradient-to-br {
+    background-image: none !important;
+    background-color: var(--color-surface, #f8f9fa) !important;
+}
+
+.theme-palantir2 #enterprise .text-white,
+.theme-palantir2 #enterprise .text-blue-100\/80 {
+    color: var(--color-text-secondary, #666666) !important;
+}
+
+.theme-palantir2 #enterprise .text-blue-300,
+.theme-palantir2 #enterprise .text-indigo-300 {
+    color: var(--color-text-tertiary, #999999) !important;
+}
+
+/* palantir2主题下的深度实践部分图标 */
+.theme-palantir2 #cases [data-lucide="users"],
+.theme-palantir2 #cases [data-lucide="bar-chart"],
+.theme-palantir2 #cases [data-lucide="trending-up"] {
+    color: var(--color-text-secondary, #666666) !important;
+}
+
+/* 移除深度实践部分的文字行数限制 */
+.theme-palantir2 #cases .line-clamp-3 {
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    overflow: visible !important;
+    display: block !important;
+}
+
 /* Kimi风格调整 */
 .theme-kimi [data-lucide] {
     stroke-width: 1.2px !important;
@@ -2159,6 +2205,26 @@ v2主题说明：
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900">从数据感知到决策执行的核心能力</h2>
                 </div>
 
+                <!-- 系统架构图 -->
+                <div class="mb-12 rounded-lg border border-slate-200 overflow-hidden bg-white shadow-sm">
+                    <div class="p-4 border-b border-slate-200 bg-slate-50">
+                        <h3 class="text-lg font-bold text-slate-900">DIP决策智能平台系统架构</h3>
+                        <p class="text-sm text-slate-500 mt-1">基于DOMA架构的核心Ontology层，实现从数据接入到智能决策的全链路能力</p>
+                    </div>
+                    <div class="p-6">
+                        <!-- 架构图占位符 - 请替换为实际架构图 -->
+                        <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg p-8 text-center">
+                            <i data-lucide="layout-grid" class="w-16 h-16 mx-auto text-slate-400 mb-4"></i>
+                            <p class="text-slate-500 font-medium">系统架构图位置</p>
+                            <p class="text-slate-400 text-sm mt-2">请将架构图文件上传至 <code class="bg-slate-100 px-2 py-1 rounded text-sm">/assets/architecture.png</code> 并更新下方图片路径</p>
+                            <!-- 架构图示例（临时） -->
+                            <div class="mt-6 max-w-4xl mx-auto">
+                                <img src="https://via.placeholder.com/1200x600/ffffff/666666?text=DIP+系统架构图" alt="DIP系统架构图" class="w-full h-auto rounded border border-slate-200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
                         <!-- 改为深邃纯净的蓝紫渐变 -->
@@ -2421,7 +2487,7 @@ v2主题说明：
                     <div class="group cursor-pointer bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="aspect-[4/3] bg-gradient-to-br from-indigo-900 to-slate-900 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
                             <div class="w-20 h-20 bg-white/10 backdrop-blur border border-white/20 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i data-lucide="message-square" class="w-10 h-10 text-white"></i>
+                                <i data-lucide="users" class="w-10 h-10 text-white"></i>
                             </div>
                         </div>
                         <div class="px-2">
@@ -2429,14 +2495,14 @@ v2主题说明：
                                 <span class="text-xs font-bold px-2 py-1 bg-blue-50 text-blue-600 border border-blue-100 rounded">外部营销 | 转化提升</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition">智能营销与客户服务</h3>
-                            <p class="text-slate-500 text-sm line-clamp-3 mb-2 font-medium">集成 AI 客服、产品智能推荐、订单进度查询、AI 商机识别四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
+                            <p class="text-slate-500 text-sm mb-2 font-medium">集成 AI 客服、产品智能推荐、订单进度查询、AI 商机识别四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
                         </div>
                     </div>
 
                     <div class="group cursor-pointer bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
                             <div class="w-20 h-20 bg-white/60 backdrop-blur border border-white/50 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i data-lucide="shield" class="w-10 h-10 text-indigo-600"></i>
+                                <i data-lucide="bar-chart" class="w-10 h-10 text-indigo-600"></i>
                             </div>
                         </div>
                         <div class="px-2">
@@ -2444,14 +2510,14 @@ v2主题说明：
                                 <span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded">内部运营 | 协同增效</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition">内部运营与合规风控</h3>
-                            <p class="text-slate-500 text-sm line-clamp-3 mb-2 font-medium">聚合内部知识库问答、AI 合同审核、AI 用户行为分析、AI 系统监控告警四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
+                            <p class="text-slate-500 text-sm mb-2 font-medium">聚合内部知识库问答、AI 合同审核、AI 用户行为分析、AI 系统监控告警四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
                         </div>
                     </div>
 
                     <div class="group cursor-pointer bg-white p-5 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div class="aspect-[4/3] bg-gradient-to-br from-slate-100 to-gray-200 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
                             <div class="w-20 h-20 bg-white/60 backdrop-blur border border-white/50 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                                <i data-lucide="pie-chart" class="w-10 h-10 text-slate-700"></i>
+                                <i data-lucide="trending-up" class="w-10 h-10 text-slate-700"></i>
                             </div>
                         </div>
                         <div class="px-2">
@@ -2459,7 +2525,7 @@ v2主题说明：
                                 <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-700 border border-slate-200 rounded">数据驱动 | 辅助决策</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition">数据洞察与主动决策</h3>
-                            <p class="text-slate-500 text-sm line-clamp-3 mb-2 font-medium">依托智能问数、AI 补货提醒、AI 付款提示三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
+                            <p class="text-slate-500 text-sm mb-2 font-medium">依托智能问数、AI 补货提醒、AI 付款提示三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
                         </div>
                     </div>
                 </div>
