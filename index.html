@@ -433,6 +433,8 @@ body {
     border-bottom: 1px solid var(--color-border);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     padding: 8px 0;
+    /* 确保有足够高度显示滚动条和按钮 */
+    min-height: 80px;
 }
 
 .theme-switcher-container {
@@ -461,33 +463,38 @@ body {
 .theme-scroll-container {
     flex: 1;
     overflow-x: auto;
-    padding: 4px 0;
+    overflow-y: hidden;
+    padding: 6px 0;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) transparent;
+    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
+    /* 强制显示滚动条区域 */
+    min-height: 60px;
 }
 
 .theme-scroll-container::-webkit-scrollbar {
-    height: 4px;
+    height: 6px;
 }
 
 .theme-scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    margin: 0 4px;
 }
 
 .theme-scroll-container::-webkit-scrollbar-thumb {
     background: var(--color-primary);
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .theme-scroll-container::-webkit-scrollbar-thumb:hover {
     background: var(--color-secondary);
+    height: 8px;
 }
 
 .theme-buttons-container {
     display: flex;
-    gap: 8px;
-    padding: 0 4px;
+    gap: 10px;
+    padding: 0 8px;
 }
 
 .theme-button {
@@ -495,14 +502,15 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    padding: 6px 8px;
+    padding: 8px 10px;
     border: 1px solid transparent;
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--color-surface);
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 60px;
+    min-width: 70px;
     white-space: nowrap;
+    flex-shrink: 0; /* 防止按钮被压缩 */
 }
 
 .theme-button:hover {
@@ -2647,7 +2655,8 @@ function createThemeSelector() {
 function initTopThemeSwitcher() {
     const themeButtonsContainer = document.getElementById('theme-buttons');
     if (!themeButtonsContainer) {
-        console.warn('顶部主题切换器容器未找到');
+        console.warn('顶部主题切换器容器未找到，将在100ms后重试');
+        setTimeout(initTopThemeSwitcher, 100);
         return;
     }
     
@@ -2657,11 +2666,15 @@ function initTopThemeSwitcher() {
     themeButtonsContainer.innerHTML = '';
     
     // 创建主题按钮
-    Object.entries(themes).forEach(([key, theme], index) => {
+    const themeEntries = Object.entries(themes);
+    console.log('主题列表:', themeEntries.map(([key]) => key));
+    
+    themeEntries.forEach(([key, theme], index) => {
         const button = document.createElement('div');
         button.className = 'theme-button';
         button.dataset.theme = key;
         button.dataset.index = index + 1;
+        button.title = theme.desc; // 添加悬停提示
         
         // 提取版本标签（v1/v2）
         const versionMatch = theme.name.match(/\((v[12])\)/);
@@ -2675,20 +2688,31 @@ function initTopThemeSwitcher() {
             ${version ? `<div class="theme-button-version">${version}</div>` : ''}
         `;
         
-        // 添加点击事件
-        button.addEventListener('click', function() {
-            const themeKey = this.dataset.theme;
-            console.log('顶部切换器点击主题:', themeKey);
-            applyTheme(themeKey);
-        });
-        
         themeButtonsContainer.appendChild(button);
+    });
+    
+    // 使用事件委托处理点击
+    themeButtonsContainer.addEventListener('click', function(event) {
+        // 查找被点击的theme-button元素
+        let target = event.target;
+        while (target && target !== themeButtonsContainer) {
+            if (target.classList && target.classList.contains('theme-button')) {
+                const themeKey = target.dataset.theme;
+                console.log('顶部切换器点击主题:', themeKey, '按钮:', target);
+                applyTheme(themeKey);
+                event.stopPropagation();
+                return;
+            }
+            target = target.parentElement;
+        }
     });
     
     // 初始化主题计数显示
     updateThemeCounter();
     
-    console.log('顶部主题切换器初始化完成');
+    console.log('顶部主题切换器初始化完成，创建了', themeEntries.length, '个按钮');
+    console.log('按钮容器宽度:', themeButtonsContainer.scrollWidth, 'px');
+    console.log('滚动容器宽度:', themeButtonsContainer.parentElement?.clientWidth, 'px');
 }
 
 // 更新主题计数器
