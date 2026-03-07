@@ -6,9 +6,9 @@
     "weather": null,
     "github": null,
     "memory_maintenance": 1772885046,
-    "proactive_work": null
+    "proactive_work": 1772885118
   },
-  "lastHeartbeat": 1772885046,
+  "lastHeartbeat": 1772885118,
   "quietHours": {
     "enabled": true,
     "start": "23:00",
