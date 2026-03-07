@@ -319,6 +319,8 @@ body {
     padding: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     width: 280px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .theme-selector-header {
@@ -1312,6 +1314,36 @@ body {
     --icon-linejoin: round;
 }
 
+/* ===== Palantir2 v2 (黑白灰官网版) ===== */
+.theme-palantir2-v2 {
+    /* 色彩系统 - 黑白灰官网风格 */
+    --color-primary: #000000;
+    --color-secondary: #333333;
+    --color-accent: #666666;
+    --color-background: #ffffff;
+    --color-surface: #f8f9fa;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+    --color-border: #dee2e6;
+    --color-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+    
+    /* 圆角系统 - 官网使用较小圆角 */
+    --radius-sm: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem; /* 6px */
+    --radius-lg: 0.5rem;   /* 8px */
+    --radius-xl: 0.75rem;  /* 12px */
+    
+    /* 阴影系统 - 官网阴影较轻微 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    /* 图标系统 */
+    --icon-stroke-width: 1.5px;
+    --icon-linecap: round;
+    --icon-linejoin: round;
+}
+
 /* ===== v2主题图标样式 ===== */
 .theme-palantir-v2 [data-lucide] {
     stroke-width: var(--icon-stroke-width, 1.5px) !important;
@@ -1351,6 +1383,12 @@ body {
 
 .theme-zhipu-v2 [data-lucide] {
     stroke-width: var(--icon-stroke-width, 1.6px) !important;
+    stroke-linecap: var(--icon-linecap, round) !important;
+    stroke-linejoin: var(--icon-linejoin, round) !important;
+}
+
+.theme-palantir2-v2 [data-lucide] {
+    stroke-width: var(--icon-stroke-width, 1.5px) !important;
     stroke-linecap: var(--icon-linecap, round) !important;
     stroke-linejoin: var(--icon-linejoin, round) !important;
 }
@@ -2376,13 +2414,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 创建主题选择器
 function createThemeSelector() {
+    console.log('主题总数:', Object.keys(themes).length);
+    console.log('主题列表:', Object.keys(themes));
     const selectorHTML = `
         <button id="theme-toggle-btn" class="theme-toggle-btn">
             <i data-lucide="palette" class="w-5 h-5"></i>
         </button>
         <div id="theme-selector" class="theme-selector-container hidden">
             <div class="theme-selector-header">
-                <span>选择UI风格 (7种)</span>
+                <span>选择UI风格 (16种)</span>
                 <button onclick="document.getElementById('theme-selector').classList.add('hidden')">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
@@ -2400,6 +2440,8 @@ function createThemeSelector() {
             </div>
             <div style="font-size: 11px; color: var(--color-text-secondary); text-align: center;">
                 当前风格: <span id="current-theme-display">Palantir Light</span>
+                <br>
+                <span id="theme-count-display">${Object.keys(themes).length} 个主题已加载</span>
             </div>
         </div>
     `;
