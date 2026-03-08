@@ -247,10 +247,7 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-palantir .toc-link.active-toc { color: #1D4ED8 !important; font-weight: 600 !important; background: transparent !important; }
 .theme-palantir .toc-link.active-toc::before { background: #1D4ED8 !important; border-color: #1D4ED8 !important; box-shadow: 0 0 0 3px rgba(29,78,216,0.2) !important; }
 .theme-palantir .toc-link.active-toc .text-slate-500 { color: #475569 !important; }
-.theme-palantir #features .grid > .group { border-radius: 2.5rem !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important; background-color: #ffffff !important; overflow: hidden !important; padding: 0 !important; }
-.theme-palantir #features .bg-slate-100 { background: linear-gradient(180deg, #334155 0%, #475569 100%) !important; background-color: #334155 !important; background-image: none !important; border-bottom: none !important; height: auto !important; padding: 3rem 2rem !important; }
-.theme-palantir #features .bg-slate-100 .theme-text-primary { color: #ffffff !important; }
-.theme-palantir #features .bg-slate-100 i { color: #ffffff !important; stroke-width: 2px !important; width: 2.5rem !important; height: 2.5rem !important; margin-bottom: 1.5rem !important; }
+.theme-palantir #features .grid > .group { border-radius: 0.375rem !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; background-color: #ffffff !important; overflow: hidden !important; padding: 0 !important; }
 .theme-palantir #features .bg-slate-100 .opacity-10 { display: none !important; }
 .theme-palantir .workflow-btn { border: 1px solid transparent !important; border-bottom: 1px solid #e2e8f0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; transition: all 0.2s !important; }
 .theme-palantir .workflow-btn.active { border-color: transparent !important; border-bottom: 1px solid var(--color-primary) !important; background: #f8fafc !important; }
@@ -262,8 +259,8 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-palantir #enterprise > div.bg-slate-900 .opacity-10 { display: none !important; }
 .theme-palantir #enterprise > div.bg-slate-900 .text-white { color: #0f172a !important; font-weight: 700 !important; letter-spacing: 0.02em !important; }
 .theme-palantir #enterprise > div.bg-slate-900 .text-slate-400 { color: #475569 !important; line-height: 1.65 !important; }
-.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background: #ffffff !important; border: 1px solid #e2e8f0 !important; border-left: 4px solid var(--color-primary) !important; border-radius: 0.375rem !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; padding: 1.75rem 1.75rem 1.75rem 1.5rem !important; transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease !important; }
-.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { border-left-color: var(--color-secondary) !important; box-shadow: 0 8px 24px -4px rgba(29,78,216,0.12) !important; background: #ffffff !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background: #ffffff !important; border: 1px solid #e2e8f0 !important; border-left: none !important; border-top: 4px solid var(--color-primary) !important; border-radius: 0.375rem !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; padding: 1.75rem 1.75rem 1.75rem 1.5rem !important; transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { border-top-color: var(--color-secondary) !important; box-shadow: 0 8px 24px -4px rgba(29,78,216,0.12) !important; background: #ffffff !important; }
 .theme-palantir #enterprise > div.bg-slate-900 .w-14.h-14 { width: 3rem !important; height: 3rem !important; min-width: 3rem !important; min-height: 3rem !important; background: rgba(29,78,216,0.1) !important; border: none !important; color: var(--color-primary) !important; border-radius: 50% !important; box-shadow: none !important; margin-bottom: 1.25rem !important; }
 .theme-palantir #enterprise > div.bg-slate-900 .w-14.h-14 i { color: var(--color-primary) !important; stroke-width: 1.75px !important; width: 1.25rem !important; height: 1.25rem !important; }
 /* Palantir 平台定位卡片：左侧细线 + 图标轻量化 */
@@ -273,11 +270,8 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-palantir #dominance .group:hover .w-16.h-16 { background: rgba(29,78,216,0.14) !important; color: var(--color-primary) !important; }
 .theme-palantir #dominance .group h3 { color: #0f172a !important; font-weight: 700 !important; letter-spacing: 0.01em !important; }
 .theme-palantir #dominance .group p.text-slate-500 { color: #475569 !important; }
-/* Palantir 核心架构卡片：顶部细蓝线 + 深色头区统一 */
-.theme-palantir #features .grid > .group { border-top: 3px solid var(--color-primary) !important; border-radius: 0.375rem !important; overflow: hidden !important; }
-.theme-palantir #features .grid > .group:hover { box-shadow: 0 12px 32px -8px rgba(29,78,216,0.08) !important; }
-.theme-palantir #features .bg-slate-100 .theme-text-primary { color: #ffffff !important; }
-.theme-palantir #features .bg-slate-100 i { color: rgba(255,255,255,0.95) !important; }
+/* Palantir 核心架构卡片：与经典一致，表头无底色、深色文字 */
+.theme-palantir #features .grid > .group:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important; }
 /* Palantir 实践案例卡片：左侧细条 + 标签样式 */
 .theme-palantir #cases .group { border-radius: 0.375rem !important; border: 1px solid #e2e8f0 !important; border-left: 3px solid transparent !important; box-shadow: none !important; padding: 1.75rem 1.75rem 1.75rem 1.5rem !important; background: #ffffff !important; transition: border-color 0.2s, box-shadow 0.2s, border-left-color 0.2s !important; transform: none !important; }
 .theme-palantir #cases .group:hover { border-left-color: var(--color-primary) !important; box-shadow: 0 8px 24px -4px rgba(29,78,216,0.1) !important; }
@@ -287,6 +281,14 @@ body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0
 .theme-palantir .nav-dots .dot { background-color: #e2e8f0 !important; transition: all 0.2s ease !important; }
 .theme-palantir .nav-dots .dot.active { background-color: var(--color-primary) !important; transform: scale(1.2) !important; }
 .theme-palantir .glass-panel { background: rgba(255,255,255,0.97) !important; border-bottom: 1px solid #e2e8f0 !important; }
+/* Palantir 蓝调：与经典一致加上方格暗纹；核心架构卡片表头半透明透出方格 */
+body.theme-palantir { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+.theme-palantir #hero-section { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+.theme-palantir #hero-section .bg-white\/40 { background: transparent !important; }
+.theme-palantir #hero-section .absolute.inset-0.z-0 > svg { opacity: 0 !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; border-bottom: 1px solid #e5e7eb !important; height: auto !important; padding: 3rem 2rem !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 .theme-text-primary { color: #000000 !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 i { color: #374151 !important; }
 
 /* ===== 2. Kimi 清新 ===== */
 .theme-kimi h1 { font-weight: 800 !important; }
