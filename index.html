@@ -469,6 +469,9 @@ body { background-color: var(--color-background); color: var(--color-text-primar
 .theme-toggle-btn { position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--color-gradient); color: white; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; }
 .theme-toggle-btn:hover { transform: scale(1.1); }
 
+/* 架构图：使用高清图并保持清晰（高分辨率源图 + 避免 transform 缩放模糊） */
+.architecture-diagram { image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; object-fit: contain; }
+
 /* ===== 通用组件覆盖 ===== */
 [class*="theme-"] .rounded { border-radius: calc(var(--radius-base) * 0.5) !important; }
 [class*="theme-"] .rounded-lg { border-radius: calc(var(--radius-base) * 1) !important; }
@@ -596,7 +599,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
             <div class="flex items-center gap-3">
                 <img src="assets/中科闻歌-logo.svg" alt="中科闻歌" class="h-5 sm:h-6 object-contain">
                 <span class="text-slate-300 mx-1 hidden sm:inline">|</span>
-                <img src="assets/DIP-LOGO.svg" alt="DIP" class="h-6 sm:h-7 object-contain">
+                <img src="assets/logo-DIP.svg" alt="DIP" class="h-6 sm:h-7 object-contain">
                 <span class="text-slate-800 font-bold text-base sm:text-lg inline tracking-tight hidden sm:inline">DIP决策智能平台</span>
             </div>
             
@@ -607,7 +610,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                 <a href="#workflows" class="hover:text-blue-600 transition">数据与本体建模</a>
                 <a href="#enterprise" class="hover:text-blue-600 transition">对象探索与决策</a>
                 <a href="#cases" class="hover:text-blue-600 transition">实践案例</a>
-                <button class="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-all font-bold">立即体验平台</button>
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-all font-bold inline-block">立即体验平台</a>
             </div>
 
             <!-- Mobile Menu Toggle Button -->
@@ -627,7 +630,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                 <a href="#enterprise" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">对象探索与决策</a>
                 <a href="#cases" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">实践案例</a>
                 <div class="pt-4 mt-2 border-t border-slate-100">
-                    <button class="w-full bg-slate-900 text-white px-5 py-3.5 rounded-lg shadow-md font-bold text-center active:scale-95 transition-transform">立即体验平台</button>
+                    <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="w-full bg-slate-900 text-white px-5 py-3.5 rounded-lg shadow-md font-bold text-center active:scale-95 transition-transform inline-block">立即体验平台</a>
                 </div>
             </div>
         </div>
@@ -673,10 +676,10 @@ body { background-color: var(--color-background); color: var(--color-text-primar
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
-                <button class="bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-800 transition shadow-xl shadow-slate-900/20 flex items-center justify-center gap-2 w-full sm:w-auto">
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-800 transition shadow-xl shadow-slate-900/20 flex items-center justify-center gap-2 w-full sm:w-auto">
                     立即体验平台 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-                <button class="bg-white/80 backdrop-blur-md text-slate-800 border border-slate-200 px-8 py-3.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm w-full sm:w-auto flex items-center justify-center gap-2">
+                </a>
+                <button id="btn-watch-video" class="bg-white/80 backdrop-blur-md text-slate-800 border border-slate-200 px-8 py-3.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm w-full sm:w-auto flex items-center justify-center gap-2">
                     <i data-lucide="play-circle" class="w-5 h-5 theme-text-primary"></i> 观看产品宣传片
                 </button>
             </div>
@@ -694,7 +697,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                     您的浏览器不支持 HTML5 视频，请升级浏览器。
                 </video>
                 <div id="hero-video-poster" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-slate-100 cursor-pointer transition-opacity duration-300" aria-label="点击播放视频">
-                    <img src="assets/DIP-LOGO.svg" alt="DIP" class="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-90 pointer-events-none select-none">
+                    <img src="assets/logo-DIP.svg" alt="DIP" class="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-90 pointer-events-none select-none">
                     <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white/90 shadow-lg border border-slate-200 text-slate-700 hover:bg-white hover:scale-105 transition-transform duration-200 pointer-events-none">
                         <i data-lucide="play" class="w-7 h-7 ml-0.5 text-slate-700"></i>
                     </span>
@@ -786,7 +789,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                         </div>
                     </div>
                     <div class="p-6 sm:p-10 bg-slate-50/30 flex justify-center items-center group relative overflow-hidden">
-                        <img src="assets/architecture.png" alt="DIP决策智能平台系统架构 - Ontology Agent Architecture" class="w-full max-w-5xl h-auto rounded-xl shadow-sm border border-slate-100 group-hover:scale-[1.01] transition-transform duration-500">
+                        <img src="assets/架构图.svg" alt="DIP决策智能平台系统架构 - Ontology Agent Architecture" class="architecture-diagram w-full max-w-5xl h-auto rounded-xl shadow-sm border border-slate-100">
                     </div>
                 </div>
 
@@ -804,7 +807,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                             <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
                                 全面支持各类结构化与非结构化文件接入，无缝连接主流业务系统数据库（如 ERP 等），打破企业内部数据孤岛，实现全域数据一站式融合。
                             </p>
-                            <a href="#" class="inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
                                 了解集成方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -823,7 +826,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                             <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
                                 数据编排后汇入结构化本体库。平台提供自动化、半自动化与手动构建方式，一键识别表头并建议属性映射，快速生成契合实际业务的初始本体。
                             </p>
-                            <a href="#" class="inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
                                 查看建模流程 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -842,7 +845,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                             <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
                                 基于本体知识库沉淀，全面赋能上层 AI 应用。智能体可精准理解业务上下文与权限边界，不仅能解答复杂问题，更能直接触发预设动作（Action）完成业务闭环。
                             </p>
-                            <a href="#" class="inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
                                 探索智能体市场 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -980,7 +983,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3 tracking-tight">深入业务场景的智能决策实践</h2>
                         <p class="text-slate-500 text-base sm:text-lg font-medium">11 大智能体深度赋能</p>
                     </div>
-                    <button class="flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition">
+                    <button class="hidden flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition">
                         查看完整解决方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
                     </button>
                 </div>
@@ -992,7 +995,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                                 <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">外部营销 | 转化提升</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">智能营销与客户服务</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed font-medium">集成 AI 客服、产品智能推荐、订单进度查询、AI 商机识别四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">集成 <strong>AI 客服</strong>、<strong>产品智能推荐</strong>、<strong>订单进度查询</strong>、<strong>AI 商机识别</strong>四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
                         </div>
                     </div>
 
@@ -1002,7 +1005,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                                 <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">内部运营 | 协同增效</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">内部运营与合规风控</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed font-medium">聚合内部知识库问答、AI 合同审核、AI 用户行为分析、AI 系统监控告警四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">聚合<strong>内部知识库问答</strong>、<strong>AI 合同审核</strong>、<strong>AI 用户行为分析</strong>、<strong>AI 系统监控告警</strong>四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
                         </div>
                     </div>
 
@@ -1012,7 +1015,7 @@ body { background-color: var(--color-background); color: var(--color-text-primar
                                 <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">数据驱动 | 辅助决策</span>
                             </div>
                             <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">数据洞察与主动决策</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed font-medium">依托智能问数、AI 补货提醒、AI 付款提示三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">依托<strong>智能问数</strong>、<strong>AI 补货提醒</strong>、<strong>AI 付款提示</strong>三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
                         </div>
                     </div>
                 </div>
@@ -1259,6 +1262,16 @@ document.addEventListener('DOMContentLoaded', function() {
             hidePoster();
         });
         heroVideo.addEventListener('play', hidePoster);
+    }
+    // 点击「观看产品宣传片」：滚动到视频并自动播放
+    const btnWatchVideo = document.getElementById('btn-watch-video');
+    if (btnWatchVideo && heroVideo) {
+        btnWatchVideo.addEventListener('click', function() {
+            const wrap = document.getElementById('hero-video-wrap');
+            if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            heroVideo.play().catch(function() {});
+            if (heroPoster) { heroPoster.style.opacity = '0'; heroPoster.style.pointerEvents = 'none'; }
+        });
     }
 });
 
