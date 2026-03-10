@@ -1,17 +1,1448 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIP决策智能平台 - 主题风格展示</title>
-    <meta http-equiv="refresh" content="0; url=dip-standalone.html">
-    <script>window.location.replace("dip-standalone.html");</script>
+    <title>DIP决策智能平台 - 6种精选主题风格展示</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+                primary: 'var(--color-primary)',
+                secondary: 'var(--color-secondary)',
+                accent: 'var(--color-accent)',
+                background: 'var(--color-background)',
+                surface: 'var(--color-surface)',
+                textPrimary: 'var(--color-text-primary)',
+                textSecondary: 'var(--color-text-secondary)',
+                border: 'var(--color-border)',
+                success: 'var(--color-success)',
+                warning: 'var(--color-warning)',
+                error: 'var(--color-error)',
+            },
+            borderRadius: {
+                'theme-small': 'var(--radius-small)',
+                'theme-medium': 'var(--radius-medium)',
+                'theme-large': 'var(--radius-large)',
+                'theme-xlarge': 'var(--radius-xlarge)',
+            },
+            boxShadow: {
+                'theme-small': 'var(--shadow-small)',
+                'theme-medium': 'var(--shadow-medium)',
+                'theme-large': 'var(--shadow-large)',
+                'theme-xlarge': 'var(--shadow-xlarge)',
+            }
+        }
+    }
+}
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #f8fafc; }
-        a { color: #0066cc; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fafafa;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .toc-link {
+            transition: all 0.3s ease;
+        }
     </style>
+
+<style>
+/* =========================================
+   CSS变量系统 - 8种深度定制主题
+   ========================================= */
+:root {
+    --color-primary: #1e3a8a;
+    --color-secondary: #1e40af;
+    --color-accent: #3b82f6;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-border: #e2e8f0;
+    --color-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    --radius-base: 0.5rem;
+    --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+}
+
+/* 1. Palantir主题 - 蓝调科技感 (深度仿写 Palantir 官网 & 蓝图风格) */
+.theme-palantir {
+    --color-primary: #1D4ED8; 
+    --color-secondary: #2563EB; 
+    --color-accent: #3B82F6;
+    --color-background: #ffffff; 
+    --color-surface: #ffffff;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #475569;
+    --color-border: #E5E7EB;
+    --color-gradient: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+    --radius-base: 0.25rem; 
+    --shadow-base: 0 1px 2px rgba(0,0,0,0.05); 
+    --font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+/* 2. Kimi主题 - 清新呼吸感 */
+.theme-kimi {
+    --color-primary: #2468f2;
+    --color-secondary: #1c52c2;
+    --color-accent: #5e93fb;
+    --color-background: #ffffff; 
+    --color-surface: #f9fafb;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-border: #f3f4f6;
+    --color-gradient: linear-gradient(135deg, #2468f2 0%, #5e93fb 100%);
+    --radius-base: 1.5rem; 
+    --shadow-base: 0 10px 25px -5px rgba(36, 104, 242, 0.08);
+    --font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 3. Minimax主题 - 高对比黑白与品牌红 */
+.theme-minimax {
+    --color-primary: #111111;
+    --color-secondary: #666666;
+    --color-accent: #eb3e3e;
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-text-primary: #111111;
+    --color-text-secondary: #666666;
+    --color-border: #f0f0f0;
+    --color-gradient: linear-gradient(135deg, #111111 0%, #333333 100%);
+    --radius-base: 1.5rem;
+    --shadow-base: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --font-family: "Outfit", "PingFang SC", -apple-system, sans-serif;
+}
+
+/* 4. Gemini主题 - 灵动多彩 */
+.theme-gemini {
+    --color-primary: #4285f4;
+    --color-secondary: #ea4335;
+    --color-accent: #fbbc05;
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-text-primary: #202124;
+    --color-text-secondary: #5f6368;
+    --color-border: #dadce0;
+    --color-gradient: linear-gradient(90deg, #4285f4, #ea4335, #fbbc04, #34a853);
+    --radius-base: 1rem;
+    --shadow-base: 0 1px 3px rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    --font-family: "Google Sans", "Inter", sans-serif;
+}
+
+/* 5. GPT主题 - 极简实用主义 */
+.theme-gpt {
+    --color-primary: #10a37f;
+    --color-secondary: #0d8265;
+    --color-accent: #20b896;
+    --color-background: #ffffff;
+    --color-surface: #f7f7f8;
+    --color-text-primary: #000000;
+    --color-text-secondary: #353740;
+    --color-border: #e5e7eb;
+    --color-gradient: linear-gradient(135deg, #10a37f 0%, #0d8265 100%);
+    --radius-base: 0.375rem; 
+    --shadow-base: none; 
+    --font-family: "Söhne", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* 6. Apple主题 - 极致空间感 */
+.theme-apple {
+    --color-primary: #000000;
+    --color-secondary: #1d1d1f;
+    --color-accent: #2997ff;
+    --color-background: #f5f5f7;
+    --color-surface: #ffffff;
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #86868b;
+    --color-border: #d2d2d7;
+    --color-gradient: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+    --radius-base: 1.25rem;
+    --shadow-base: 0 4px 24px rgba(0, 0, 0, 0.04); 
+    --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+/* 7. 智谱主题 - 严谨科研视感 */
+.theme-zhipu {
+    --color-primary: #0066ff;
+    --color-secondary: #0052cc;
+    --color-accent: #3385ff;
+    --color-background: #f4f6f8;
+    --color-surface: #ffffff;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-border: #e2e6ea;
+    --color-gradient: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+    --radius-base: 0.25rem;
+    --shadow-base: 0 2px 8px rgba(0, 102, 255, 0.08);
+    --font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 8. Palantir2主题 - 经典黑白灰 */
+.theme-palantir2 {
+    --color-primary: #000000;
+    --color-secondary: #1a1a1a;
+    --color-accent: #666666;
+    --color-background: #ffffff;
+    --color-surface: #f8f9fa;
+    --color-text-primary: #000000;
+    --color-text-secondary: #666666;
+    --color-text-tertiary: #999999;
+    --color-border: #e5e7eb;
+    --color-gradient: none;
+    --color-success: #00a86b;
+    --color-warning: #ff9500;
+    --color-error: #ff3b30;
+    --radius-sm: 0.125rem;
+    --radius-md: 0.25rem;
+    --radius-lg: 0.375rem;
+    --radius-xl: 0.5rem;
+    --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --icon-stroke-width: 1.2px;
+    --icon-linecap: square;
+    --icon-linejoin: miter;
+    --icon-color: #666666;
+}
+
+/* =========================================
+   主题级别的深度UI复写 (排版、标题、Pills)
+   ========================================= */
+
+/* 基础过渡 */
+body, h1, h2, h3, p, span, div { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+/* ===== 1. Palantir 蓝调 (深度定制覆盖) ===== */
+.theme-palantir h1 { font-weight: 700 !important; letter-spacing: -0.02em !important; }
+.theme-palantir h1 .bg-clip-text { background: none !important; color: var(--color-primary) !important; -webkit-text-fill-color: var(--color-primary) !important; }
+.theme-palantir .hero-pills > span { background: #ffffff !important; border: 1px solid #cbd5e1 !important; color: #334155 !important; border-radius: 0.25rem !important; text-transform: uppercase; font-size: 0.75rem !important; font-weight: 600 !important; letter-spacing: 0.05em !important; padding: 0.4rem 1rem !important; box-shadow: none !important; transition: all 0.2s ease !important; }
+.theme-palantir .hero-pills > span:hover { border-color: var(--color-secondary) !important; color: var(--color-secondary) !important; background: #f8fafc !important; }
+.theme-palantir button.bg-slate-900 { background: var(--color-primary) !important; color: #ffffff !important; border-radius: 0.25rem !important; border: none !important; box-shadow: none !important; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem !important;}
+.theme-palantir button.bg-white\/80 { background: #ffffff !important; color: var(--color-text-primary) !important; border: 1px solid #cbd5e1 !important; border-radius: 0.25rem !important; box-shadow: none !important; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem !important;}
+.theme-palantir button.bg-white\/80:hover { border-color: var(--color-primary) !important; color: var(--color-primary) !important; }
+/* Palantir 内容导览：时间线 / Stepper 风格 - 左侧圆点 + 竖线，偏数据平台感 */
+.theme-palantir #toc-nav { border-left: 2px solid #e2e8f0 !important; padding-left: 1.25rem !important; margin-left: 5px !important; }
+.theme-palantir .toc-link { position: relative !important; border-left: none !important; padding: 0.5rem 0 0.5rem 0 !important; margin-left: 0 !important; margin-bottom: 0.35rem !important; border-radius: 0 !important; background: transparent !important; color: #64748b !important; font-weight: 500 !important; transition: all 0.2s ease !important; transform: none !important; padding-left: 0.75rem !important; }
+.theme-palantir .toc-link::before { content: '' !important; position: absolute !important; left: -1.375rem !important; top: 1.1rem !important; width: 8px !important; height: 8px !important; border-radius: 50% !important; background: #fff !important; border: 2px solid #94a3b8 !important; transition: all 0.2s ease !important; box-sizing: border-box !important; }
+.theme-palantir .toc-link:hover { color: #1e3a5f !important; }
+.theme-palantir .toc-link:hover::before { border-color: #64748b !important; background: #f1f5f9 !important; }
+.theme-palantir .toc-link.active-toc { color: #1D4ED8 !important; font-weight: 600 !important; background: transparent !important; }
+.theme-palantir .toc-link.active-toc::before { background: #1D4ED8 !important; border-color: #1D4ED8 !important; box-shadow: 0 0 0 3px rgba(29,78,216,0.2) !important; }
+.theme-palantir .toc-link.active-toc .text-slate-500 { color: #475569 !important; }
+.theme-palantir #features .grid > .group { border-radius: 0.375rem !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; background-color: #ffffff !important; overflow: hidden !important; padding: 0 !important; }
+.theme-palantir #features .bg-slate-100 .opacity-10 { display: none !important; }
+.theme-palantir .workflow-btn { border: 1px solid transparent !important; border-bottom: 1px solid #e2e8f0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent !important; transition: all 0.2s !important; }
+.theme-palantir .workflow-btn.active { border-color: transparent !important; border-bottom: 1px solid var(--color-primary) !important; background: #f8fafc !important; }
+.theme-palantir .workflow-btn .icon-container { background: #f1f5f9 !important; border: 1px solid #e2e8f0 !important; border-radius: 0.25rem !important; color: #64748b !important; }
+.theme-palantir .workflow-btn.active .icon-container { background: var(--color-primary) !important; border-color: var(--color-primary) !important; color: #ffffff !important; }
+.theme-palantir .workflow-btn.active .title-text { color: var(--color-primary) !important; }
+/* Palantir 企业/技术护城河卡片：左侧蓝条 + 轻量图标，数据平台感 */
+.theme-palantir #enterprise > div.bg-slate-900 { background: linear-gradient(165deg, #f1f5f9 0%, #e2e8f0 100%) !important; border: 1px solid #cbd5e1 !important; border-radius: 0.5rem !important; box-shadow: none !important; background-image: none !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .opacity-10 { display: none !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .text-white { color: #0f172a !important; font-weight: 700 !important; letter-spacing: 0.02em !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .text-slate-400 { color: #475569 !important; line-height: 1.65 !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background: #ffffff !important; border: 1px solid #e2e8f0 !important; border-left: none !important; border-top: 4px solid var(--color-primary) !important; border-radius: 0.375rem !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; padding: 1.75rem 1.75rem 1.75rem 1.5rem !important; transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { border-top-color: var(--color-secondary) !important; box-shadow: 0 8px 24px -4px rgba(29,78,216,0.12) !important; background: #ffffff !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .w-14.h-14 { width: 3rem !important; height: 3rem !important; min-width: 3rem !important; min-height: 3rem !important; background: rgba(29,78,216,0.1) !important; border: none !important; color: var(--color-primary) !important; border-radius: 50% !important; box-shadow: none !important; margin-bottom: 1.25rem !important; }
+.theme-palantir #enterprise > div.bg-slate-900 .w-14.h-14 i { color: var(--color-primary) !important; stroke-width: 1.75px !important; width: 1.25rem !important; height: 1.25rem !important; }
+/* Palantir 平台定位卡片：左侧细线 + 图标轻量化 */
+.theme-palantir #dominance .group { border-radius: 0.375rem !important; border: 1px solid #e2e8f0 !important; border-left: 3px solid var(--color-primary) !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important; background: #ffffff !important; transition: box-shadow 0.2s ease, border-left-color 0.2s ease !important; }
+.theme-palantir #dominance .group:hover { border-left-color: var(--color-secondary) !important; box-shadow: 0 8px 20px -4px rgba(29,78,216,0.1) !important; }
+.theme-palantir #dominance .w-16.h-16 { background: rgba(29,78,216,0.08) !important; border: none !important; border-radius: 50% !important; color: var(--color-primary) !important; box-shadow: none !important; }
+.theme-palantir #dominance .group:hover .w-16.h-16 { background: rgba(29,78,216,0.14) !important; color: var(--color-primary) !important; }
+.theme-palantir #dominance .group h3 { color: #0f172a !important; font-weight: 700 !important; letter-spacing: 0.01em !important; }
+.theme-palantir #dominance .group p.text-slate-500 { color: #475569 !important; }
+/* Palantir 核心架构卡片：与经典一致，表头无底色、深色文字 */
+.theme-palantir #features .grid > .group:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important; }
+/* Palantir 实践案例卡片：左侧细条 + 标签样式 */
+.theme-palantir #cases .group { border-radius: 0.375rem !important; border: 1px solid #e2e8f0 !important; border-left: 3px solid transparent !important; box-shadow: none !important; padding: 1.75rem 1.75rem 1.75rem 1.5rem !important; background: #ffffff !important; transition: border-color 0.2s, box-shadow 0.2s, border-left-color 0.2s !important; transform: none !important; }
+.theme-palantir #cases .group:hover { border-left-color: var(--color-primary) !important; box-shadow: 0 8px 24px -4px rgba(29,78,216,0.1) !important; }
+.theme-palantir #cases .bg-slate-100 { background: rgba(29,78,216,0.06) !important; color: var(--color-primary) !important; border: 1px solid rgba(29,78,216,0.15) !important; border-radius: 0.25rem !important; font-weight: 600 !important; font-size: 0.6875rem !important; letter-spacing: 0.04em !important; text-transform: uppercase !important; }
+.theme-palantir #cases h3.theme-text-primary { color: #0f172a !important; font-weight: 700 !important; transition: color 0.2s !important; }
+.theme-palantir #cases .group:hover h3.theme-text-primary { color: var(--color-primary) !important; }
+.theme-palantir .nav-dots .dot { background-color: #e2e8f0 !important; transition: all 0.2s ease !important; }
+.theme-palantir .nav-dots .dot.active { background-color: var(--color-primary) !important; transform: scale(1.2) !important; }
+.theme-palantir .glass-panel { background: rgba(255,255,255,0.97) !important; border-bottom: 1px solid #e2e8f0 !important; }
+/* Palantir 蓝调：与经典一致加上方格暗纹；核心架构卡片表头半透明透出方格 */
+body.theme-palantir { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+.theme-palantir #hero-section { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+.theme-palantir #hero-section .bg-white\/40 { background: transparent !important; }
+.theme-palantir #hero-section .absolute.inset-0.z-0 > svg { opacity: 0 !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; border-bottom: 1px solid #e5e7eb !important; height: auto !important; padding: 3rem 2rem !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 .theme-text-primary { color: #000000 !important; }
+.theme-palantir #features .grid > .group .bg-slate-100 i { color: #374151 !important; }
+
+/* ===== 2. Kimi 清新 ===== */
+.theme-kimi h1 { font-weight: 800 !important; }
+.theme-kimi h1 .bg-clip-text { background: none !important; color: #2468f2 !important; -webkit-text-fill-color: #2468f2 !important; }
+.theme-kimi p.text-slate-500 { color: #6b7280 !important; font-size: 1.125rem !important; line-height: 1.8 !important; }
+.theme-kimi .hero-pills > span { background: #f0f4ff !important; border: none !important; color: #2468f2 !important; padding: 0.5rem 1.25rem !important; border-radius: 9999px !important; box-shadow: none !important; font-weight: 600 !important; }
+
+/* ===== 3. Minimax 高对比黑白灰 ===== */
+.theme-minimax h1 { font-weight: 800 !important; letter-spacing: -0.02em !important; font-size: clamp(2.5rem, 5vw, 4.5rem) !important; }
+.theme-minimax h1 .bg-clip-text { background: none !important; color: #111111 !important; -webkit-text-fill-color: #111111 !important; }
+.theme-minimax p.text-slate-500, .theme-minimax p.text-slate-700 { color: #111111 !important; font-weight: 500 !important; }
+.theme-minimax .hero-pills > span { background: #ffffff !important; color: #111111 !important; border: 1px solid #e5e7eb !important; border-radius: 9999px !important; padding: 0.5rem 1.25rem !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; transition: all 0.3s ease !important; }
+.theme-minimax .hero-pills > span:hover { border-color: #0050A0 !important; color: #0050A0 !important; box-shadow: 0 4px 12px rgba(0,80,160,0.1) !important; }
+.theme-minimax .hero-pills svg.lucide-sparkles { stroke: url(#wenge-brand-gradient) !important; stroke-width: 2.5px !important; }
+.theme-minimax button.bg-slate-900 { background: #0050A0 !important; color: #ffffff !important; border-radius: 9999px !important; border: none !important; box-shadow: 0 6px 20px rgba(0,80,160,0.25) !important; }
+.theme-minimax button.bg-white\/80 { background: #ffffff !important; color: #111111 !important; border: 1px solid #e5e7eb !important; border-radius: 9999px !important; box-shadow: none !important;}
+.theme-minimax #toc-nav { border-left: 2px solid #f0f0f0 !important; padding-left: 0 !important; }
+.theme-minimax .toc-link { border-left: 2px solid transparent !important; padding: 0.5rem 0 0.5rem 1rem !important; margin-bottom: 0.5rem !important; border-radius: 0 !important; background-color: transparent !important; color: #999999 !important; transition: all 0.3s ease !important; transform: none !important; margin-left: -2px !important; }
+.theme-minimax .toc-link:hover { background-color: transparent !important; color: #111111 !important; }
+.theme-minimax .toc-link.active-toc { background-color: transparent !important; color: #111111 !important; border-left: 2px solid #0050A0 !important; box-shadow: none !important; transform: none !important; }
+.theme-minimax .toc-link.active-toc .text-slate-500 { color: #666666 !important; }
+.theme-minimax .workflow-btn { border: none !important; box-shadow: none !important; background: transparent !important; border-radius: 0.75rem !important; }
+.theme-minimax .workflow-btn.active { background: rgba(0,80,160,0.04) !important; border: 1px solid rgba(0,80,160,0.15) !important; }
+.theme-minimax .workflow-btn .icon-container { border: none !important; background: #ffffff !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; }
+.theme-minimax .workflow-btn.active .icon-container, .theme-minimax .workflow-btn.active .title-text { color: #0050A0 !important; }
+.theme-minimax .nav-dots .dot.active { background-color: #0050A0 !important; transform: scale(1.5) !important; }
+.theme-minimax #enterprise > div.bg-slate-900 { background-color: #ffffff !important; border: 1px solid #e5e7eb !important; box-shadow: 0 4px 24px rgba(0,0,0,0.02) !important; color: #111111 !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .text-white { color: #111111 !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .text-slate-400 { color: #666666 !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .opacity-10 { display: none !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background-color: #f9fafb !important; border: 1px solid #f3f4f6 !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { background-color: #f0f4f8 !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .bg-slate-800 { background-color: #ffffff !important; border: 1px solid #e5e7eb !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important; }
+.theme-minimax #enterprise > div.bg-slate-900 .text-slate-300 { color: #0050A0 !important; } 
+.theme-minimax #features .bg-slate-100 { background-color: #f9fafb !important; background-image: none !important; border-bottom: 1px solid #f0f0f0 !important; }
+.theme-minimax #features .bg-slate-100 .theme-text-primary { color: #111111 !important; }
+.theme-minimax #features .bg-slate-100 .opacity-10 { display: none !important; }
+.theme-minimax #dominance .group { border-left: 3px solid #0050A0 !important; border-radius: 0.75rem !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; }
+.theme-minimax #dominance .group:hover { border-left-color: #003d7a !important; box-shadow: 0 8px 24px -4px rgba(0,80,160,0.12) !important; }
+.theme-minimax #dominance .w-16.h-16 { color: #0050A0 !important; }
+.theme-minimax #cases .group { border-radius: 0.75rem !important; transition: border-color 0.2s, box-shadow 0.2s !important; }
+.theme-minimax #cases .group:hover { border-color: #0050A0 !important; box-shadow: 0 8px 24px -4px rgba(0,80,160,0.08) !important; }
+.theme-minimax #cases .bg-slate-100 { background: rgba(0,80,160,0.06) !important; color: #0050A0 !important; border: 1px solid rgba(0,80,160,0.15) !important; font-weight: 600 !important; }
+.theme-minimax #cases .group:hover h3.theme-text-primary { color: #0050A0 !important; }
+.theme-minimax .nav-dots .dot { background-color: #e5e7eb !important; }
+.theme-minimax .glass-panel { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid #e5e7eb !important; }
+
+/* ===== 4. Apple 极致空间 (带有品牌色微交互) ===== */
+.theme-apple h1 { font-weight: 700 !important; letter-spacing: -0.04em !important; font-size: clamp(3rem, 6vw, 5.5rem) !important; }
+.theme-apple h1 .bg-clip-text { background-image: linear-gradient(135deg, #0050A0 0%, #1d1d1f 30%, #1d1d1f 70%, #F56B00 100%) !important; -webkit-text-fill-color: transparent !important; }
+.theme-apple p.text-slate-500, .theme-apple p.text-slate-700 { color: #515154 !important; font-weight: 400 !important; }
+.theme-apple section.bg-white { background-color: #f5f5f7 !important; }
+.theme-apple .hero-pills > span { background: #ffffff !important; border: 1px solid #d2d2d7 !important; color: #1d1d1f !important; border-radius: 9999px !important; padding: 0.5rem 1.25rem !important; box-shadow: none !important; font-weight: 500 !important; font-size: 0.85rem !important; transition: all 0.3s ease !important; }
+.theme-apple .hero-pills > span:hover { background: #1d1d1f !important; color: #ffffff !important; border-color: #1d1d1f !important; }
+.theme-apple .hero-pills svg.lucide-sparkles { stroke: url(#wenge-brand-gradient) !important; stroke-width: 2.5px !important; }
+.theme-apple .hero-pills > span:hover svg.lucide-sparkles { stroke: #ffffff !important; }
+.theme-apple button.bg-slate-900 { background: #1d1d1f !important; color: #ffffff !important; border-radius: 9999px !important; border: none !important; box-shadow: none !important; padding: 0.75rem 2rem !important; font-weight: 500 !important; transition: all 0.3s ease !important; }
+.theme-apple button.bg-slate-900:hover { background: #0050A0 !important; box-shadow: 0 4px 15px rgba(0, 80, 160, 0.3) !important; } 
+.theme-apple button.bg-white\/80 { background: transparent !important; color: #1d1d1f !important; border: 1px solid #1d1d1f !important; border-radius: 9999px !important; box-shadow: none !important; font-weight: 500 !important; transition: all 0.3s ease !important; }
+.theme-apple button.bg-white\/80:hover { background: #1d1d1f !important; color: #ffffff !important; border-color: #1d1d1f !important; }
+.theme-apple button.bg-white\/80:hover i { color: #ffffff !important; }
+.theme-apple button.bg-white\/80 i { color: #1d1d1f !important; transition: color 0.3s ease !important; }
+/* Apple 内容导览：轻量蓝调 · 左侧竖条 - 留白足、当前项用蓝色强调，不压重 */
+.theme-apple #toc-nav { border-left: none !important; padding-left: 0 !important; }
+.theme-apple .toc-link { border-left: 4px solid transparent !important; padding: 0.65rem 1rem 0.65rem 1rem !important; margin-bottom: 0.35rem !important; border-radius: 0 12px 12px 0 !important; background-color: #f5f5f7 !important; color: #86868b !important; transition: all 0.25s ease !important; transform: none !important; font-weight: 500 !important; }
+.theme-apple .toc-link:hover { color: #1d1d1f !important; background-color: #e8e8ed !important; }
+.theme-apple .toc-link.active-toc { background-color: #e8f4fd !important; color: #0071e3 !important; border-left-color: #0071e3 !important; border: none !important; border-left: 4px solid #0071e3 !important; box-shadow: none !important; font-weight: 600 !important; }
+.theme-apple .toc-link.active-toc .text-slate-500 { color: #5e9ce6 !important; }
+.theme-apple #dominance .bg-white, .theme-apple #features > div.mb-12, .theme-apple #features .grid > .group, .theme-apple #cases .group { border-radius: 1.5rem !important; border: none !important; box-shadow: 0 4px 24px rgba(0,0,0,0.03) !important; background-color: #ffffff !important; }
+.theme-apple #dominance .w-16.h-16 { background: #f5f5f7 !important; border: none !important; color: #1d1d1f !important; border-radius: 50% !important; transition: all 0.3s ease !important;}
+.theme-apple #dominance .group:hover .w-16.h-16 { color: #0050A0 !important; background: #f0f4ff !important; } 
+.theme-apple #features > div.mb-12 .bg-slate-50\/50, .theme-apple #features > div.mb-12 .bg-slate-50\/30 { background-color: #ffffff !important; border-bottom: 1px solid #f5f5f7 !important; }
+.theme-apple #features .grid > .group .bg-slate-100 { background: #f5f5f7 !important; border-bottom: none !important; }
+.theme-apple #features .grid > .group .theme-text-primary { color: #1d1d1f !important; transition: color 0.3s ease !important;}
+.theme-apple #features .grid > .group:hover .theme-text-primary { color: #0050A0 !important; } 
+.theme-apple #features .grid > .group .opacity-10 { display: none !important; }
+.theme-apple .workflow-btn { border: none !important; box-shadow: none !important; background: transparent !important; border-radius: 1.25rem !important; transition: all 0.3s ease !important; }
+.theme-apple .workflow-btn.active { background: #ffffff !important; box-shadow: 0 4px 24px rgba(0,0,0,0.04) !important; }
+.theme-apple .workflow-btn .icon-container { border: none !important; background: #f5f5f7 !important; color: #1d1d1f !important; box-shadow: none !important; border-radius: 50% !important; }
+.theme-apple .workflow-btn.active .icon-container { background: #0050A0 !important; color: #ffffff !important; } 
+.theme-apple .workflow-btn.active .title-text { color: #1d1d1f !important; font-weight: 600 !important; }
+.theme-apple .nav-dots .dot { background-color: #d2d2d7 !important; width: 8px !important; height: 8px !important; border-radius: 9999px !important; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+.theme-apple .nav-dots .dot.active { background-color: #1d1d1f !important; transform: none !important; width: 28px !important; }
+.theme-apple #workflow-ui-image { border-radius: 1.5rem !important; }
+.theme-apple #workflows .aspect-\[4\/3\] { border: none !important; box-shadow: 0 10px 40px rgba(0,0,0,0.06) !important; border-radius: 1.5rem !important; }
+.theme-apple #enterprise > div.bg-slate-900 { background-color: #000000 !important; border: none !important; border-radius: 2rem !important; box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important; }
+.theme-apple #enterprise > div.bg-slate-900 .opacity-10 { display: none !important; }
+.theme-apple #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background-color: #1c1c1e !important; border: none !important; border-radius: 1.5rem !important; transition: all 0.3s ease !important; }
+.theme-apple #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { background-color: #2c2c2e !important; transform: scale(1.02) !important; }
+.theme-apple #enterprise > div.bg-slate-900 .w-14.h-14 { background-color: #3a3a3c !important; border: none !important; color: #ffffff !important; border-radius: 50% !important; box-shadow: none !important; transition: color 0.3s ease !important;}
+.theme-apple #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover .w-14.h-14 i { color: #F56B00 !important; } 
+.theme-apple #enterprise > div.bg-slate-900 .text-white { color: #f5f5f7 !important; }
+.theme-apple #enterprise > div.bg-slate-900 .text-slate-400 { color: #a1a1aa !important; }
+.theme-apple #cases .group { padding: 2.5rem !important; }
+.theme-apple #cases .bg-slate-100 { background: #f5f5f7 !important; color: #1d1d1f !important; font-weight: 600 !important; border: none !important; padding: 0.4rem 1rem !important; border-radius: 9999px !important; }
+.theme-apple #cases h3.theme-text-primary { color: #1d1d1f !important; font-weight: 600 !important; transition: color 0.3s ease !important; }
+.theme-apple #cases .group:hover h3.theme-text-primary { color: #0050A0 !important; }
+.theme-apple .glass-panel { background: rgba(245,245,247,0.98) !important; border-bottom: 1px solid #e8e8ed !important; }
+.theme-apple #hero-section .absolute.inset-0.z-0 > div.rounded-full { opacity: 0.5 !important; }
+
+/* ===== 5. Palantir 经典 (修复悬浮按钮丢失bug) ===== */
+.theme-palantir2 [data-lucide] { stroke-width: var(--icon-stroke-width, 1.2px) !important; stroke-linecap: var(--icon-linecap, square) !important; stroke-linejoin: var(--icon-linejoin, miter) !important; stroke: var(--icon-color, #666666) !important; }
+.theme-palantir2 .bg-gradient-to-br, .theme-palantir2 .bg-gradient-to-tr, .theme-palantir2 .bg-gradient, .theme-palantir2 [class*="bg-gradient"]:not(.bg-clip-text) { background-image: none !important; background-color: var(--color-surface, #f8f9fa) !important; }
+.theme-palantir2 .bg-clip-text { background-image: none !important; background-color: transparent !important; color: var(--color-text-primary, #000000) !important; -webkit-text-fill-color: var(--color-text-primary, #000000) !important; }
+.theme-palantir2 .rounded, .theme-palantir2 .rounded-lg, .theme-palantir2 .rounded-xl, .theme-palantir2 .rounded-2xl, .theme-palantir2 .rounded-3xl { border-radius: var(--radius-md, 0.25rem) !important; }
+.theme-palantir2 .shadow, .theme-palantir2 .shadow-sm, .theme-palantir2 .shadow-md, .theme-palantir2 .shadow-lg, .theme-palantir2 .shadow-xl { box-shadow: var(--shadow-sm, 0 1px 1px rgba(0, 0, 0, 0.04)) !important; }
+.theme-palantir2 nav .text-slate-600 { color: var(--color-text-primary, #000000) !important; opacity: 1 !important; visibility: visible !important; }
+.theme-palantir2 .hero-pills > span { background: #f8f9fa !important; border: 1px solid #e5e7eb !important; color: #000000 !important; border-radius: 0.125rem !important; text-transform: uppercase; font-size: 0.7rem; box-shadow: none !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 { background-color: #ffffff !important; border: 1px solid #e5e7eb !important; box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important; color: #000000 !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .text-white { color: #000000 !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .text-slate-400 { color: #666666 !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .opacity-10 { display: none !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .bg-slate-800\/50 { background-color: #f8f9fa !important; border: 1px solid #e5e7eb !important; box-shadow: none !important; transition: all 0.2s ease !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .bg-slate-800\/50:hover { background-color: #ffffff !important; border-color: #000000 !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .w-14.h-14 { background-color: #ffffff !important; border: 1px solid #e5e7eb !important; box-shadow: none !important; }
+.theme-palantir2 #enterprise > div.bg-slate-900 .w-14.h-14 i { color: #000000 !important; }
+
+/* Palantir 经典：页面背景为很浅的方格本网格，不喧宾夺主 */
+body.theme-palantir2 { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+/* 首屏也使用同款浅方格，并去掉遮罩让网格透出 */
+.theme-palantir2 #hero-section { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; }
+.theme-palantir2 #hero-section .bg-white\/40 { background: transparent !important; }
+.theme-palantir2 #hero-section .absolute.inset-0.z-0 > svg { opacity: 0 !important; }
+/* 经典：首屏弱化模糊圆，更文档感 */
+.theme-palantir2 #hero-section .absolute.inset-0.z-0 > div.rounded-full { opacity: 0 !important; }
+/* 经典：TOC 文档式 - 左侧细线、小字号、直角 */
+.theme-palantir2 #toc-nav { border-left: 2px solid #e5e7eb !important; padding-left: 0.75rem !important; margin-left: 2px !important; }
+.theme-palantir2 .toc-link { border-left: 2px solid transparent !important; padding: 0.4rem 0 0.4rem 0.6rem !important; margin-left: -2px !important; margin-bottom: 0.25rem !important; border-radius: 0 !important; background: transparent !important; color: #666666 !important; font-size: 0.8125rem !important; font-weight: 500 !important; transition: all 0.2s ease !important; }
+.theme-palantir2 .toc-link:hover { color: #000000 !important; }
+.theme-palantir2 .toc-link.active-toc { color: #000000 !important; font-weight: 600 !important; border-left-color: #000000 !important; background: transparent !important; }
+.theme-palantir2 .toc-link.active-toc .text-slate-500 { color: #666666 !important; }
+.theme-palantir2 aside .text-xs.font-mono.uppercase { font-size: 0.6875rem !important; letter-spacing: 0.08em !important; color: #999999 !important; }
+/* 经典：工作流激活态明确黑/灰 */
+.theme-palantir2 .workflow-btn { border: 1px solid #e5e7eb !important; border-radius: 0.25rem !important; box-shadow: none !important; background: #ffffff !important; transition: all 0.2s ease !important; }
+.theme-palantir2 .workflow-btn.active { background: #f1f5f9 !important; border-color: #000000 !important; }
+.theme-palantir2 .workflow-btn.active .icon-container { background: #000000 !important; border-color: #000000 !important; color: #ffffff !important; }
+.theme-palantir2 .workflow-btn.active .title-text { color: #000000 !important; }
+.theme-palantir2 .nav-dots .dot { background-color: #d1d5db !important; }
+.theme-palantir2 .nav-dots .dot.active { background-color: #000000 !important; transform: scale(1.2) !important; }
+/* 经典：核心架构卡片表头与页面背景统一 */
+.theme-palantir2 #features .grid > .group .bg-slate-100 { background-color: #fafafa !important; background-image: linear-gradient(rgba(0,0,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.022) 1px, transparent 1px) !important; background-size: 20px 20px !important; border-bottom: 1px solid #e5e7eb !important; }
+.theme-palantir2 #features .grid > .group .bg-slate-100 .theme-text-primary { color: #000000 !important; }
+.theme-palantir2 #features .grid > .group .bg-slate-100 i { color: #374151 !important; }
+/* 经典：实践案例标签更克制 */
+.theme-palantir2 #cases .group .bg-slate-100 { background: transparent !important; color: #666666 !important; border: 1px solid #e5e7eb !important; font-weight: 500 !important; font-size: 0.6875rem !important; }
+/* 经典：主次按钮小圆角统一 */
+.theme-palantir2 button.rounded-full { border-radius: 0.25rem !important; }
+.theme-palantir2 nav .bg-slate-900 { background: #000000 !important; }
+.theme-palantir2 .glass-panel { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid #e5e7eb !important; }
+
+/* 应用主题变量 */
+body { background-color: var(--color-background); color: var(--color-text-primary); font-family: var(--font-family); transition: all 0.3s ease; }
+.theme-bg { background: var(--color-gradient); }
+.theme-text-primary { color: var(--color-primary); }
+.theme-text-secondary { color: var(--color-text-secondary); }
+.theme-bg-primary { background-color: var(--color-primary); }
+.theme-bg-surface { background-color: var(--color-surface); }
+.theme-border { border-color: var(--color-border); }
+.theme-rounded { border-radius: var(--radius-base); }
+.theme-shadow { box-shadow: var(--shadow-base); }
+
+/* 主题选择器样式 */
+.theme-selector-container { position: fixed; top: 80px; right: 20px; z-index: 1000; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); width: 280px; max-height: 55vh; min-height: 200px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-primary) var(--color-surface); }
+.theme-selector-container::-webkit-scrollbar { width: 6px; }
+.theme-selector-container::-webkit-scrollbar-track { background: var(--color-surface); border-radius: 3px; }
+.theme-selector-container::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
+.theme-selector-container::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }
+.theme-selector-header { font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--color-text-primary); display: flex; align-items: center; justify-content: space-between; }
+.theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 10px; }
+.theme-card { border: 1px solid transparent; border-radius: 4px; padding: 6px; cursor: pointer; transition: all 0.2s ease; background: var(--color-surface); }
+.theme-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+.theme-card.active { border-color: var(--color-primary); background-color: rgba(var(--color-primary-rgb, 30, 58, 138), 0.05); }
+.theme-color-preview { display: flex; gap: 2px; margin-bottom: 4px; }
+.color-dot { width: 12px; height: 12px; border-radius: 50%; }
+.theme-name { font-size: 10px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 1px; line-height: 1.1; }
+.theme-desc { font-size: 8px; color: var(--color-text-secondary); line-height: 1.1; }
+
+.theme-toggle-btn { position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--color-gradient); color: white; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; }
+.theme-toggle-btn:hover { transform: scale(1.1); }
+
+/* 架构图：使用高清图并保持清晰（高分辨率源图 + 避免 transform 缩放模糊） */
+.architecture-diagram { image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; object-fit: contain; }
+
+/* ===== 通用组件覆盖 ===== */
+[class*="theme-"] .rounded { border-radius: calc(var(--radius-base) * 0.5) !important; }
+[class*="theme-"] .rounded-lg { border-radius: calc(var(--radius-base) * 1) !important; }
+[class*="theme-"] .rounded-xl { border-radius: calc(var(--radius-base) * 1.5) !important; }
+[class*="theme-"] .rounded-2xl { border-radius: calc(var(--radius-base) * 2) !important; }
+[class*="theme-"] .rounded-3xl { border-radius: calc(var(--radius-base) * 3) !important; }
+[class*="theme-"] .shadow-sm { box-shadow: var(--shadow-base) !important; }
+[class*="theme-"] .shadow { box-shadow: var(--shadow-base) !important; }
+[class*="theme-"] .shadow-md { box-shadow: var(--shadow-base) !important; }
+
+/* ===== 轮播进度点样式 ===== */
+.carousel-nav { display: flex; justify-content: center; margin-top: 1rem; width: 100%; }
+.nav-dots { display: flex; gap: 8px; align-items: center; }
+.nav-dots .dot { width: 8px; height: 8px; border-radius: 9999px; background-color: var(--color-border); border: none; cursor: pointer; transition: all 0.3s ease; padding: 0; }
+.nav-dots .dot:hover { opacity: 0.8; }
+.nav-dots .dot.active { background-color: var(--color-primary); transform: scale(1.2); width: 10px; height: 10px; }
+
+/* ===== 通用背景颜色覆盖 ===== */
+[class*="theme-"] .bg-blue-50 { background-color: color-mix(in srgb, var(--color-background) 80%, var(--color-surface)) !important; }
+[class*="theme-"] .bg-blue-500 { background-color: var(--color-accent) !important; }
+[class*="theme-"] .bg-blue-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-green-500\/80 { background-color: color-mix(in srgb, var(--color-success) 80%, transparent) !important; }
+[class*="theme-"] .bg-indigo-50 { background-color: color-mix(in srgb, var(--color-background) 60%, var(--color-surface)) !important; }
+[class*="theme-"] .bg-indigo-500 { background-color: var(--color-secondary) !important; }
+[class*="theme-"] .bg-indigo-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-red-500\/80 { background-color: color-mix(in srgb, var(--color-error) 80%, transparent) !important; }
+[class*="theme-"] .bg-slate-100 { background-color: var(--color-border) !important; }
+[class*="theme-"] .bg-slate-200 { background-color: color-mix(in srgb, var(--color-border) 80%, black 20%) !important; }
+[class*="theme-"] .bg-slate-50 { background-color: var(--color-surface) !important; }
+[class*="theme-"] .bg-slate-50\/80 { background-color: color-mix(in srgb, var(--color-surface) 80%, transparent) !important; }
+[class*="theme-"] .bg-slate-800\/50 { background-color: color-mix(in srgb, var(--color-text-primary) 50%, transparent) !important; }
+[class*="theme-"] .bg-slate-900 { background-color: var(--color-text-primary) !important; }
+[class*="theme-"] .bg-slate-900\/10 { background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important; }
+[class*="theme-"] .bg-teal-50\/80 { background-color: color-mix(in srgb, var(--color-background) 80%, transparent) !important; }
+[class*="theme-"] .bg-yellow-500\/80 { background-color: color-mix(in srgb, var(--color-warning) 80%, transparent) !important; }
+[class*="theme-"] .bg-white { background-color: var(--color-surface) !important; }
+
+/* ===== 通用文本颜色覆盖 ===== */
+[class*="theme-"] .text-blue-100\/80 { color: color-mix(in srgb, var(--color-primary) 20%, white 80%) !important; }
+[class*="theme-"] .text-blue-300 { color: color-mix(in srgb, var(--color-primary) 70%, white 30%) !important; }
+[class*="theme-"] .text-blue-400 { color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .text-blue-600 { color: var(--color-primary) !important; }
+[class*="theme-"] .text-green-400 { color: var(--color-success) !important; }
+[class*="theme-"] .text-indigo-300 { color: color-mix(in srgb, var(--color-secondary) 70%, white 30%) !important; }
+[class*="theme-"] .text-indigo-600 { color: var(--color-secondary) !important; }
+[class*="theme-"] .text-orange-400 { color: var(--color-warning) !important; }
+[class*="theme-"] .text-purple-400 { color: color-mix(in srgb, var(--color-secondary) 85%, white 15%) !important; }
+[class*="theme-"] .text-slate-300 { color: color-mix(in srgb, var(--color-text-secondary) 70%, white 30%) !important; }
+[class*="theme-"] .text-slate-400 { color: color-mix(in srgb, var(--color-text-secondary) 85%, white 15%) !important; }
+[class*="theme-"] .text-slate-500 { color: var(--color-text-secondary) !important; }
+[class*="theme-"] .text-slate-600 { color: color-mix(in srgb, var(--color-text-secondary) 15%, black 85%) !important; }
+[class*="theme-"] .text-slate-700 { color: color-mix(in srgb, var(--color-text-secondary) 30%, black 70%) !important; }
+[class*="theme-"] .text-slate-800 { color: var(--color-text-primary) !important; }
+[class*="theme-"] .text-slate-900 { color: var(--color-text-primary) !important; }
+[class*="theme-"] .text-teal-600 { color: var(--color-accent) !important; }
+[class*="theme-"] .text-yellow-200 { color: color-mix(in srgb, var(--color-warning) 30%, white 70%) !important; }
+
+/* ===== 通用边框颜色覆盖 ===== */
+[class*="theme-"] .border-blue-100 { border-color: color-mix(in srgb, var(--color-primary) 20%, white 80%) !important; }
+[class*="theme-"] .border-blue-200 { border-color: color-mix(in srgb, var(--color-primary) 40%, white 60%) !important; }
+[class*="theme-"] .border-blue-600 { border-color: var(--color-primary) !important; }
+[class*="theme-"] .border-indigo-100 { border-color: color-mix(in srgb, var(--color-secondary) 20%, white 80%) !important; }
+[class*="theme-"] .border-slate-100 { border-color: var(--color-border) !important; }
+[class*="theme-"] .border-slate-200 { border-color: color-mix(in srgb, var(--color-border) 50%, black 10%) !important; }
+[class*="theme-"] .border-slate-700 { border-color: color-mix(in srgb, var(--color-text-secondary) 70%, black 30%) !important; }
+[class*="theme-"] .border-slate-700\/50 { border-color: color-mix(in srgb, var(--color-text-secondary) 35%, black 15%, transparent 50%) !important; }
+[class*="theme-"] .border-slate-800 { border-color: var(--color-text-primary) !important; }
+[class*="theme-"] .border-teal-100 { border-color: color-mix(in srgb, var(--color-accent) 20%, white 80%) !important; }
+
+/* ===== 通用渐变颜色覆盖 ===== */
+[class*="theme-"] .from-blue-100\/40 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-primary) 10%, white 90%) 40%, transparent) !important; }
+[class*="theme-"] .from-blue-50 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-primary) 5%, white 95%), transparent) !important; }
+[class*="theme-"] .from-blue-500 { background-image: linear-gradient(to bottom right, var(--color-accent), transparent) !important; }
+[class*="theme-"] .from-blue-500\/10 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-accent) 10%, transparent 90%), transparent) !important; }
+[class*="theme-"] .from-blue-600 { background-image: linear-gradient(to bottom right, var(--color-primary), transparent) !important; }
+[class*="theme-"] .from-cyan-500 { background-image: linear-gradient(to bottom right, var(--color-accent), transparent) !important; }
+[class*="theme-"] .from-cyan-50\/40 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-accent) 5%, white 95%) 40%, transparent) !important; }
+[class*="theme-"] .from-indigo-500 { background-image: linear-gradient(to bottom right, var(--color-secondary), transparent) !important; }
+[class*="theme-"] .from-indigo-600 { background-image: linear-gradient(to bottom right, var(--color-secondary), transparent) !important; }
+[class*="theme-"] .from-indigo-900 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-secondary) 90%, black 10%), transparent) !important; }
+[class*="theme-"] .from-slate-100 { background-image: linear-gradient(to bottom right, var(--color-background), transparent) !important; }
+[class*="theme-"] .from-slate-700 { background-image: linear-gradient(to bottom right, color-mix(in srgb, var(--color-text-secondary) 70%, black 30%), transparent) !important; }
+[class*="theme-"] .bg-gradient-to-br.from-blue-600.to-indigo-600 { background-image: var(--color-gradient) !important; }
+
+/* ===== 通用悬停状态覆盖 ===== */
+[class*="theme-"] .group-hover\:bg-blue-600\/80:hover { background-color: color-mix(in srgb, var(--color-primary) 80%, transparent) !important; }
+[class*="theme-"] .group-hover\:border-blue-400:hover { border-color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .group-hover\:text-blue-600:hover { color: var(--color-primary) !important; }
+[class*="theme-"] .group-hover\:text-indigo-600:hover { color: var(--color-secondary) !important; }
+[class*="theme-"] .group-hover\:text-slate-700:hover { color: color-mix(in srgb, var(--color-text-secondary) 30%, black 70%) !important; }
+[class*="theme-"] .hover\:bg-slate-50:hover { background-color: var(--color-background) !important; }
+[class*="theme-"] .hover\:bg-slate-800:hover { background-color: var(--color-text-primary) !important; }
+[class*="theme-"] .hover\:border-blue-400:hover { border-color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .hover\:border-slate-200:hover { border-color: var(--color-border) !important; }
+[class*="theme-"] .hover\:text-blue-400:hover { color: color-mix(in srgb, var(--color-primary) 85%, white 15%) !important; }
+[class*="theme-"] .hover\:text-blue-600:hover { color: var(--color-primary) !important; }
+[class*="theme-"] .hover\:text-blue-800:hover { color: color-mix(in srgb, var(--color-primary) 90%, black 10%) !important; }
+[class*="theme-"] .hover\:text-indigo-800:hover { color: color-mix(in srgb, var(--color-secondary) 90%, black 10%) !important; }
+[class*="theme-"] .hover\:text-slate-900:hover { color: var(--color-text-primary) !important; }
+
+/* ===== 通用图标优化 ===== */
+[class*="theme-"] [data-lucide] { transition: all 0.2s ease !important; }
+[class*="theme-"] .icon-container [data-lucide] { stroke: currentColor !important; }
+
+@media (max-width: 768px) {
+    [class*="theme-"] [data-lucide] { stroke-width: 1.8px !important; }
+}
+
+</style>
+
 </head>
-<body>
-    <p>正在跳转到 <a href="dip-standalone.html">DIP 主题风格展示（含 6 种主题）</a>…</p>
+<body class="selection:bg-blue-200 selection:text-blue-900 relative">
+
+    <!-- 用于为 Minimax 主题提供品牌双色渐变的 SVG 定义 (全局隐藏) -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <linearGradient id="wenge-brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0050A0" />
+            <stop offset="100%" stop-color="#F56B00" />
+        </linearGradient>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-panel">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="assets/中科闻歌-logo.svg" alt="中科闻歌" class="h-5 sm:h-6 object-contain">
+                <span class="text-slate-300 mx-1 hidden sm:inline">|</span>
+                <img src="assets/logo-DIP.svg" alt="DIP" class="h-6 sm:h-7 object-contain">
+                <span class="text-slate-800 font-bold text-base sm:text-lg inline tracking-tight hidden sm:inline">DIP决策智能平台</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#dominance" class="hover:text-blue-600 transition">平台定位</a>
+                <a href="#features" class="hover:text-blue-600 transition">核心架构</a>
+                <a href="#workflows" class="hover:text-blue-600 transition">数据与本体建模</a>
+                <a href="#enterprise" class="hover:text-blue-600 transition">对象探索与决策</a>
+                <a href="#cases" class="hover:text-blue-600 transition">实践案例</a>
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-all font-bold inline-block">立即体验平台</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xl overflow-hidden transition-all duration-300">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+                <a href="#dominance" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">平台定位</a>
+                <a href="#features" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">核心架构</a>
+                <a href="#workflows" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">数据与本体建模</a>
+                <a href="#enterprise" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">对象探索与决策</a>
+                <a href="#cases" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded transition-colors">实践案例</a>
+                <div class="pt-4 mt-2 border-t border-slate-100">
+                    <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="w-full bg-slate-900 text-white px-5 py-3.5 rounded-lg shadow-md font-bold text-center active:scale-95 transition-transform inline-block">立即体验平台</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-slate-50 blur-[100px]"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full bg-slate-50 blur-[100px]"></div>
+            
+            <svg class="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+            </svg>
+            <div class="absolute inset-0 bg-white/40 backdrop-blur-[1px]"></div>
+        </div>
+
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 text-center">
+            <div class="hero-pills flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+                <span class="px-4 py-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm text-xs font-bold theme-text-primary shadow-sm transition-all duration-300">多源异构融合</span>
+                <span class="px-4 py-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm text-xs font-bold theme-text-primary shadow-sm transition-all duration-300">本体建模</span>
+                <span class="px-4 py-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm text-xs font-bold theme-text-primary shadow-sm transition-all duration-300">关系构建</span>
+                <span class="px-4 py-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm text-xs font-bold theme-text-primary shadow-sm flex items-center gap-1 mt-2 sm:mt-0 transition-all duration-300">
+                    <i data-lucide="sparkles" class="w-3 h-3"></i> 对象探索
+                </span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-6 transition-all duration-300">
+                DIP <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 transition-all duration-300">决策智能平台</span>
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-700 font-bold mb-8 mx-auto whitespace-normal lg:whitespace-nowrap overflow-hidden text-ellipsis w-full px-2 transition-all duration-300">
+                面向企业级的新一代决策智能系统，真正打通“数据-本体-决策”的三位一体闭环。
+            </p>
+
+            <p class="text-sm sm:text-base md:text-lg text-slate-500 max-w-5xl mx-auto leading-relaxed mb-12 font-medium px-4 transition-all duration-300">
+                基于 DOMA 架构的核心 Ontology（本体）层，DIP决策智能平台将多源异构数据汇聚编排，沉淀为高价值的企业级本体库。<br class="hidden md:block">增强大模型智能体，实现从全景对象探索到业务行动（Action）触发的无缝衔接，驱动企业智能化跨越。
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-800 transition shadow-xl shadow-slate-900/20 flex items-center justify-center gap-2 w-full sm:w-auto">
+                    立即体验平台 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <button id="btn-watch-video" class="bg-white/80 backdrop-blur-md text-slate-800 border border-slate-200 px-8 py-3.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm w-full sm:w-auto flex items-center justify-center gap-2">
+                    <i data-lucide="play-circle" class="w-5 h-5 theme-text-primary"></i> 观看产品宣传片
+                </button>
+            </div>
+
+            <!-- 实际视频播放器：未播放时显示 DIP logo 占位，点击后播放 -->
+            <div class="mt-16 sm:mt-20 relative mx-auto max-w-5xl shadow-2xl rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 group" id="hero-video-wrap">
+                <video 
+                    id="hero-video"
+                    class="relative z-10 w-full h-full object-cover aspect-[16/10] sm:aspect-[16/9] bg-slate-100" 
+                    controls 
+                    preload="metadata"
+                    playsinline
+                >
+                    <source src="assets/DIP决策智能平台视频-V2.mp4" type="video/mp4">
+                    您的浏览器不支持 HTML5 视频，请升级浏览器。
+                </video>
+                <div id="hero-video-poster" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-slate-100 cursor-pointer transition-opacity duration-300" aria-label="点击播放视频">
+                    <img src="assets/DIP-LOGO.svg" alt="DIP" class="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-90 pointer-events-none select-none">
+                    <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white/90 shadow-lg border border-slate-200 text-slate-700 hover:bg-white hover:scale-105 transition-transform duration-200 pointer-events-none">
+                        <i data-lucide="play" class="w-7 h-7 ml-0.5 text-slate-700"></i>
+                    </span>
+                    <span class="text-sm text-slate-500 font-medium pointer-events-none">点击播放</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 py-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-start relative">
+        
+        <aside class="sticky top-28 col-span-1 hidden lg:block py-4">
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-6">内容导览</div>
+            <nav class="border-l border-slate-200 flex flex-col space-y-4" id="toc-nav">
+                <a href="#dominance" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:opacity-80">
+                    <div class="text-base">1. 平台定位</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">DOMA核心引擎</div>
+                </a>
+                <a href="#features" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:opacity-80">
+                    <div class="text-base">2. 核心架构</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">全链路业务重塑</div>
+                </a>
+                <a href="#workflows" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:opacity-80">
+                    <div class="text-base">3. 数据与本体建模</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">可视化本体决策</div>
+                </a>
+                <a href="#enterprise" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:opacity-80">
+                    <div class="text-base">4. 对象探索与决策</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">开放云架构基座</div>
+                </a>
+                <a href="#cases" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:opacity-80">
+                    <div class="text-base">5. 实践案例</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">智能体深度赋能</div>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="col-span-1 lg:col-span-4 w-full min-w-0 flex flex-col gap-16 lg:gap-24">
+            
+            <section id="dominance" class="scroll-mt-28">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-sm font-bold tracking-wider theme-text-primary uppercase mb-3">筑牢数据底座，驱动智能决策</h2>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight">DOMA 架构中的核心本体引擎</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="group flex flex-col items-center text-center p-8 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 theme-text-primary group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="database" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">数据编排</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">依托自动化流水线与 AI 算子。解决多源异构数据的来源与组织难题，通过转换、合并、拆分等高效处理，淬炼出业务所需的干净数据底座。</p>
+                    </div>
+
+                    <div class="group flex flex-col items-center text-center p-8 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 theme-text-primary group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="network" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">本体与关系构建</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">强化逻辑推理与语义增强。将底层数据转换为业务人员易懂的实体对象，并灵活建立对象间的级联网状关联，构筑坚实的企业业务图谱。</p>
+                    </div>
+
+                    <div class="group flex flex-col items-center text-center p-8 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 theme-text-primary group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="compass" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">对象探索</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">提供可视化、穿透式、问答式、报告式四维探索能力。从单一对象出发，沿着关系链一步步全景下钻，辅助复杂业务脉络的精准决策。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900">从数据感知到决策执行的核心能力</h2>
+                </div>
+
+                <!-- 系统架构图 -->
+                <div class="mb-12 rounded-2xl border border-slate-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="p-5 sm:p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-slate-900">DIP决策智能平台系统架构</h3>
+                            <p class="text-sm text-slate-500 mt-1.5 font-medium">基于DOMA架构的核心Ontology层，实现从数据接入到智能决策的全链路能力</p>
+                        </div>
+                        <div class="hidden sm:flex w-10 h-10 bg-white rounded-full border border-slate-200 items-center justify-center shadow-sm theme-text-primary">
+                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-10 bg-slate-50/30 flex justify-center items-center group relative overflow-hidden">
+                        <img src="assets/架构图.svg" alt="DIP决策智能平台系统架构 - Ontology Agent Architecture" class="architecture-diagram w-full max-w-5xl h-auto rounded-xl shadow-sm border border-slate-100">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                        <div class="h-40 sm:h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 theme-bg opacity-10"></div>
+                            <div class="relative z-10 theme-text-primary flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="layers" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">多源异构数据接入</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-slate-900 mb-2 sm:mb-3">全域数据一站融合</h4>
+                            <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
+                                全面支持各类结构化与非结构化文件接入，无缝连接主流业务系统数据库（如 ERP 等），打破企业内部数据孤岛，实现全域数据一站式融合。
+                            </p>
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                                了解集成方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                        <div class="h-40 sm:h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 theme-bg opacity-10"></div>
+                            <div class="relative z-10 theme-text-primary flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="git-merge" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">灵活深度的本体建模</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-slate-900 mb-2 sm:mb-3">AI驱动自动化建模</h4>
+                            <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
+                                数据编排后汇入结构化本体库。平台提供自动化、半自动化与手动构建方式，一键识别表头并建议属性映射，快速生成契合实际业务的初始本体。
+                            </p>
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                                查看建模流程 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1 md:col-span-2 xl:col-span-1">
+                        <div class="h-40 sm:h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 theme-bg opacity-10"></div>
+                            <div class="relative z-10 theme-text-primary flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="cpu" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">懂业务的智能体</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-slate-900 mb-2 sm:mb-3">直接触发业务闭环</h4>
+                            <p class="text-slate-500 leading-relaxed mb-6 text-sm flex-1 font-medium">
+                                基于本体知识库沉淀，全面赋能上层 AI 应用。智能体可精准理解业务上下文与权限边界，不仅能解答复杂问题，更能直接触发预设动作（Action）完成业务闭环。
+                            </p>
+                            <a href="#" class="hidden inline-flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition group/link">
+                                探索智能体市场 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workflows" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight">可视化的高效本体决策工作流</h2>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+                    
+                    <div class="xl:col-span-5 space-y-3 sm:space-y-4 relative order-2 xl:order-1 flex flex-col justify-center">
+                        <div class="absolute left-6 top-8 bottom-8 w-px bg-slate-200 -z-10 hidden sm:block"></div>
+
+                        <div class="palantir-carousel w-full" data-autoplay="true" data-interval="5000">
+                            <!-- 工作流列表容器 -->
+                            <div class="carousel-slides flex flex-col gap-4">
+                                <div class="slide active" id="data_pipeline">
+                                    <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 bg-slate-50 border border-slate-200 shadow-sm relative group" data-target="data_pipeline">
+                                        <div class="flex gap-4">
+                                            <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-blue-200 bg-blue-50 flex items-center justify-center shrink-0 shadow-sm theme-text-primary transition-colors duration-300">
+                                                <i data-lucide="filter" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="title-text text-base sm:text-lg font-bold theme-text-primary mb-1 sm:mb-2 transition-colors duration-300">全域数据接入与清洗编排</h3>
+                                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-medium">连接异构数据源，可视化配置转换与 AI 解析节点，将复杂原始数据洗练为标准业务资产。</p>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div class="slide" id="ontology">
+                                    <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 bg-white border border-transparent hover:border-slate-200 hover:shadow-sm relative group" data-target="ontology">
+                                        <div class="flex gap-4">
+                                            <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center shrink-0 shadow-sm text-slate-400 transition-colors duration-300">
+                                                <i data-lucide="box" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="title-text text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 transition-colors duration-300">自动化识别与本体建模</h3>
+                                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-medium">智能识别数据特征，自动推荐标识与数据类型，极简操作即可完成业务对象实例化，构建企业知识中枢。</p>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div class="slide" id="exploration">
+                                    <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 bg-white border border-transparent hover:border-slate-200 hover:shadow-sm relative group" data-target="exploration">
+                                        <div class="flex gap-4">
+                                            <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center shrink-0 shadow-sm text-slate-400 transition-colors duration-300">
+                                                <i data-lucide="share-2" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="title-text text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 transition-colors duration-300">穿透式对象关联与下钻</h3>
+                                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-medium">动态配置多对象间关联规则，在关系网络视图中支持双击下钻，实现多层级链路的穿透查询。</p>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+
+                                <div class="slide" id="action">
+                                    <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 bg-white border border-transparent hover:border-slate-200 hover:shadow-sm relative group" data-target="action">
+                                        <div class="flex gap-4">
+                                            <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 bg-white flex items-center justify-center shrink-0 shadow-sm text-slate-400 transition-colors duration-300">
+                                                <i data-lucide="zap" class="w-5 h-5"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="title-text text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 transition-colors duration-300">智能规则联动与行动执行</h3>
+                                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-medium">在本体层面定义可执行动作与业务联动规则。例如调整状态时自动触发内部协同或流转，实现真闭环。</p>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-nav flex justify-center mt-6">
+                                <div class="nav-dots flex gap-2">
+                                    <button class="dot active w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="0" aria-label="切换到步骤 1"></button>
+                                    <button class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="1" aria-label="切换到步骤 2"></button>
+                                    <button class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="2" aria-label="切换到步骤 3"></button>
+                                    <button class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="3" aria-label="切换到步骤 4"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xl:col-span-7 xl:sticky xl:top-28 z-10 order-1 xl:order-2 flex items-center">
+                        <div class="w-full aspect-[4/3] rounded-3xl shadow-xl overflow-hidden border border-slate-200 bg-slate-50 relative group">
+                            <!-- 你可以通过修改 src 替换为真实的系统操作 GIF/视频 -->
+                            <img id="workflow-ui-image" src="assets/workflow-slide-1.png" alt="数据与本体建模 - 工作流示意" class="w-full h-full object-contain transition-opacity duration-500 bg-slate-50">
+                            <!-- 遮罩信息提示 -->
+                            <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i data-lucide="info" class="w-3 h-3"></i> 此处建议替换为真实界面录屏或动图
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="enterprise" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3 tracking-tight">坚实可靠的技术护城河与云服务</h2>
+                    <p class="text-slate-500 text-base sm:text-lg font-medium">企业级架构与模型基座</p>
+                </div>
+
+                <div class="bg-slate-900 text-white p-8 sm:p-10 lg:p-12 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden group">
+                    <div class="absolute inset-0 theme-bg opacity-10 transition-opacity duration-700"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
+                        <div class="p-6 rounded-2xl border border-slate-700/50 bg-slate-800/50 hover:bg-slate-800 transition-colors">
+                            <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 shadow-inner border border-slate-700">
+                                <i data-lucide="shield-check" class="w-7 h-7 text-slate-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4 tracking-wider text-white">全链路 AI 模型支撑</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed font-medium">提供贯穿全系统的文本解析、实体识别与语义理解能力。平台支持对接外部大模型，亦可平滑替换为企业自研私有模型，全方位保障核心数据安全。</p>
+                        </div>
+                        
+                        <div class="p-6 rounded-2xl border border-slate-700/50 bg-slate-800/50 hover:bg-slate-800 transition-colors">
+                            <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 shadow-inner border border-slate-700">
+                                <i data-lucide="cloud" class="w-7 h-7 text-slate-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4 tracking-wider text-white">标准能力开放与云服务部署</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed font-medium">业务本体库全面开放，提供标准 API 与 OSDK 工具包接入。同时提供安全合规的云服务环境（如私有云部署），为企业构建专属资源池，高效支撑产品落地各类复杂业务场景。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cases" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 lg:mb-10 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3 tracking-tight">深入业务场景的智能决策实践</h2>
+                        <p class="text-slate-500 text-base sm:text-lg font-medium">11 大智能体深度赋能</p>
+                    </div>
+                    <button class="hidden flex items-center text-sm font-bold theme-text-primary hover:opacity-80 transition">
+                        查看完整解决方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="group cursor-pointer bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div>
+                            <div class="flex items-center gap-2 mb-5">
+                                <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">外部营销 | 转化提升</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">智能营销与客户服务</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">集成 <strong>AI 客服</strong>、<strong>产品智能推荐</strong>、<strong>订单进度查询</strong>、<strong>AI 商机识别</strong>四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div>
+                            <div class="flex items-center gap-2 mb-5">
+                                <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">内部运营 | 协同增效</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">内部运营与合规风控</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">聚合<strong>内部知识库问答</strong>、<strong>AI 合同审核</strong>、<strong>AI 用户行为分析</strong>、<strong>AI 系统监控告警</strong>四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+                        <div>
+                            <div class="flex items-center gap-2 mb-5">
+                                <span class="text-xs font-bold px-3 py-1.5 bg-slate-100 text-slate-700 rounded-md">数据驱动 | 辅助决策</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4 theme-text-primary transition-colors">数据洞察与主动决策</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed font-medium">依托<strong>智能问数</strong>、<strong>AI 补货提醒</strong>、<strong>AI 付款提示</strong>三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f111a] text-slate-400 py-12 sm:py-16 border-t border-slate-800 mt-12">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4 sm:mb-6 text-white">
+                        <img src="image_17ff04.png" alt="中科闻歌" class="h-7 sm:h-8 object-contain">
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500 font-medium">
+                        全球领先的大数据与人工智能服务商，致力于用科技赋能企业决策、政务、金融等垂直行业。
+                    </p>
+                </div>
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-4">产品服务</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-slate-300 transition">DIP决策智能平台</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">YAYI 大模型</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">天湖数据智算平台</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-4">解决方案</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-slate-300 transition">企业级决策</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">智慧政务</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">企业数智化</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1 mt-4 md:mt-0">
+                    <h4 class="text-white font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-slate-300 transition">申请演示</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">商务合作</a></li>
+                        <li><a href="#" class="hover:text-slate-300 transition">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center font-medium gap-4">
+                <p>&copy; 2026 中科闻歌 版权所有</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition">隐私政策</a>
+                    <a href="#" class="hover:text-white transition">服务条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        try {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        } catch(e) { console.warn("Icon init failed:", e) }
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.innerHTML = isMenuOpen 
+                    ? '<i data-lucide="x" class="w-6 h-6"></i>' 
+                    : '<i data-lucide="menu" class="w-6 h-6"></i>';
+                if(typeof lucide !== 'undefined') lucide.createIcons();
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                    if(typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            });
+        }
+
+        const workflowImages = {
+            data_pipeline: "assets/workflow-slide-1.png",
+            ontology: "assets/workflow-slide-2.png",
+            exploration: "assets/workflow-slide-3.png",
+            action: "assets/workflow-slide-4.png"
+        };
+
+        const buttons = document.querySelectorAll('.workflow-btn');
+        const uiImage = document.getElementById('workflow-ui-image');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('active', 'bg-slate-50', 'border-slate-200', 'shadow-sm');
+                    b.classList.add('bg-white', 'border-transparent');
+                    b.querySelector('.icon-container').style.color = 'var(--color-text-secondary)';
+                    b.querySelector('.title-text').style.color = 'var(--color-text-primary)';
+                });
+
+                btn.classList.remove('bg-white', 'border-transparent');
+                btn.classList.add('active', 'bg-slate-50', 'border-slate-200', 'shadow-sm');
+                btn.querySelector('.icon-container').style.color = 'var(--color-primary)';
+                btn.querySelector('.title-text').style.color = 'var(--color-primary)';
+
+                const target = btn.getAttribute('data-target');
+                if(uiImage) {
+                    uiImage.style.opacity = '0';
+                    setTimeout(() => {
+                        uiImage.src = workflowImages[target];
+                        uiImage.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        });
+
+        // 修复 TOC (右侧导航) 滚动高亮逻辑及跟随主色调的动态配色
+        const sectionsObj = document.querySelectorAll('main section[id]');
+        const navLinksObj = document.querySelectorAll('.toc-link');
+
+        let isClickScrolling = false;
+        let scrollTimeout = null;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-120px 0px -60% 0px',
+            threshold: 0
+        };
+
+        const tocObserver = new IntersectionObserver((entries) => {
+            if (isClickScrolling) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    navLinksObj.forEach(link => {
+                        link.style.borderColor = 'transparent';
+                        link.style.color = 'var(--color-text-secondary)';
+                        link.style.fontWeight = 'normal';
+                        link.classList.remove('active-toc'); // 移除统一状态类
+                        
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.style.borderColor = 'var(--color-primary)';
+                            link.style.color = 'var(--color-primary)';
+                            link.style.fontWeight = 'bold';
+                            link.classList.add('active-toc'); // 赋予当前项状态类
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sectionsObj.forEach(sec => tocObserver.observe(sec));
+
+        navLinksObj.forEach(link => {
+            link.style.borderColor = 'transparent';
+            link.style.color = 'var(--color-text-secondary)';
+
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                isClickScrolling = true;
+                clearTimeout(scrollTimeout);
+                
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    navLinksObj.forEach(l => {
+                        l.style.borderColor = 'transparent';
+                        l.style.color = 'var(--color-text-secondary)';
+                        l.style.fontWeight = 'normal';
+                        l.classList.remove('active-toc'); // 移除统一状态类
+                    });
+                    
+                    link.style.borderColor = 'var(--color-primary)';
+                    link.style.color = 'var(--color-primary)';
+                    link.style.fontWeight = 'bold';
+                    link.classList.add('active-toc'); // 赋予当前项状态类
+
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    try {
+                        history.pushState(null, null, `#${targetId}`);
+                    } catch (err) {}
+
+                    scrollTimeout = setTimeout(() => {
+                        isClickScrolling = false;
+                    }, 800);
+                }
+            });
+        });
+        
+        setTimeout(() => {
+            if (navLinksObj[0]) {
+                navLinksObj[0].style.borderColor = 'var(--color-primary)';
+                navLinksObj[0].style.color = 'var(--color-primary)';
+                navLinksObj[0].style.fontWeight = 'bold';
+                navLinksObj[0].classList.add('active-toc'); // 初始化首项状态类
+            }
+        }, 100);
+
+    </script>
+
+<script>
+const themes = {
+    palantir2: { name: 'Palantir 经典', desc: '黑白灰·文档感', colors: ['#000000', '#374151', '#e5e7eb'], version: 'v2' },
+    palantir: { name: 'Palantir 蓝调', desc: '企业级蓝调', colors: ['#106ba3', '#1e8cd1', '#e2e8f0'], version: 'v1' },
+    minimax: { name: 'Minimax', desc: '高对比大排版', colors: ['#111111', '#eb3e3e', '#ffffff'], version: 'v1' },
+    apple: { name: 'Apple 极简', desc: '极致空间克制感', colors: ['#1d1d1f', '#f5f5f7', '#007aff'], version: 'v1' },
+    c3ai: { name: 'C3.ai 风格', desc: '企业级·浅色·轮播', colors: ['#0066cc', '#0f172a', '#f8fafc'], version: 'v1', url: 'dip-style-c3ai.html' },
+    h2o: { name: 'H2O.ai 风格', desc: '生成式AI·青绿', colors: ['#00a396', '#0066ff', '#f8fafc'], version: 'v1', url: 'dip-style-h2o.html' }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    createThemeSelector();
+    applyTheme('palantir2'); 
+    
+    document.querySelectorAll('.theme-card').forEach(card => {
+        card.addEventListener('click', function() {
+            var themeKey = this.dataset.theme;
+            var t = themes[themeKey];
+            if (t && t.url) {
+                window.location.href = t.url;
+                return;
+            }
+            applyTheme(themeKey);
+        });
+    });
+    
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const selector = document.getElementById('theme-selector');
+    if (toggleBtn && selector) {
+        toggleBtn.addEventListener('click', () => selector.classList.toggle('hidden'));
+    }
+
+    // 视频封面：点击 DIP logo 区域播放，播放后隐藏封面
+    const heroVideo = document.getElementById('hero-video');
+    const heroPoster = document.getElementById('hero-video-poster');
+    if (heroVideo && heroPoster) {
+        function hidePoster() { heroPoster.style.opacity = '0'; heroPoster.style.pointerEvents = 'none'; }
+        heroPoster.addEventListener('click', function() {
+            heroVideo.play().catch(function() {});
+            hidePoster();
+        });
+        heroVideo.addEventListener('play', hidePoster);
+    }
+    // 点击「观看产品宣传片」：滚动到视频并自动播放
+    const btnWatchVideo = document.getElementById('btn-watch-video');
+    if (btnWatchVideo && heroVideo) {
+        btnWatchVideo.addEventListener('click', function() {
+            const wrap = document.getElementById('hero-video-wrap');
+            if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            heroVideo.play().catch(function() {});
+            if (heroPoster) { heroPoster.style.opacity = '0'; heroPoster.style.pointerEvents = 'none'; }
+        });
+    }
+});
+
+function createThemeSelector() {
+    const topSwitcher = document.getElementById('top-theme-switcher');
+    if(topSwitcher) topSwitcher.remove();
+
+    const selectorHTML = `
+        <button id="theme-toggle-btn" class="theme-toggle-btn">
+            <i data-lucide="palette" class="w-5 h-5"></i>
+        </button>
+        <div id="theme-selector" class="theme-selector-container hidden">
+            <div class="theme-selector-header">
+                <span>选择UI风格 (6种)</span>
+                <button onclick="document.getElementById('theme-selector').classList.add('hidden')">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="theme-grid">
+                ${Object.entries(themes).map(([key, theme]) => `
+                    <div class="theme-card" data-theme="${key}">
+                        <div class="theme-color-preview">
+                            ${theme.colors.map(color => `<div class="color-dot" style="background-color: ${color}"></div>`).join('')}
+                        </div>
+                        <div class="theme-name">${theme.name}</div>
+                        <div class="theme-desc">${theme.desc}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <div style="font-size: 11px; color: var(--color-text-secondary); text-align: center; margin-top: 10px;">
+                当前风格: <span id="current-theme-display">Palantir 经典</span>
+            </div>
+        </div>
+    `;
+    const div = document.createElement('div');
+    div.innerHTML = selectorHTML;
+    document.body.appendChild(div);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function applyTheme(themeName) {
+    document.body.className = `selection:bg-blue-200 selection:text-blue-900 relative theme-${themeName}`;
+    
+    document.querySelectorAll('.theme-card').forEach(card => {
+        card.classList.remove('active');
+        if (card.dataset.theme === themeName) card.classList.add('active');
+    });
+    
+    const display = document.getElementById('current-theme-display');
+    if (display && themes[themeName]) display.textContent = themes[themeName].name;
+    
+    setTimeout(() => {
+        const activeLink = Array.from(document.querySelectorAll('.toc-link')).find(link => link.style.fontWeight === 'bold');
+        if(activeLink) {
+            activeLink.style.borderColor = 'var(--color-primary)';
+            activeLink.style.color = 'var(--color-primary)';
+        }
+        
+        const activeWorkflowBtn = document.querySelector('.workflow-btn.active');
+        if(activeWorkflowBtn) {
+            activeWorkflowBtn.querySelector('.icon-container').style.color = 'var(--color-primary)';
+            activeWorkflowBtn.querySelector('.title-text').style.color = 'var(--color-primary)';
+        }
+        
+        const activeDot = document.querySelector('.nav-dots .dot.active');
+        if(activeDot) {
+            activeDot.style.backgroundColor = 'var(--color-primary)';
+        }
+    }, 50);
+
+    showThemeNotification(themeName);
+}
+
+function showThemeNotification(themeName) {
+    let notification = document.getElementById('theme-notification');
+    if (!notification) {
+        notification = document.createElement('div');
+        notification.id = 'theme-notification';
+        notification.style.cssText = `
+            position: fixed; bottom: 20px; right: 20px; background: var(--color-surface); border: 1px solid var(--color-border);
+            border-radius: 12px; padding: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); z-index: 10000;
+            max-width: 300px; transform: translateY(100px); opacity: 0; transition: all 0.3s ease;
+        `;
+        document.body.appendChild(notification);
+    }
+    const theme = themes[themeName];
+    notification.innerHTML = `
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-gradient); display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+            </div>
+            <div style="flex: 1;">
+                <div style="font-weight: 700; font-size: 14px; color: var(--color-text-primary); margin-bottom: 4px;">风格已切换</div>
+                <div style="font-size: 12px; color: var(--color-text-secondary);">已应用 ${theme.name} - ${theme.desc}</div>
+            </div>
+            <button onclick="this.parentElement.parentElement.style.opacity='0';this.parentElement.parentElement.style.transform='translateY(100px)';setTimeout(()=>this.parentElement.parentElement.remove(),300)" style="background:none;border:none;color:var(--color-text-secondary);cursor:pointer;padding:4px;"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+    `;
+    setTimeout(() => { notification.style.transform = 'translateY(0)'; notification.style.opacity = '1'; }, 10);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    setTimeout(() => { notification.style.opacity = '0'; notification.style.transform = 'translateY(100px)'; setTimeout(() => notification.remove(), 300); }, 3000);
+}
+
+function initPalantirCarousel() {
+    const carousel = document.querySelector('.palantir-carousel');
+    if (!carousel) return;
+    const slides = carousel.querySelectorAll('.slide');
+    const dots = carousel.querySelectorAll('.nav-dots .dot');
+    
+    let currentSlide = 0;
+    let interval = 5000;
+    let timer = null;
+    let isPaused = false;
+    
+    function goToSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+        
+        if(dots.length > 0) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            dots[currentSlide].style.backgroundColor = 'var(--color-border)';
+            dots[currentSlide].style.transform = 'scale(1)';
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            dots[currentSlide].style.backgroundColor = 'var(--color-primary)';
+            dots[currentSlide].style.transform = 'scale(1.5)';
+        } else {
+            currentSlide = index;
+        }
+
+        const slideBtn = slides[currentSlide].querySelector('.workflow-btn');
+        if (slideBtn) slideBtn.click();
+    }
+    
+    function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+    
+    function startAutoPlay() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => { if (!isPaused) nextSlide(); }, interval);
+    }
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToSlide(index);
+            // 用户点击时重置计时器
+            clearInterval(timer);
+            startAutoPlay();
+        });
+    });
+
+    goToSlide(0);
+    
+    carousel.addEventListener('mouseenter', () => { if (!isPaused) { clearInterval(timer); timer = null; } });
+    carousel.addEventListener('mouseleave', () => { if (!isPaused && !timer) startAutoPlay(); });
+    
+    startAutoPlay();
+}
+
+document.addEventListener('DOMContentLoaded', () => setTimeout(initPalantirCarousel, 500));
+</script>
 </body>
 </html>
