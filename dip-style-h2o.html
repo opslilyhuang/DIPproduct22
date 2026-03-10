@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIP 决策智能平台 | H2O.ai 风格 - 企业级生成式 AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        :root {
+            --h2o-teal: #00a396;
+            --h2o-blue: #0066ff;
+            --h2o-amber: #f59e0b;
+            --h2o-bg: #f8fafc;
+            --h2o-card: #ffffff;
+        }
+        .gradient-text { background: linear-gradient(135deg, var(--h2o-teal) 0%, var(--h2o-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .h2o-carousel-track { transition: transform 0.4s ease-out; }
+        .hero-desc { word-break: keep-all; overflow-wrap: normal; }
+    </style>
+</head>
+<body class="bg-[var(--h2o-bg)] text-slate-900 antialiased">
+
+    <!-- Nav: 白底、深色字、青绿主按钮 -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="assets/中科闻歌-logo.svg" alt="中科闻歌" class="h-6 object-contain">
+                <span class="text-slate-300">|</span>
+                <img src="assets/logo-DIP.svg" alt="DIP" class="h-7 object-contain">
+                <span class="font-bold text-slate-800 hidden sm:inline">DIP 决策智能平台</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#platform" class="hover:text-[var(--h2o-teal)] transition">平台</a>
+                <a href="#demo" class="hover:text-[var(--h2o-teal)] transition">产品演示</a>
+                <a href="#workflows" class="hover:text-[var(--h2o-teal)] transition">数据与本体建模</a>
+                <a href="#stories" class="hover:text-[var(--h2o-teal)] transition">客户案例</a>
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="bg-[var(--h2o-teal)] text-white px-5 py-2.5 rounded font-bold hover:opacity-90 transition">申请现场演示</a>
+                <a href="#learn" class="border border-slate-300 text-slate-700 px-5 py-2.5 rounded font-bold hover:border-[var(--h2o-teal)] hover:text-[var(--h2o-teal)] transition">了解更多</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero：使用 DIP 完整版文案，避免“企业”“无缝衔接”等词被拆行 -->
+    <section class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 mb-6 leading-tight">
+                DIP <span class="gradient-text">决策智能平台</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl text-slate-700 font-bold mb-6 max-w-3xl hero-desc">面向企业级的新一代决策智能系统，真正打通"数据-本体-决策"的三位一体闭环。</p>
+            <p class="text-sm sm:text-base text-slate-500 max-w-3xl leading-relaxed mb-8 hero-desc">基于 DOMA 架构的核心 Ontology（本体）层，DIP决策智能平台将多源异构数据汇聚编排，沉淀为高价值的企业级本体库。</p>
+            <p class="text-sm sm:text-base text-slate-500 max-w-3xl leading-relaxed mb-10 hero-desc">增强大模型智能体，实现从全景对象探索到业务行动（Action）触发的无缝衔接，驱动企业智能化跨越。</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-[var(--h2o-teal)] text-white px-8 py-3.5 rounded font-bold hover:opacity-90 transition">申请现场演示</a>
+                <a href="#learn" class="inline-flex items-center justify-center gap-2 border-2 border-slate-300 text-slate-700 px-8 py-3.5 rounded font-bold hover:border-[var(--h2o-teal)] hover:text-[var(--h2o-teal)] transition">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品演示视频 - 浅色卡片、标题、圆角 -->
+    <section id="demo" class="py-16 bg-[var(--h2o-bg)]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">产品演示</h2>
+            <p class="text-slate-600 mb-8">文档 AI 与智能体工作流 — 观看：DIP 决策智能平台概览</p>
+            <div class="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg" id="hero-video-wrap">
+                <video id="hero-video" class="w-full aspect-video object-cover bg-slate-100" controls preload="metadata" playsinline>
+                    <source src="assets/DIP决策智能平台视频-V2.mp4" type="video/mp4">
+                </video>
+                <div id="hero-video-poster" class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-100 cursor-pointer" aria-label="点击播放">
+                    <img src="assets/DIP-LOGO.svg" alt="DIP" class="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-90">
+                    <span class="w-16 h-16 rounded-full bg-[var(--h2o-teal)] flex items-center justify-center text-white hover:scale-105 transition shadow-lg">
+                        <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                    <span class="text-sm text-slate-500 font-medium">点击播放</span>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-center">
+                <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="text-[var(--h2o-teal)] font-bold hover:underline">立即体验平台 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories 轮播 - 学 H2O 的 Commonwealth Bank / AT&T 卡片 + LEARN MORE -->
+    <section id="stories" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">客户案例</h2>
+            <p class="text-slate-600 mb-10">深入业务场景的智能决策实践</p>
+
+            <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-[var(--h2o-bg)]">
+                <div class="h2o-carousel-track flex" id="h2o-carousel-track">
+                    <div class="h2o-slide min-w-full p-8 md:p-12">
+                        <div class="max-w-2xl">
+                            <p class="text-lg md:text-xl text-slate-800 leading-relaxed mb-6">
+                                <strong class="text-[var(--h2o-teal)]">智能营销与客户服务</strong> — 集成 AI 客服、产品智能推荐、订单进度查询、AI 商机识别四大智能体，提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，<strong>实现从客服咨询到商机线索的自动化转化</strong>。
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 text-[var(--h2o-teal)] font-bold hover:underline">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="h2o-slide min-w-full p-8 md:p-12">
+                        <div class="max-w-2xl">
+                            <p class="text-lg md:text-xl text-slate-800 leading-relaxed mb-6">
+                                <strong class="text-[var(--h2o-teal)]">内部运营与合规风控</strong> — 聚合内部知识库问答、AI 合同审核、AI 用户行为分析、AI 系统监控告警四大智能体，自动审核合同条款规避风险，实时监控数据质量与异常告警，<strong>全方位提升企业内部运营协同与安全效能</strong>。
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 text-[var(--h2o-teal)] font-bold hover:underline">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="h2o-slide min-w-full p-8 md:p-12">
+                        <div class="max-w-2xl">
+                            <p class="text-lg md:text-xl text-slate-800 leading-relaxed mb-6">
+                                <strong class="text-[var(--h2o-teal)]">数据洞察与主动决策</strong> — 依托智能问数、AI 补货提醒、AI 付款提示三大智能体，在严格权限控制下支持自然语言秒级穿透查询，系统基于数据自动推演并主动推送预警，<strong>真正落地数据驱动决策</strong>。
+                            </p>
+                            <a href="#" class="inline-flex items-center gap-2 text-[var(--h2o-teal)] font-bold hover:underline">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between px-4 py-4 border-t border-slate-200 bg-white">
+                    <button type="button" id="h2o-prev" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-[var(--h2o-teal)] transition" aria-label="上一项">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <div class="flex gap-2" id="h2o-dots"></div>
+                    <button type="button" id="h2o-next" class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-[var(--h2o-teal)] transition" aria-label="下一项">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 平台定位 - 浅色 -->
+    <section id="platform" class="py-16 bg-[var(--h2o-bg)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--h2o-teal)] mb-4">平台</p>
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">DOMA 架构中的核心本体引擎</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-md hover:border-[var(--h2o-teal)]/30 transition">
+                    <div class="w-14 h-14 rounded-xl bg-teal-50 flex items-center justify-center mb-6 text-[var(--h2o-teal)]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">数据编排</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">依托自动化流水线与 AI 算子，解决多源异构数据的来源与组织难题，淬炼出业务所需的干净数据底座。</p>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-md hover:border-[var(--h2o-teal)]/30 transition">
+                    <div class="w-14 h-14 rounded-xl bg-teal-50 flex items-center justify-center mb-6 text-[var(--h2o-teal)]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9a9 9 0 009 9m-9-9a9 9 0 009-9"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">本体与关系构建</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">将底层数据转换为业务人员易懂的实体对象，并灵活建立对象间的级联网状关联，构筑坚实的企业业务图谱。</p>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-md hover:border-[var(--h2o-teal)]/30 transition">
+                    <div class="w-14 h-14 rounded-xl bg-teal-50 flex items-center justify-center mb-6 text-[var(--h2o-teal)]">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0v-.5a2.5 2.5 0 012.5-2.5"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">对象探索</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">提供可视化、穿透式、问答式、报告式四维探索能力，从单一对象出发沿关系链全景下钻，辅助精准决策。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 可视化的高效本体决策工作流 -->
+    <section id="workflows" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-10" style="word-break: keep-all;">可视化的<br>高效本体决策工作流</h2>
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+                <div class="xl:col-span-5 space-y-3 flex flex-col justify-center order-2 xl:order-1">
+                    <div class="workflow-step rounded-xl border border-slate-200 p-4 sm:p-5 bg-slate-50 shadow-sm cursor-pointer transition-all hover:shadow-md hover:border-[var(--h2o-teal)]/30 active-step" data-step="data_pipeline">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-100 flex items-center justify-center shrink-0 text-[var(--h2o-teal)]">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1">全域数据接入与清洗编排</h3>
+                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">连接异构数据源，可视化配置转换与 AI 解析节点，将复杂原始数据洗练为标准业务资产。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step rounded-xl border border-slate-200 p-4 sm:p-5 bg-white hover:bg-slate-50 cursor-pointer transition-all hover:border-[var(--h2o-teal)]/30" data-step="ontology">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8 4-8-4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1">自动化识别与本体建模</h3>
+                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">智能识别数据特征，自动推荐标识与数据类型，极简操作即可完成业务对象实例化，构建企业知识中枢。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step rounded-xl border border-slate-200 p-4 sm:p-5 bg-white hover:bg-slate-50 cursor-pointer transition-all hover:border-[var(--h2o-teal)]/30" data-step="exploration">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1">穿透式对象关联与下钻</h3>
+                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">动态配置多对象间关联规则，在关系网络视图中支持双击下钻，实现多层级链路的穿透查询。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step rounded-xl border border-slate-200 p-4 sm:p-5 bg-white hover:bg-slate-50 cursor-pointer transition-all hover:border-[var(--h2o-teal)]/30" data-step="action">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1">智能规则联动与行动执行</h3>
+                                <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">在本体层面定义可执行动作与业务联动规则。例如调整状态时自动触发内部协同或流转，实现真闭环。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center gap-2 pt-2">
+                        <button type="button" class="w-2.5 h-2.5 rounded-full bg-[var(--h2o-teal)] workflow-dot" data-slide="0" aria-label="步骤 1"></button>
+                        <button type="button" class="w-2.5 h-2.5 rounded-full bg-slate-300 workflow-dot" data-slide="1" aria-label="步骤 2"></button>
+                        <button type="button" class="w-2.5 h-2.5 rounded-full bg-slate-300 workflow-dot" data-slide="2" aria-label="步骤 3"></button>
+                        <button type="button" class="w-2.5 h-2.5 rounded-full bg-slate-300 workflow-dot" data-slide="3" aria-label="步骤 4"></button>
+                    </div>
+                </div>
+                <div class="xl:col-span-7 order-1 xl:order-2 flex items-center">
+                    <div class="w-full aspect-[4/3] rounded-2xl shadow-xl overflow-hidden border border-slate-200 bg-slate-50">
+                        <img id="workflow-ui-image" src="assets/workflow-slide-1.png" alt="数据与本体建模 - 工作流示意" class="w-full h-full object-contain transition-opacity duration-300 bg-slate-50">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 系统架构图 -->
+    <section class="py-16 bg-[var(--h2o-bg)] border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">DIP 决策智能平台系统架构</h2>
+            <p class="text-slate-600 mb-10">基于 DOMA 架构的核心 Ontology 层，实现从数据接入到智能决策的全链路能力</p>
+            <div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50 p-6 sm:p-10">
+                <img src="assets/架构图.svg" alt="DIP 决策智能平台系统架构" class="w-full max-w-5xl mx-auto h-auto rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- 企业护城河 - 浅色 + 琥珀色点缀 -->
+    <section id="learn" class="py-16 bg-[var(--h2o-bg)] border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-12">坚实可靠的技术护城河与云服务</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center mb-6 text-[var(--h2o-amber)]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">全链路 AI 模型支撑</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">提供贯穿全系统的文本解析、实体识别与语义理解能力。支持对接外部大模型，亦可平滑替换为企业自研私有模型，全方位保障核心数据安全。</p>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center mb-6 text-[var(--h2o-amber)]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 005-5v-3a3 3 0 00-3-3H5z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">标准能力开放与云服务部署</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">业务本体库全面开放，提供标准 API 与 OSDK 工具包接入。同时提供安全合规的云服务环境（含私有云、On-Premise 与 Air-Gapped 部署），为企业构建专属资源池。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">准备好体验企业级生成式 AI？</h2>
+            <p class="text-slate-600 mb-8">申请现场演示，了解 DIP 如何为您的数据赋能决策智能。</p>
+            <a href="https://dip.wenge.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[var(--h2o-teal)] text-white px-8 py-3.5 rounded font-bold hover:opacity-90 transition">申请现场演示</a>
+        </div>
+    </section>
+
+    <!-- Footer - 深色但仅 footer，非全页黑 -->
+    <footer class="bg-slate-900 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <img src="assets/logo-DIP.svg" alt="DIP" class="h-8 mb-4 opacity-90">
+                    <p class="text-sm text-slate-500">决策智能平台 · 主权数据与企业级 AI</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">产品</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">DIP 平台</a></li>
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">YAYI 大模型</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">解决方案</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">企业级决策</a></li>
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">智慧政务</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">联系</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">申请演示</a></li>
+                        <li><a href="#" class="hover:text-[var(--h2o-teal)] transition">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>© 2026 中科闻歌 版权所有</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-[var(--h2o-teal)] transition">隐私政策</a>
+                    <a href="#" class="hover:text-[var(--h2o-teal)] transition">使用条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            var v = document.getElementById('hero-video');
+            var p = document.getElementById('hero-video-poster');
+            if (v && p) {
+                function hide() { p.style.opacity = '0'; p.style.pointerEvents = 'none'; }
+                p.addEventListener('click', function() { v.play().catch(function(){}); hide(); });
+                v.addEventListener('play', hide);
+            }
+        })();
+
+        (function() {
+            var track = document.getElementById('h2o-carousel-track');
+            var prev = document.getElementById('h2o-prev');
+            var next = document.getElementById('h2o-next');
+            var dotsEl = document.getElementById('h2o-dots');
+            if (!track || !dotsEl) return;
+            var slides = track.querySelectorAll('.h2o-slide');
+            var n = slides.length;
+            var idx = 0;
+            function go(i) {
+                idx = (i + n) % n;
+                track.style.transform = 'translateX(-' + idx * 100 + '%)';
+                dotsEl.querySelectorAll('button').forEach(function(btn, i) {
+                    btn.classList.toggle('bg-[var(--h2o-teal)]', i === idx);
+                    btn.classList.toggle('bg-slate-300', i !== idx);
+                });
+            }
+            for (var i = 0; i < n; i++) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'w-2.5 h-2.5 rounded-full transition ' + (i === 0 ? 'bg-[var(--h2o-teal)]' : 'bg-slate-300');
+                btn.setAttribute('aria-label', '第' + (i + 1) + '页');
+                (function(j) { btn.addEventListener('click', function() { go(j); }); })(i);
+                dotsEl.appendChild(btn);
+            }
+            if (prev) prev.addEventListener('click', function() { go(idx - 1); });
+            if (next) next.addEventListener('click', function() { go(idx + 1); });
+        })();
+
+        (function() {
+            var steps = document.querySelectorAll('.workflow-step');
+            var img = document.getElementById('workflow-ui-image');
+            var dots = document.querySelectorAll('.workflow-dot');
+            var urls = ['assets/workflow-slide-1.png', 'assets/workflow-slide-2.png', 'assets/workflow-slide-3.png', 'assets/workflow-slide-4.png'];
+            function setStep(i) {
+                steps.forEach(function(el, k) {
+                    el.classList.toggle('active-step', k === i);
+                    el.classList.toggle('bg-slate-50', k === i);
+                    el.classList.toggle('bg-white', k !== i);
+                    var icon = el.querySelector('.rounded-full');
+                    if (icon) {
+                        icon.classList.toggle('bg-teal-100', k === i);
+                        icon.classList.toggle('text-[var(--h2o-teal)]', k === i);
+                        icon.classList.toggle('bg-slate-100', k !== i);
+                        icon.classList.toggle('text-slate-500', k !== i);
+                    }
+                });
+                dots.forEach(function(d, k) { d.classList.toggle('bg-[var(--h2o-teal)]', k === i); d.classList.toggle('bg-slate-300', k !== i); });
+                if (img && urls[i]) { img.style.opacity = '0'; setTimeout(function() { img.src = urls[i]; img.style.opacity = '1'; }, 150); }
+            }
+            steps.forEach(function(el, i) { el.addEventListener('click', function() { setStep(i); }); });
+            dots.forEach(function(d, i) { d.addEventListener('click', function() { setStep(i); }); });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIP决策智能平台 - 中科闻歌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { -webkit-font-smoothing: antialiased; }
+
+        /* ========== 主题变量：六种 UI 风格（借鉴各品牌官网配色与排版） ========== */
+        /* Palantir: Blueprint 风格，浅蓝灰背景、深蓝灰主色、企业冷静感 */
+        [data-theme="palantir"] {
+            --bg-page: #F5F8FB;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(245,248,251,0.95);
+            --text-primary: #1a2332;
+            --text-secondary: #5F6D7C;
+            --text-muted: #6C7F8F;
+            --accent: #2D4A6F;
+            --accent-light: #3D5A80;
+            --accent-soft: #E8EDF3;
+            --border: #E2E8F0;
+            --radius: 6px;
+            --shadow: 0 1px 2px rgba(0,0,0,0.06);
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
+        /* MiniMax: 参考 https://minimaxi.com/ 白底、绿色主操作色、留白、现代产品感 */
+        [data-theme="minimax"] {
+            --bg-page: #FFFFFF;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(255,255,255,0.98);
+            --text-primary: #111827;
+            --text-secondary: #4B5563;
+            --text-muted: #6B7280;
+            --accent: #059669;
+            --accent-light: #10B981;
+            --accent-soft: #D1FAE5;
+            --border: #E5E7EB;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
+        /* Apple: 参考 https://www.apple.com.cn/ 浅灰底、#0071E3 蓝、大圆角、高对比 */
+        [data-theme="apple"] {
+            --bg-page: #F5F5F7;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(251,251,253,0.92);
+            --text-primary: #1D1D1F;
+            --text-secondary: #424245;
+            --text-muted: #86868B;
+            --accent: #0071E3;
+            --accent-light: #0077ED;
+            --accent-soft: #E8F4FD;
+            --border: #D2D2D7;
+            --radius: 18px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', 'Inter', sans-serif;
+        }
+        /* Google: Material 白底、四色蓝、清晰层级、8px 圆角 */
+        [data-theme="google"] {
+            --bg-page: #FFFFFF;
+            --bg-card: #F8F9FA;
+            --bg-nav: rgba(255,255,255,0.98);
+            --text-primary: #202124;
+            --text-secondary: #5F6368;
+            --text-muted: #80868B;
+            --accent: #1A73E8;
+            --accent-light: #4285F4;
+            --accent-soft: #E8F0FE;
+            --border: #DADCE0;
+            --radius: 8px;
+            --shadow: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --font-sans: 'Google Sans', 'Inter', system-ui, sans-serif;
+        }
+        /* 智谱: 参考 https://bigmodel.cn/ 智谱AI开放平台、蓝主色、白底、清晰层级 */
+        [data-theme="zhipu"] {
+            --bg-page: #FFFFFF;
+            --bg-card: #F7F8FA;
+            --bg-nav: rgba(255,255,255,0.98);
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --text-muted: #6B7280;
+            --accent: #1677FF;
+            --accent-light: #4096FF;
+            --accent-soft: #E6F4FF;
+            --border: #E5E7EB;
+            --radius: 8px;
+            --shadow: 0 1px 2px rgba(0,0,0,0.06);
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
+        /* Kimi: 靛蓝紫、月之亮面、圆润、产品化 */
+        [data-theme="kimi"] {
+            --bg-page: #EEF2FF;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(255,255,255,0.95);
+            --text-primary: #1E1B4B;
+            --text-secondary: #4C4A6A;
+            --text-muted: #6B6B80;
+            --accent: #6366F1;
+            --accent-light: #818CF8;
+            --accent-soft: #E0E7FF;
+            --border: #C7D2FE;
+            --radius: 20px;
+            --shadow: 0 4px 24px rgba(99,102,241,0.15);
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
+
+        .theme-bg-page { background-color: var(--bg-page); color: var(--text-primary); font-family: var(--font-sans); }
+        .theme-bg-card { background-color: var(--bg-card); border-color: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .theme-nav { background: var(--bg-nav); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+        .theme-text-primary { color: var(--text-primary); }
+        .theme-text-secondary { color: var(--text-secondary); }
+        .theme-text-muted { color: var(--text-muted); }
+        .theme-accent { color: var(--accent); }
+        .theme-btn-primary { background: var(--accent); color: #fff; }
+        .theme-btn-primary:hover { background: var(--accent-light); }
+        .theme-border { border-color: var(--border); }
+        .theme-hero-bg { background: var(--bg-card); }
+        .theme-pill { border-color: var(--accent-soft); background: var(--accent-soft); color: var(--accent); }
+        .theme-toc-active { border-left-color: var(--accent); color: var(--accent); }
+        .theme-toc-link:hover { border-left-color: var(--accent); color: var(--text-primary); }
+        .theme-card-hover:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+        .theme-input { border-color: var(--border); background: var(--bg-card); }
+
+        .style-bar { font-family: var(--font-sans); }
+        .style-bar button { transition: all 0.2s ease; color: var(--text-secondary); }
+        .style-bar button.active { background: var(--accent); color: #fff !important; border-radius: var(--radius); }
+        .style-bar button:not(.active):hover { background: var(--accent-soft); color: var(--accent) !important; }
+        .theme-nav a:hover { color: var(--accent) !important; }
+
+        .mockup-scroll::-webkit-scrollbar { width: 6px; }
+        .mockup-scroll::-webkit-scrollbar-track { background: rgba(15,17,26,0.5); }
+        .mockup-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .workflow-btn.active { background: var(--accent-soft); border-color: var(--accent); }
+
+        /* Hero 渐变球：按主题切换色调（文案不变） */
+        .hero-blob-1 { background: linear-gradient(to bottom right, rgba(219,234,254,0.4), rgba(224,231,255,0.3), rgba(233,213,255,0.3)); }
+        .hero-blob-2 { background: linear-gradient(to top right, rgba(236,254,255,0.4), rgba(219,234,254,0.3)); }
+        [data-theme="palantir"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(232,237,243,0.5), rgba(226,232,240,0.4)); }
+        [data-theme="palantir"] .hero-blob-2 { background: linear-gradient(to top right, rgba(241,245,249,0.5), rgba(226,232,240,0.4)); }
+        [data-theme="minimax"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(209,250,229,0.4), rgba(240,253,244,0.5)); }
+        [data-theme="minimax"] .hero-blob-2 { background: linear-gradient(to top right, rgba(236,253,245,0.4), rgba(255,255,255,0.6)); }
+        [data-theme="apple"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(245,245,247,0.9), rgba(232,244,253,0.3)); }
+        [data-theme="apple"] .hero-blob-2 { background: linear-gradient(to top right, rgba(240,248,255,0.4), rgba(245,245,247,0.8)); }
+        [data-theme="google"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(232,240,254,0.5), rgba(248,249,250,0.5)); }
+        [data-theme="google"] .hero-blob-2 { background: linear-gradient(to top right, rgba(248,249,250,0.6), rgba(232,240,254,0.4)); }
+        [data-theme="zhipu"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(230,244,255,0.5), rgba(247,248,250,0.5)); }
+        [data-theme="zhipu"] .hero-blob-2 { background: linear-gradient(to top right, rgba(247,248,250,0.6), rgba(230,244,255,0.4)); }
+        [data-theme="kimi"] .hero-blob-1 { background: linear-gradient(to bottom right, rgba(224,231,255,0.5), rgba(233,213,255,0.4)); }
+        [data-theme="kimi"] .hero-blob-2 { background: linear-gradient(to top right, rgba(238,242,255,0.6), rgba(224,231,255,0.5)); }
+    </style>
+</head>
+<body class="theme-bg-page selection:bg-blue-200 selection:text-blue-900 relative" data-theme="palantir">
+
+    <!-- UI 风格选择条 -->
+    <div class="style-bar sticky top-0 z-[60] theme-nav border-b theme-border px-4 py-2.5 flex flex-wrap items-center gap-2">
+        <span class="text-sm font-semibold theme-text-secondary mr-2">UI 风格：</span>
+        <button type="button" data-theme="palantir" class="style-btn active px-3 py-1.5 text-sm font-medium rounded-md">Palantir</button>
+        <button type="button" data-theme="minimax" class="style-btn px-3 py-1.5 text-sm font-medium rounded-md theme-text-secondary">MiniMax</button>
+        <button type="button" data-theme="apple" class="style-btn px-3 py-1.5 text-sm font-medium rounded-md theme-text-secondary">Apple</button>
+        <button type="button" data-theme="google" class="style-btn px-3 py-1.5 text-sm font-medium rounded-md theme-text-secondary">Google</button>
+        <button type="button" data-theme="zhipu" class="style-btn px-3 py-1.5 text-sm font-medium rounded-md theme-text-secondary">智谱</button>
+        <button type="button" data-theme="kimi" class="style-btn px-3 py-1.5 text-sm font-medium rounded-md theme-text-secondary">Kimi</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-[52px] z-50 theme-nav">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 theme-btn-primary rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-md">W</div>
+                <span class="font-bold theme-text-primary text-lg">中科闻歌</span>
+                <span class="theme-text-muted mx-1 hidden sm:inline">|</span>
+                <span class="theme-text-secondary font-semibold hidden sm:inline">DIP决策智能平台</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold theme-text-secondary">
+                <a href="#dominance" class="hover:theme-accent transition">平台定位</a>
+                <a href="#features" class="hover:theme-accent transition">核心架构</a>
+                <a href="#workflows" class="hover:theme-accent transition">数据与本体建模</a>
+                <a href="#enterprise" class="hover:theme-accent transition">对象探索与决策</a>
+                <a href="#cases" class="hover:theme-accent transition">实践案例</a>
+                <button class="theme-btn-primary px-5 py-2.5 rounded-full font-bold hover:opacity-90 transition-all">立即体验平台</button>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="theme-text-secondary hover:theme-accent p-2 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full theme-bg-card border-b theme-border shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#dominance" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold theme-text-secondary hover:theme-accent rounded-xl">平台定位</a>
+                <a href="#features" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold theme-text-secondary hover:theme-accent rounded-xl">核心架构</a>
+                <a href="#workflows" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold theme-text-secondary hover:theme-accent rounded-xl">数据与本体建模</a>
+                <a href="#enterprise" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold theme-text-secondary hover:theme-accent rounded-xl">对象探索与决策</a>
+                <a href="#cases" class="mobile-nav-link block px-4 py-3.5 text-base font-semibold theme-text-secondary hover:theme-accent rounded-xl">实践案例</a>
+                <div class="pt-4 mt-2 border-t theme-border">
+                    <button class="w-full theme-btn-primary px-5 py-3.5 rounded-xl font-bold text-center">立即体验平台</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 lg:pt-32 lg:pb-28 overflow-hidden theme-hero-bg">
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-60 hero-bg-tint">
+            <div class="hero-blob-1 absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] rounded-full blur-[80px]"></div>
+            <div class="hero-blob-2 absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[80px]"></div>
+            <svg class="absolute inset-0 w-full h-full opacity-60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" class="theme-text-muted" opacity="0.6"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+            </svg>
+        </div>
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 text-center">
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+                <span class="theme-pill px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold">多源异构融合</span>
+                <span class="theme-pill px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold">本体建模</span>
+                <span class="theme-pill px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold">关系构建</span>
+                <span class="theme-pill px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1 mt-2 sm:mt-0">对象探索</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight theme-text-primary mb-6">
+                DIP <span class="theme-accent">决策智能平台</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl theme-text-secondary font-bold mb-8 mx-auto max-w-4xl">
+                面向企业级的新一代决策智能系统，真正打通“数据-本体-决策”的三位一体闭环。
+            </p>
+            <p class="text-sm sm:text-base md:text-lg theme-text-muted max-w-4xl mx-auto leading-relaxed mb-12 font-medium px-4">
+                基于 DOMA 架构的核心 Ontology（本体）层，DIP决策智能平台将多源异构数据汇聚编排，沉淀为高价值的企业级本体库。增强大模型智能体，实现从全景对象探索到业务行动（Action）触发的无缝衔接，驱动企业智能化跨越。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                <button class="theme-btn-primary px-8 py-3.5 rounded-full font-bold shadow-xl flex items-center justify-center gap-2 w-full sm:w-auto">立即体验平台 →</button>
+                <button class="theme-bg-card theme-text-primary border theme-border px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition shadow-sm w-full sm:w-auto flex items-center justify-center gap-2">观看产品宣传片</button>
+            </div>
+            <div class="mt-16 sm:mt-20 relative mx-auto max-w-5xl group cursor-pointer">
+                <div class="rounded-2xl border theme-border shadow-2xl overflow-hidden bg-slate-900 aspect-[16/10] sm:aspect-[16/9] relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-slate-800 to-blue-900 opacity-90"></div>
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
+                            <span class="text-white text-4xl ml-2">▶</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 py-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-start relative theme-bg-page">
+
+        <aside class="sticky top-28 col-span-1 hidden lg:block py-4">
+            <div class="text-xs font-mono theme-text-muted uppercase tracking-widest mb-6">内容导览</div>
+            <nav class="border-l theme-border flex flex-col space-y-4" id="toc-nav">
+                <a href="#dominance" class="theme-toc-active block pl-4 py-2 border-l-2 font-bold transition-all">
+                    <div class="text-base">1. 平台定位</div>
+                    <div class="text-xs font-normal mt-1.5 leading-relaxed theme-text-muted">DOMA核心引擎</div>
+                </a>
+                <a href="#features" class="theme-toc-link block pl-4 py-2 border-l-2 border-transparent theme-text-muted transition-all">
+                    <div class="text-base">2. 核心架构</div>
+                    <div class="text-xs font-normal mt-1.5 leading-relaxed theme-text-muted">全链路业务重塑</div>
+                </a>
+                <a href="#workflows" class="theme-toc-link block pl-4 py-2 border-l-2 border-transparent theme-text-muted transition-all">
+                    <div class="text-base">3. 数据与本体建模</div>
+                    <div class="text-xs font-normal mt-1.5 leading-relaxed theme-text-muted">可视化本体决策</div>
+                </a>
+                <a href="#enterprise" class="theme-toc-link block pl-4 py-2 border-l-2 border-transparent theme-text-muted transition-all">
+                    <div class="text-base">4. 对象探索与决策</div>
+                    <div class="text-xs font-normal mt-1.5 leading-relaxed theme-text-muted">开放云架构基座</div>
+                </a>
+                <a href="#cases" class="theme-toc-link block pl-4 py-2 border-l-2 border-transparent theme-text-muted transition-all">
+                    <div class="text-base">5. 实践案例</div>
+                    <div class="text-xs font-normal mt-1.5 leading-relaxed theme-text-muted">智能体深度赋能</div>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="col-span-1 lg:col-span-4 w-full min-w-0 flex flex-col gap-16 lg:gap-24">
+
+            <section id="dominance" class="scroll-mt-28">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-sm font-bold tracking-wider theme-accent uppercase mb-3">筑牢数据底座，驱动智能决策</h2>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black theme-text-primary mb-4 tracking-tight">DOMA 架构中的核心本体引擎</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="text-center p-8 theme-bg-card border theme-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg"><i data-lucide="database" class="w-7 h-7"></i></div>
+                        <div class="text-xl font-black theme-text-primary mb-3">数据编排</div>
+                        <div class="text-sm theme-text-muted leading-relaxed font-medium">依托自动化流水线与 AI 算子。解决多源异构数据的来源与组织难题，通过转换、合并、拆分等高效处理，淬炼出业务所需的干净数据底座。</div>
+                    </div>
+                    <div class="text-center p-8 theme-bg-card border theme-card-hover transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full -z-10 opacity-60"></div>
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg"><i data-lucide="network" class="w-7 h-7"></i></div>
+                        <div class="text-xl font-black theme-text-primary mb-3">本体与关系构建</div>
+                        <div class="text-sm theme-text-muted leading-relaxed font-medium">强化逻辑推理与语义增强。将底层数据转换为业务人员易懂的实体对象，并灵活建立对象间的级联网状关联，构筑坚实的企业业务图谱。</div>
+                    </div>
+                    <div class="text-center p-8 theme-bg-card border theme-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-br from-cyan-500 to-teal-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg"><i data-lucide="compass" class="w-7 h-7"></i></div>
+                        <div class="text-xl font-black theme-text-primary mb-3">对象探索</div>
+                        <div class="text-sm theme-text-muted leading-relaxed font-medium">提供可视化、穿透式、问答式、报告式四维探索能力。从单一对象出发，沿着关系链一步步全景下钻，辅助复杂业务脉络的精准决策。</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="scroll-mt-28 pt-10 border-t theme-border">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <span class="theme-accent font-bold text-sm tracking-wider uppercase mb-2 block">Ontology Core Capabilities</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black theme-text-primary">从数据感知到决策执行的核心能力</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div class="group theme-bg-card border overflow-hidden theme-card-hover transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-blue-500 to-indigo-600 relative flex items-center justify-center">
+                            <div class="relative z-10 text-white flex flex-col items-center"><i data-lucide="layers" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i><h3 class="text-xl sm:text-2xl font-black tracking-wider">多源异构数据接入</h3></div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black theme-text-primary mb-2 sm:mb-3">全域数据一站融合</h4>
+                            <p class="theme-text-muted leading-relaxed mb-6 text-sm flex-1 font-medium">全面支持各类结构化与非结构化文件接入，无缝连接主流业务系统数据库（如 ERP 等），打破企业内部数据孤岛，实现全域数据一站式融合。</p>
+                            <a href="#" class="inline-flex items-center text-sm font-bold theme-accent hover:opacity-80 transition">了解集成方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="group theme-bg-card border overflow-hidden theme-card-hover transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-indigo-600 to-purple-700 relative flex items-center justify-center">
+                            <div class="relative z-10 text-white flex flex-col items-center"><i data-lucide="git-merge" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i><h3 class="text-xl sm:text-2xl font-black tracking-wider">灵活深度的本体建模</h3></div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black theme-text-primary mb-2 sm:mb-3">AI驱动自动化建模</h4>
+                            <p class="theme-text-muted leading-relaxed mb-6 text-sm flex-1 font-medium">数据编排后汇入结构化本体库。平台提供自动化、半自动化与手动构建方式，一键识别表头并建议属性映射，快速生成契合实际业务的初始本体。</p>
+                            <a href="#" class="inline-flex items-center text-sm font-bold theme-accent hover:opacity-80 transition">查看建模流程 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="group theme-bg-card border overflow-hidden theme-card-hover transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1 md:col-span-2 xl:col-span-1">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-slate-700 to-slate-900 relative flex items-center justify-center">
+                            <div class="relative z-10 text-white flex flex-col items-center"><i data-lucide="cpu" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3"></i><h3 class="text-xl sm:text-2xl font-black tracking-wider">懂业务的智能体</h3></div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black theme-text-primary mb-2 sm:mb-3">直接触发业务闭环</h4>
+                            <p class="theme-text-muted leading-relaxed mb-6 text-sm flex-1 font-medium">基于本体知识库沉淀，全面赋能上层 AI 应用。智能体可精准理解业务上下文与权限边界，不仅能解答复杂问题，更能直接触发预设动作（Action）完成业务闭环。</p>
+                            <a href="#" class="inline-flex items-center text-sm font-bold theme-accent hover:opacity-80 transition">探索智能体市场 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: AI-Powered Workflows -->
+            <section id="workflows" class="scroll-mt-28 pt-10 border-t theme-border">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <span class="theme-accent font-bold text-sm tracking-wider uppercase mb-2 block">Ontology-Driven Workflows</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black theme-text-primary mb-4 tracking-tight">可视化的高效本体决策工作流</h2>
+                </div>
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                    <div class="xl:col-span-5 space-y-3 sm:space-y-4 relative order-1 xl:order-2">
+                        <div class="absolute left-6 top-8 bottom-8 w-px theme-border -z-10 hidden sm:block"></div>
+                        <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 theme-bg-card border theme-border shadow-md relative group active" data-target="data_pipeline">
+                            <div class="flex gap-4">
+                                <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center shrink-0 shadow-sm theme-accent bg-[var(--accent-soft)] border-[var(--accent)] text-[var(--accent)]"><i data-lucide="filter" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="title-text text-base sm:text-lg font-bold theme-accent mb-1 sm:mb-2 transition-colors duration-300">全域数据接入与清洗编排</h3>
+                                    <p class="theme-text-muted text-xs sm:text-sm leading-relaxed font-medium">连接异构数据源，可视化配置转换与 AI 解析节点，将复杂原始数据洗练为标准业务资产。</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 theme-bg-card border border-transparent hover:theme-border hover:shadow-md relative group" data-target="ontology">
+                            <div class="flex gap-4">
+                                <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border theme-border theme-bg-card flex items-center justify-center shrink-0 shadow-sm theme-text-muted"><i data-lucide="box" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="title-text text-base sm:text-lg font-bold theme-text-primary mb-1 sm:mb-2 transition-colors duration-300">自动化识别与本体建模</h3>
+                                    <p class="theme-text-muted text-xs sm:text-sm leading-relaxed font-medium">智能识别数据特征，自动推荐标识与数据类型，极简操作即可完成业务对象实例化，构建企业知识中枢。</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 theme-bg-card border border-transparent hover:theme-border hover:shadow-md relative group" data-target="exploration">
+                            <div class="flex gap-4">
+                                <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border theme-border theme-bg-card flex items-center justify-center shrink-0 shadow-sm theme-text-muted"><i data-lucide="share-2" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="title-text text-base sm:text-lg font-bold theme-text-primary mb-1 sm:mb-2 transition-colors duration-300">穿透式对象关联与下钻</h3>
+                                    <p class="theme-text-muted text-xs sm:text-sm leading-relaxed font-medium">动态配置多对象间关联规则，在关系网络视图中支持双击下钻，实现多层级链路的穿透查询。</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="workflow-btn w-full text-left p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 theme-bg-card border border-transparent hover:theme-border hover:shadow-md relative group" data-target="action">
+                            <div class="flex gap-4">
+                                <div class="icon-container w-10 h-10 sm:w-12 sm:h-12 rounded-full border theme-border theme-bg-card flex items-center justify-center shrink-0 shadow-sm theme-text-muted"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h3 class="title-text text-base sm:text-lg font-bold theme-text-primary mb-1 sm:mb-2 transition-colors duration-300">智能规则联动与行动执行</h3>
+                                    <p class="theme-text-muted text-xs sm:text-sm leading-relaxed font-medium">在本体层面定义可执行动作与业务联动规则。例如调整状态时自动触发内部协同或流转，实现真闭环。</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="xl:col-span-7 xl:sticky xl:top-28 z-10 order-2 xl:order-1" id="mockup-container">
+                        <div class="bg-[#0f111a] rounded-3xl shadow-2xl overflow-hidden border border-slate-800">
+                            <div class="flex items-center px-4 py-3 bg-[#1a1d27] border-b border-slate-700/50">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <div class="ml-4 flex gap-4 text-xs font-mono text-slate-400">
+                                    <span class="text-white font-semibold">Workspace</span><span>/</span>
+                                    <span id="mockup-title" class="text-blue-400">Data_Pipeline.py</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 lg:p-6 h-[380px] sm:h-[450px] overflow-y-auto mockup-scroll bg-[#0f111a] font-mono text-xs sm:text-sm leading-relaxed" id="mockup-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Enterprise Ready -->
+            <section id="enterprise" class="scroll-mt-28 pt-10 border-t theme-border">
+                <div class="mb-8 lg:mb-10 text-left">
+                    <h2 class="text-2xl sm:text-3xl font-black theme-text-primary mb-3 tracking-tight">坚实可靠的技术护城河与云服务</h2>
+                    <p class="theme-text-muted text-base sm:text-lg font-medium">企业级架构与模型基座</p>
+                </div>
+                <div class="bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-[#312E81] text-white p-6 sm:p-8 lg:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 relative z-10">
+                        <div class="bg-white/5 backdrop-blur-xl p-6 sm:p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6 shadow-inner"><i data-lucide="shield-check" class="w-6 h-6 sm:w-7 sm:h-7 text-blue-300"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 tracking-wider">全链路 AI 模型支撑</h3>
+                            <p class="text-blue-100/80 text-xs sm:text-sm leading-relaxed font-medium">提供贯穿全系统的文本解析、实体识别与语义理解能力。平台支持对接外部大模型，亦可平滑替换为企业自研私有模型，全方位保障核心数据安全。</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-xl p-6 sm:p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6 shadow-inner"><i data-lucide="cloud" class="w-6 h-6 sm:w-7 sm:h-7 text-indigo-300"></i></div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 tracking-wider">标准能力开放与云服务部署</h3>
+                            <p class="text-blue-100/80 text-xs sm:text-sm leading-relaxed font-medium">业务本体库全面开放，提供标准 API 与 OSDK 工具包接入。同时提供安全合规的云服务环境（如私有云部署），为企业构建专属资源池，高效支撑产品落地各类复杂业务场景。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Use Cases -->
+            <section id="cases" class="scroll-mt-28 pt-10 border-t theme-border">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 lg:mb-10 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-black theme-text-primary mb-3 tracking-tight">深入业务场景的智能决策实践</h2>
+                        <p class="theme-text-muted text-base sm:text-lg font-medium">11 大智能体深度赋能</p>
+                    </div>
+                    <button class="flex items-center text-sm font-bold theme-accent hover:opacity-80 transition">查看完整解决方案 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="group cursor-pointer theme-bg-card p-5 rounded-3xl border theme-border theme-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-indigo-900 to-slate-900 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
+                            <div class="w-20 h-20 bg-white/10 backdrop-blur border border-white/20 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform"><i data-lucide="message-square" class="w-10 h-10 text-white"></i></div>
+                        </div>
+                        <div class="px-2">
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xs font-bold px-2 py-1 theme-pill rounded">外部营销 | 转化提升</span></div>
+                            <h3 class="text-xl font-bold theme-text-primary mb-3 group-hover:theme-accent transition">智能营销与客户服务</h3>
+                            <p class="theme-text-muted text-sm mb-2 font-medium leading-relaxed">集成 AI 客服、产品智能推荐、订单进度查询、AI 商机识别四大智能体。提供 7x24 小时智能问答，在对话中精准识别购买意图并推荐关联产品，实现从客服咨询到商机线索的自动化转化。</p>
+                        </div>
+                    </div>
+                    <div class="group cursor-pointer theme-bg-card p-5 rounded-3xl border theme-border theme-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
+                            <div class="w-20 h-20 bg-white/60 backdrop-blur border border-white/50 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform"><i data-lucide="shield" class="w-10 h-10 text-indigo-600"></i></div>
+                        </div>
+                        <div class="px-2">
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded">内部运营 | 协同增效</span></div>
+                            <h3 class="text-xl font-bold theme-text-primary mb-3 group-hover:theme-accent transition">内部运营与合规风控</h3>
+                            <p class="theme-text-muted text-sm mb-2 font-medium leading-relaxed">聚合内部知识库问答、AI 合同审核、AI 用户行为分析、AI 系统监控告警四大智能体。自动审核合同条款规避风险，实时监控系统数据质量与异常告警，全方位提升企业内部运营协同与安全效能。</p>
+                        </div>
+                    </div>
+                    <div class="group cursor-pointer theme-bg-card p-5 rounded-3xl border theme-border theme-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-slate-100 to-gray-200 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
+                            <div class="w-20 h-20 bg-white/60 backdrop-blur border border-white/50 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform"><i data-lucide="pie-chart" class="w-10 h-10 text-slate-700"></i></div>
+                        </div>
+                        <div class="px-2">
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-700 border border-slate-200 rounded">数据驱动 | 辅助决策</span></div>
+                            <h3 class="text-xl font-bold theme-text-primary mb-3 group-hover:theme-accent transition">数据洞察与主动决策</h3>
+                            <p class="theme-text-muted text-sm mb-2 font-medium leading-relaxed">依托智能问数、AI 补货提醒、AI 付款提示三大智能体。在严格权限控制下，支持自然语言秒级穿透查询利润与库存。系统基于数据自动推演，主动推送预警提示，真正落地数据驱动决策。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f111a] text-slate-400 py-12 sm:py-16 border-t border-slate-800 mt-12">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4 sm:mb-6 text-white">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded flex items-center justify-center text-white font-bold text-sm">W</div>
+                        <span class="font-bold text-lg tracking-wide">中科闻歌</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500 font-medium">全球领先的大数据与人工智能服务商，致力于用科技赋能企业决策、政务、金融等垂直行业。</p>
+                </div>
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-4">产品服务</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-blue-400 transition">DIP决策智能平台</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">YAYI 大模型</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">天湖数据智算平台</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-4">解决方案</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-blue-400 transition">企业级决策</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">智慧政务</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">企业数智化</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1 mt-4 md:mt-0">
+                    <h4 class="text-white font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-blue-400 transition">申请演示</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">商务合作</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center font-medium gap-4">
+                <p>&copy; 2024 中科闻歌 版权所有</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition">隐私政策</a>
+                    <a href="#" class="hover:text-white transition">服务条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e) {}
+
+        (function() {
+            var buttons = document.querySelectorAll('.style-btn');
+            var body = document.body;
+            function setTheme(theme) {
+                body.setAttribute('data-theme', theme);
+                buttons.forEach(function(btn) { btn.classList.toggle('active', btn.getAttribute('data-theme') === theme); });
+                try { localStorage.setItem('dip-ui-theme', theme); } catch (e) {}
+            }
+            buttons.forEach(function(btn) { btn.addEventListener('click', function() { setTheme(btn.getAttribute('data-theme')); }); });
+            var saved = null;
+            try { saved = localStorage.getItem('dip-ui-theme'); } catch (e) {}
+            if (saved && ['palantir','minimax','apple','google','zhipu','kimi'].indexOf(saved) !== -1) setTheme(saved);
+        })();
+
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>' : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+            });
+            document.querySelectorAll('.mobile-nav-link').forEach(function(a) {
+                a.addEventListener('click', function() { mobileMenu.classList.add('hidden'); mobileMenuBtn.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>'; });
+            });
+        }
+
+        var mockupData = {
+            data_pipeline: { title: 'Data_Pipeline.py', html: '<span class="text-blue-400">import</span> dip_pipeline <span class="text-blue-400">as</span> dp\n\n<span class="text-slate-500"># 1. 连接异构数据源 (ERP, CRM, Log)</span>\nsource_erp = dp.connect(<span class="text-green-400">"mysql://erp_db_production"</span>)\nsource_log = dp.connect(<span class="text-green-400">"kafka://user_actions"</span>)\n\n<span class="text-slate-500"># 2. 自动化清洗与编排配置</span>\npipeline = dp.Pipeline()\npipeline.add_step(dp.CleanMissing(strategy=<span class="text-green-400">"fill_mean"</span>))\npipeline.add_step(dp.AIParser(model=<span class="text-green-400">"dip-parse-v1"</span>))\n\n<span class="text-slate-500"># 3. 输出标准化资产</span>\nclean_data = pipeline.run([source_erp, source_log])\n\n<div class="mt-4 p-3 bg-slate-800/50 rounded border border-slate-700"><span class="text-green-400">>>> 清洗日志输出:</span>\n[INFO] ERP 数据接入成功: 142,000 条记录\n[INFO] Kafka 消费成功: 38,401 消息\n[INFO] AI 解析器成功抽取 95% 非结构化字段\n[SUCCESS] 标准化业务资产已就绪。</div>' },
+            ontology: { title: 'Ontology_Builder.py', html: '<span class="text-blue-400">from</span> dip_ontology <span class="text-blue-400">import</span> SchemaGenerator\n\n<span class="text-slate-500"># 1. 自动识别数据特征与推断</span>\ngenerator = SchemaGenerator(auto_infer=<span class="text-orange-400">True</span>)\nschema = generator.analyze(clean_data)\n\n<span class="text-slate-500"># 2. 映射业务实体与核心属性</span>\nentity_customer = schema.create_entity(name=<span class="text-green-400">"Customer"</span>, properties={<span class="text-green-400">"id"</span>: <span class="text-green-400">"uuid"</span>, <span class="text-green-400">"risk_score"</span>: <span class="text-green-400">"float"</span>, <span class="text-green-400">"segment"</span>: <span class="text-green-400">"category"</span>})\n\n<div class="mt-4 p-3 bg-slate-800/50 rounded border border-slate-700"><span class="text-green-400">>>> 建模状态:</span>\n正在识别表头特征... 完成\n自动建议映射关系... 接受 12/12 建议\n实例 [Customer] 已注册至企业级本体知识库。</div>' },
+            exploration: { title: 'Graph_Exploration.py', html: '<span class="text-blue-400">from</span> dip_graph <span class="text-blue-400">import</span> GraphQuery\n\n<span class="text-slate-500"># 1. 锁定探索起始对象</span>\nquery = GraphQuery(entity=<span class="text-green-400">"Customer"</span>, id=<span class="text-green-400">"C-9821"</span>)\n\n<span class="text-slate-500"># 2. 穿透式下钻查询关联网络</span>\nresult = query.traverse(path=<span class="text-green-400">"Customer-[:HAS_ORDER]->Order-[:AFFECTED_BY]->Exception"</span>, depth=3)\n\n<span class="text-purple-400">print</span>(<span class="text-green-400">"发现关联影响节点："</span>)\n<span class="text-blue-400">for</span> node <span class="text-blue-400">in</span> result.nodes:\n    <span class="text-purple-400">print</span>(<span class="text-green-400">f"[{node.type}] {node.name} (Status: {node.status})"</span>)\n\n<div class="mt-4 p-3 bg-slate-800/50 rounded border border-slate-700"><span class="text-green-400">>>> 查询结果:</span>\n[Order] ORD-2024-001 (Status: DELAYED)\n[Exception] 物流节点中断 (Status: CRITICAL)\n-> 已通过网状关联成功追溯影响源。</div>' },
+            action: { title: 'Action_Trigger.py', html: '<span class="text-blue-400">from</span> dip_action <span class="text-blue-400">import</span> RuleEngine, Trigger\n\n<span class="text-slate-500"># 1. 注册业务联动规则引擎</span>\nengine = RuleEngine()\n\n<span class="text-purple-400">@engine.rule</span>(on=<span class="text-green-400">"Order.status == \'DELAYED\'"</span>)\n<span class="text-blue-400">def</span> <span class="text-yellow-200">handle_delay</span>(order):\n    <span class="text-slate-500"># 2. 触发预设 Action 完成闭环</span>\n    Trigger.notify_sales(order.sales_rep)\n    Trigger.create_ticket(priority=<span class="text-green-400">"HIGH"</span>, reason=<span class="text-green-400">f"Supply exception for {order.id}"</span>)\n    <span class="text-purple-400">print</span>(<span class="text-green-400">f">>> 智能体 Action 执行完毕: {order.id}"</span>)\n\n<div class="mt-4 p-3 bg-slate-800/50 rounded border border-slate-700"><span class="text-green-400">>>> 实时执行监控:</span>\n事件捕获: Order[ORD-2024-001] 状态变更为 DELAYED.\n执行动作: 已发送企业微信通知给 [张三].\n执行动作: 内部工单 [#TK-8820] 自动创建成功.</div>' }
+        };
+
+        var mockupContent = document.getElementById('mockup-content');
+        var mockupTitle = document.getElementById('mockup-title');
+        if (mockupContent && mockupTitle) {
+            mockupContent.innerHTML = mockupData.data_pipeline.html;
+            mockupTitle.textContent = mockupData.data_pipeline.title;
+            mockupContent.style.transition = 'opacity 0.2s ease-in-out';
+        }
+
+        document.querySelectorAll('.workflow-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.workflow-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                    b.classList.add('border-transparent');
+                    var icon = b.querySelector('.icon-container');
+                    if (icon) { icon.classList.remove('bg-[var(--accent-soft)]', 'border-[var(--accent)]', 'text-[var(--accent)]'); icon.classList.add('theme-bg-card', 'theme-border', 'theme-text-muted'); }
+                    var tit = b.querySelector('.title-text');
+                    if (tit) { tit.classList.remove('theme-accent'); tit.classList.add('theme-text-primary'); }
+                });
+                this.classList.add('active');
+                this.classList.remove('border-transparent');
+                var icon = this.querySelector('.icon-container');
+                if (icon) { icon.classList.add('bg-[var(--accent-soft)]', 'border-[var(--accent)]', 'text-[var(--accent)]'); icon.classList.remove('theme-text-muted'); }
+                var tit = this.querySelector('.title-text');
+                if (tit) { tit.classList.add('theme-accent'); tit.classList.remove('theme-text-primary'); }
+                var target = this.getAttribute('data-target');
+                if (mockupContent && mockupData[target]) {
+                    mockupContent.style.opacity = '0';
+                    setTimeout(function() {
+                        mockupTitle.textContent = mockupData[target].title;
+                        mockupContent.innerHTML = mockupData[target].html;
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                        mockupContent.style.opacity = '1';
+                    }, 200);
+                }
+            });
+        });
+
+        var sectionsObj = document.querySelectorAll('main section[id]');
+        var navLinksObj = document.querySelectorAll('#toc-nav a');
+        var isClickScrolling = false;
+        var scrollTimeout = null;
+        var tocObserver = new IntersectionObserver(function(entries) {
+            if (isClickScrolling) return;
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var id = entry.target.getAttribute('id');
+                    navLinksObj.forEach(function(link) {
+                        link.classList.remove('theme-toc-active', 'font-bold');
+                        link.classList.add('theme-toc-link', 'border-transparent', 'theme-text-muted');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.remove('theme-toc-link', 'border-transparent', 'theme-text-muted');
+                            link.classList.add('theme-toc-active', 'font-bold');
+                        }
+                    });
+                }
+            });
+        }, { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 });
+        sectionsObj.forEach(function(sec) { tocObserver.observe(sec); });
+        navLinksObj.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                isClickScrolling = true;
+                clearTimeout(scrollTimeout);
+                var targetId = link.getAttribute('href').substring(1);
+                var targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    navLinksObj.forEach(function(l) { l.classList.remove('theme-toc-active', 'font-bold'); l.classList.add('theme-toc-link', 'border-transparent', 'theme-text-muted'); });
+                    link.classList.remove('theme-toc-link', 'border-transparent', 'theme-text-muted'); link.classList.add('theme-toc-active', 'font-bold');
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    try { history.pushState(null, null, '#' + targetId); } catch (err) {}
+                    scrollTimeout = setTimeout(function() { isClickScrolling = false; }, 800);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
