@@ -18,6 +18,15 @@
         .c3-carousel-track { transition: transform 0.4s ease-out; }
         .c3-video-wrap { box-shadow: 0 4px 24px rgba(0,102,204,0.08); }
         .hero-desc { word-break: keep-all; overflow-wrap: normal; }
+        .theme-toggle-btn { position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--c3-blue); color: white; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,102,204,0.3); transition: all 0.3s ease; }
+        .theme-toggle-btn:hover { transform: scale(1.1); opacity: 0.95; }
+        .theme-selector-panel { position: fixed; top: 78px; right: 20px; z-index: 1000; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); width: 260px; max-height: 70vh; overflow-y: auto; }
+        .theme-selector-panel.hidden { display: none; }
+        .theme-selector-panel h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .theme-selector-panel a { display: block; padding: 8px 10px; border-radius: 6px; color: #475569; font-size: 13px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+        .theme-selector-panel a:hover { background: #f1f5f9; color: var(--c3-blue); }
+        .theme-selector-panel a.current { color: var(--c3-blue); font-weight: 600; cursor: default; }
+        .theme-selector-panel a.current:hover { background: transparent; }
     </style>
 </head>
 <body class="bg-[var(--c3-bg)] text-slate-900 antialiased">
@@ -309,6 +318,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- 主题选择：调色盘按钮 + 返回/切换面板 -->
+    <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="选择主题">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.648 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/></svg>
+    </button>
+    <div id="theme-selector-panel" class="theme-selector-panel hidden">
+        <h3>选择UI风格 (6种)<button type="button" id="theme-panel-close" aria-label="关闭">×</button></h3>
+        <a href="index.html">Palantir 经典</a>
+        <a href="index.html">Palantir 蓝调</a>
+        <a href="index.html">Minimax</a>
+        <a href="index.html">Apple 极简</a>
+        <a href="dip-style-c3ai.html" class="current">C3.ai 风格 <span style="color:var(--c3-blue);font-size:11px;">(当前)</span></a>
+        <a href="dip-style-h2o.html">H2O.ai 风格</a>
+    </div>
+    <script>
+        (function() {
+            var btn = document.getElementById('theme-toggle-btn');
+            var panel = document.getElementById('theme-selector-panel');
+            var closeBtn = document.getElementById('theme-panel-close');
+            if (btn && panel) {
+                btn.addEventListener('click', function() { panel.classList.toggle('hidden'); });
+                if (closeBtn) closeBtn.addEventListener('click', function() { panel.classList.add('hidden'); });
+            }
+        })();
+    </script>
 
     <script>
         (function() {
