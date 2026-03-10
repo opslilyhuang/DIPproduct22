@@ -1232,7 +1232,9 @@ const themes = {
     palantir2: { name: 'Palantir 经典', desc: '黑白灰·文档感', colors: ['#000000', '#374151', '#e5e7eb'], version: 'v2' },
     palantir: { name: 'Palantir 蓝调', desc: '企业级蓝调', colors: ['#106ba3', '#1e8cd1', '#e2e8f0'], version: 'v1' },
     minimax: { name: 'Minimax', desc: '高对比大排版', colors: ['#111111', '#eb3e3e', '#ffffff'], version: 'v1' },
-    apple: { name: 'Apple 极简', desc: '极致空间克制感', colors: ['#1d1d1f', '#f5f5f7', '#007aff'], version: 'v1' }
+    apple: { name: 'Apple 极简', desc: '极致空间克制感', colors: ['#1d1d1f', '#f5f5f7', '#007aff'], version: 'v1' },
+    c3ai: { name: 'C3.ai 风格', desc: '企业级·浅色·轮播', colors: ['#0066cc', '#0f172a', '#f8fafc'], version: 'v1', url: '../dip-style-c3ai.html' },
+    h2o: { name: 'H2O.ai 风格', desc: '生成式AI·青绿', colors: ['#00a396', '#0066ff', '#f8fafc'], version: 'v1', url: '../dip-style-h2o.html' }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1242,7 +1244,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.querySelectorAll('.theme-card').forEach(card => {
         card.addEventListener('click', function() {
-            applyTheme(this.dataset.theme);
+            var themeKey = this.dataset.theme;
+            var t = themes[themeKey];
+            if (t && t.url) {
+                window.location.href = t.url;
+                return;
+            }
+            applyTheme(themeKey);
         });
     });
     
@@ -1285,7 +1293,7 @@ function createThemeSelector() {
         </button>
         <div id="theme-selector" class="theme-selector-container hidden">
             <div class="theme-selector-header">
-                <span>选择UI风格 (4种)</span>
+                <span>选择UI风格 (6种)</span>
                 <button onclick="document.getElementById('theme-selector').classList.add('hidden')">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
